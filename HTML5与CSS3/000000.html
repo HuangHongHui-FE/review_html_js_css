@@ -1,0 +1,102 @@
+<!-- 子选择器 -->
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div > p {
+  background-color: yellow;
+}
+</style>
+</head>
+<body>
+  <h1>子选择器</h1>
+  <p>子选择器 (>) 选择属于指定元素子元素的所有元素。</p>
+
+  <div>
+    <p>div 中的段落 1。</p>
+    <p>div 中的段落 2。</p>
+    <section><p>div 中的段落 3。</p></section> <!-- 非子但属后代 -->
+    <p>div 中的段落 4。</p>
+  </div>
+  <p>段落 5。不在 div 中。</p>
+  <p>段落 6。不在 div 中。</p>
+</body>
+</html>
+
+
+<!-- 不同的透明度 -->
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div {
+  background-color: green;
+}
+
+div.first {
+  opacity: 0.1;
+}
+
+div.second {
+  opacity: 0.3;
+}
+
+div.third {
+  opacity: 0.6;
+}
+</style>
+</head>
+<body>
+
+<h1>透明框</h1>
+
+<p>当使用 opacity 属性为元素背景添加透明度时，其所有子元素也会变为透明。这可能会使完全透明的元素内的文本难以阅读：</p>
+
+<div class="first">
+  <h1>opacity 0.1</h1>
+</div>
+
+<div class="second">
+  <h1>opacity 0.3</h1>
+</div>
+
+<div class="third">
+  <h1>opacity 0.6</h1>
+</div>
+
+<div>
+  <h1>opacity 1（默认）</h1>
+</div>
+
+</body>
+</html>
+
+
+
+<!-- 左外边距继承自父元素 -->
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div {
+  border: 1px solid red;
+  margin-left: 100px;
+}
+
+p.ex1 {
+  margin-left: inherit;
+}
+</style>
+</head>
+<body>
+
+<h1>使用继承值</h1>
+<p>左外边距继承自父元素：</p>
+
+<div>
+<p class="ex1">本段落继承了 div 元素的左外边距。</p>
+</div>
+
+</body>
+</html>
+
