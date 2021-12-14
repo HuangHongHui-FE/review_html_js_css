@@ -1,0 +1,69 @@
+@media screen and (min-width:1500px){
+    .border-effect {
+        border-radius: 15px 70px;
+        box-shadow: 10px 10px 5px #aa99aa;
+    }
+    #box {
+        background: url('assets/ytile-pattern.png') repeat-y 12% top white;
+        margin: auto;
+        width: 60%;
+        box-sizing: border-box;
+        min-width: 700px;
+    }
+    body {
+        background: url('assets/corner-LT-pattern.png') no-repeat 10px 10px,
+        url('assets/corner-RB-pattern.png') no-repeat calc(100% - 10px) calc(100% - 10px) Lavender;
+        padding: 3% 0;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (min-width:700px) and (max-width: 1500px){
+    .border-effect {
+        box-shadow: 10px 10px 5px #aa99aa;
+    }
+    #box {
+        background: url('assets/ytile-pattern.png') repeat-y 12% top white;
+        margin: auto;
+        width: 60%;
+        box-sizing: border-box;
+        min-width: 700px;
+    }
+    body {
+        background: url('assets/corner-LT-pattern.png') no-repeat 10px 10px,
+        url('assets/corner-RB-pattern.png') no-repeat calc(100% - 10px) calc(100% - 10px) Lavender;
+        padding: 3% 0;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width:700px){
+    #box {
+        margin: auto;
+        width: 60%;
+        box-sizing: border-box;
+        min-width: 700px;
+    }
+    body {
+        padding: 3% 0;
+        box-sizing: border-box;
+    }
+}
+
+.cursive {
+    font-family: 'Alex Brush', Georgia, serif;
+    font-size: 22pt;
+    line-height: 1.5em;
+    color: purple;
+    margin: auto;
+    width: 50%;
+    padding: 50px 30px;
+}
+
+
+
+
+
+
+
+

@@ -1,0 +1,173 @@
+* {
+    font-family: Verdana, Geneva, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 23px;
+    color: #706f6f;
+}
+
+strong {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}
+
+a {
+    color: #3aaa35;
+}
+
+a:visited {
+    color: #706f6f;
+}
+
+nav li {
+    display: inline;
+}
+
+nav a {
+    display: inline-block;
+    padding: 10px;
+}
+
+nav a:visited {
+    color: purple;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: bold;
+    color: #231f20;
+}
+
+h1 {
+    font-size: 28px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+h3 {
+    font-size: 17px;
+}
+
+header h1 {
+    text-align: center;
+}
+
+header {
+    background-color: #706f6f;
+    padding-top: 30px;
+}
+
+body {
+    margin: 0px;
+}
+
+pre {
+    font-family: Consolas, monospace;
+}
+
+p {
+    text-align: justify;
+}
+
+.container {
+    margin-top: 20px;
+    width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.flexi {
+    display: flex;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.flexi>* {
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+div.card {
+    background-color: white;
+    box-shadow: 3px 3px 5px #706f6f;
+    display: flex;
+    flex-direction: column;
+}
+
+div.card>.card-header {
+    width: 100%;
+}
+
+div.card>.card-img {
+    display: block;
+}
+
+div.card>.card-body {
+    border: 1px solid #e6e7e9;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 100%;
+}
+
+div.card>.card-footer {
+    width: 100%;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: 5px;
+    color: #231f20;
+}
+
+.table th {
+    font-weight: bold;
+}
+
+.table>thead {
+    background-color: #d9ead3;
+    border-top: 1px solid #3aaa35;
+    border-bottom: 1px solid #3aaa35;
+}
+
+.table>tbody {
+    border-bottom: 1px solid #706f6f;
+}
+
+.table>tbody>tr:nth-child(odd) {
+    background-color: white;
+}
+
+.table>tbody>tr:nth-child(even) {
+    background-color: #e6e7e9;
+}
+
+.table.table-hover>tbody>tr:hover {
+    background-color: #b6b7b9;
+}
+
+.float-left {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.float-right {
+    float: left;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}

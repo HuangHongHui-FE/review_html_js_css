@@ -1,0 +1,27 @@
+table {
+    width: 100%;
+    border: 1px solid grey;
+    border-collapse: collapse;
+}
+
+tr {
+    height: 3em;
+}
+
+thead>tr {
+    background: lightseagreen;
+    color: white;
+    font-weight: bold;
+}
+
+tbody>tr:nth-child(even) {
+    background: lightgrey;
+}
+
+tbody>tr:hover {
+    background: yellow;
+}
+
+tr>td:hover {
+    background: darkgoldenrod;
+}

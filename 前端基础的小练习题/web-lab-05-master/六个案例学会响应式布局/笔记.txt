@@ -1,0 +1,16 @@
+1.   @media screen and(max-width:960px)      当前设备为screen时，最大宽度为960时显示的样式。
+	媒体类型有	all:所有设备
+				print:用于打印机和打印预览
+				screen: 用于电脑屏幕，平板，智能手机
+				speech: 屏幕阅读器等发声设备
+
+
+2.	<meta name="viewport" content="initial-scale=1.0,width=device-width, maximum-scale=3.0, minimum-scale=0.5" />
+	name="viewport":说明meta定义的是视口的属性
+	initial-scale=2.0: 将页面放大两倍
+	user-scalable=no: 禁止缩放
+
+
+3.  1.首先选一套标准尺寸 750为准
+    2.用屏幕尺寸  除以  划分的份数  得到  html里面的文字大小 但是不同屏幕下得到的文字大小是不一样的
+    3.页面元素的rem值 = 页面元素在 750像素下的px值 / html里面的文字大小

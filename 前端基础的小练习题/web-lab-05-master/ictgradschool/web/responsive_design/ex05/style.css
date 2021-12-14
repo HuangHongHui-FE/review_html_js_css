@@ -1,0 +1,104 @@
+#container {
+    width: 700px;
+    height: 541px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+img {
+    position: absolute;
+}
+
+#background {
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+#tree {
+    top: 113px;
+    width: 700px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.bauble {
+    z-index: 3;
+}
+
+/*  这里 */
+#red, #blue, #green,#orange,#darkblue, #pink{
+    left: 42px;
+    top: 341px;
+    animation-name: red1;
+    animation-duration: 1s;
+    animation-iteration-count: 5;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+    
+}
+
+#red:hover, #blue:hover, #green:hover,#orange:hover,#darkblue:hover, #pink:hover{
+    animation-name: red2;
+    animation-duration: 1s;
+    animation-iteration-count: 5;
+    animation-timing-function: ease-in;
+    animation-fill-mode: forwards;
+    animation-direction: alternate;
+}
+
+@keyframes red2{
+    0%{
+        top: 341;
+    }
+    100% {
+        top: 460px;
+    }
+}
+
+@keyframes red1{
+    0%{
+        top: 341px;
+    }
+    /* 25% {
+        top: 370px;
+    }
+    50% {
+        top: 400px;
+    }
+    75% {
+        top: 430px;
+    } */
+    100% {
+        top: 460px;
+    }
+}
+
+#blue {
+    left: 113px;
+    top: 226px;
+}
+
+#green {
+    left: 425px;
+    top: 211px;
+}
+
+#orange {
+    left: 604px;
+    top: 281px;
+}
+
+#darkblue {
+    left: 300px;
+    top: 276px;
+}
+
+#pink {
+    z-index: 1;
+    left: 400px;
+    top: 330px;
+}

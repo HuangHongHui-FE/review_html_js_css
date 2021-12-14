@@ -1,0 +1,83 @@
+<!-- 1. -->
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<title></title>
+	<style>
+		html{
+			font-size: 100px;
+		}
+		div{
+			font-size: 1rem
+		}
+	</style>
+</head>
+<body>
+	<div>123</div>
+</body>
+</html> -->
+
+
+
+
+<!-- 2. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<title></title>
+	<script>
+		var c=()=>{
+			let w = document.documentElement.clientWidth; /*获取设备的宽度*/
+			let n = (20 * (w / 320) > 40 ? 40 + "px": (20*(w/320) + "px"));
+			// console.log(n)
+			document.documentElement.style.fontSize=n
+		}
+		window.addEventListener("load",c)
+		window.addEventListener("resize", c)
+	</script>
+	<style>
+		html{
+			font-size: 100px;
+		}
+		div{
+			font-size: 2rem;
+		}
+	</style>
+</head>
+<body>
+	<div>123</div>
+</body>
+</html>
+
+
+
+<!-- 3.识别不同设备 -->
+<!-- <!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		var redirect=()=>{
+			let userAgent = navigator.userAgent.toLowerCase();
+			let device = /ipad|iphone|midp|rv:1.2.3.4|ucweb|android|window ce|window mobile/;
+			if (device.test(userAgent)){
+				// 跳转到移动端页面
+				window.location.href="move.html"
+			}else{
+				// 跳转到PC端页面
+				window.location.href = "pc.html"
+			}
+		}
+	</script>
+</body>
+</html> -->
