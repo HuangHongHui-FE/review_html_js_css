@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>My favorite things</title>
+    <link rel="stylesheet" href="./css/site.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Article summaries</h1>
+        {{! TODO Your code here. !}}
+        {{#if articles}}
+            {{#each articles}}
+                <div class="card">
+                    <img class="card-header card-img" src='{{this.imageUrl}}'>
+                    <div class="card-body">
+                        <h3>{{this.title}}</h3>
+                        <p>{{this.content}}</p>
+                    </div>
+                </div>
+            {{/each}}
+        {{/if}}
+        
+    </div>
+</body>
+
+</html>

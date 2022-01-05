@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>My favorite things</title>
+    <link rel="stylesheet" href="./css/site.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>These are a few of my favorite things:</h1>
+        {{! TODO Your code here. !}}
+        {{#if favorites}}
+            <p>I have favorites!</p>
+            <ol>
+                {{#each favorites}}
+                    <li>{{this}}</li>
+                {{/each}}
+            </ol>
+            {{else}}
+            <p>I have no favorites :</p>
+        {{/if}}
+    </div>
+</body>
+
+</html>
