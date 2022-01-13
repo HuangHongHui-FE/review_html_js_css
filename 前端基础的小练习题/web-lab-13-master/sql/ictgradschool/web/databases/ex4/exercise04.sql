@@ -1,1 +1,17 @@
 -- Answers to Exercise 4 here
+DROP TABLE IF EXISTS articles;
+
+CREATE TABLE IF NOT EXISTS articles (
+  id INT NOT NULL,
+  title TEXT,
+  article TEXT,
+  PRIMARY KEY (id)
+);
+
+INSERT INTO articles VALUES (1, 'Lorem Ipsum', "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis diam consectetur, iaculis risus ac, posuere elit. Donec urna libero, rutrum non lectus ut, eleifend bibendum velit. Maecenas ornare ornare ante sed efficitur. Sed nibh diam, vehicula id turpis sed, lobortis egestas purus. Curabitur facilisis lorem eget velit bibendum pellentesque. Nulla non ligula lacinia velit lobortis eleifend. In ipsum augue, pellentesque eu vestibulum a, consequat ac nisl. Phasellus venenatis a orci at molestie. Pellentesque accumsan viverra blandit. Curabitur euismod ultricies nisi. Integer sit amet mauris interdum, pulvinar enim eget, efficitur enim. Nunc nibh sem, laoreet non nulla sit amet, faucibus dignissim elit. Etiam iaculis mi non pretium dictum.
+Phasellus vestibulum auctor metus eget convallis. Phasellus odio nisi, vestibulum non maximus in, bibendum sed nibh. Praesent erat augue, rhoncus eu semper vitae, laoreet sed lorem. Mauris vulputate ut ligula eu pellentesque. Praesent porttitor luctus justo, vitae malesuada lacus mattis ullamcorper. Cras rhoncus augue consectetur, varius dolor at, sagittis eros. Donec imperdiet mauris non augue tempor sollicitudin. Nunc eget mollis elit, eu pretium nisl. Phasellus vitae justo a mi tincidunt placerat. Nam vel ex accumsan, ultricies quam eget, rutrum nisl. Donec quis magna feugiat, aliquet elit non, bibendum eros. Pellentesque vel risus molestie lectus pulvinar tempor. Donec non massa elementum, laoreet tortor ac, aliquam nunc.");
+INSERT INTO articles VALUES (2, 'Lorem', "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis diam consectetur, iaculis risus ac, posuere elit. Donec urna libero, rutrum non lectus ut, eleifend bibendum velit. Maecenas ornare ornare ante sed efficitur. Sed nibh diam, vehicula id turpis sed, lobortis egestas purus. Curabitur facilisis lorem eget velit bibendum pellentesque. Nulla non ligula lacinia velit lobortis eleifend. In ipsum augue, pellentesque eu vestibulum a, consequat ac nisl. Phasellus venenatis a orci at molestie. Pellentesque accumsan viverra blandit. Curabitur euismod ultricies nisi. Integer sit amet mauris interdum, pulvinar enim eget, efficitur enim. Nunc nibh sem, laoreet non nulla sit amet, faucibus dignissim elit. Etiam iaculis mi non pretium dictum.
+Phasellus vestibulum auctor metus eget convallis.");
+INSERT INTO articles VALUES (3, 'Ipsum', "Phasellus odio nisi, vestibulum non maximus in, bibendum sed nibh. Praesent erat augue, rhoncus eu semper vitae, laoreet sed lorem. Mauris vulputate ut ligula eu pellentesque. Praesent porttitor luctus justo, vitae malesuada lacus mattis ullamcorper. Cras rhoncus augue consectetur, varius dolor at, sagittis eros. Donec imperdiet mauris non augue tempor sollicitudin. Nunc eget mollis elit, eu pretium nisl. Phasellus vitae justo a mi tincidunt placerat. Nam vel ex accumsan, ultricies quam eget, rutrum nisl. Donec quis magna feugiat, aliquet elit non, bibendum eros. Pellentesque vel risus molestie lectus pulvinar tempor. Donec non massa elementum, laoreet tortor ac, aliquam nunc.");
+INSERT INTO articles VALUES (4, 'kat', "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
+INSERT INTO articles VALUES (5, 'pig', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');

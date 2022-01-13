@@ -65,6 +65,8 @@ Begin by opening the [ex1/exercise01.sql](sql/ictgradschool/web/databases/ex1/ex
 
 ![image-20220112092210639](README.assets/image-20220112092210639.png)
 
+![image-20220112215429883](README.assets/image-20220112215429883.png)
+
 ## Exercise Two
 
 Take this JSON as a source of inspiration:
