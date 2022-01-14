@@ -11,3 +11,5 @@ iframe.onload = function(){
 document.appendChild(iframe)
 
 // a.test.com和b.test.com就是二级域名，都是test.com的子域
+
+
