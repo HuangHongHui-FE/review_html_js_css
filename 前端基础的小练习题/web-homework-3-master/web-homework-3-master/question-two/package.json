@@ -1,0 +1,13 @@
+{
+  "name": "practical-02-question-two",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node question-two.js"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "express": "~4.16.1",
+    "express-handlebars": "^3.1.0"
+  }
+}
