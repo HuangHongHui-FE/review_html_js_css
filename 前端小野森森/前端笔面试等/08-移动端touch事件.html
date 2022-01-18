@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // 1. 
+        // document.addEventListener('touchstart', function() {
+        //     console.log('touchstart')
+        // })
+        // document.addEventListener('touchmove', function() {
+        //     console.log('touchmove')
+        // })
+        // document.addEventListener('touchend', function() {
+        //     console.log('touchend')
+        // })
+        // document.addEventListener('touchcancel', function() {
+        //     console.log('touchcancel')
+        // })
+
+        // // 触发cancel事件
+        // setTimeout(() => {
+        //     alert('blocked')
+        // }, 3000);
+
+
+
+        // 2.
+        // 属性
+        document.addEventListener('touchstart', function(e) {
+            console.log(e.touches)  // 所有触点，identifier: 触点的标识
+            console.log(e.changeTouches)  // 改变的触点
+            console.log(e.targetTouches)  // 作用在当前元素上的的触点
+        })
+
+
+
+        // 3. 
+        
+    </script>
+</body>
+</html>

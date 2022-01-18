@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .father{
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+    }
+    .child{
+        width: 100px;
+        height: 100px;
+
+        margin-left: 300px;
+    }
+    .child.child-1{
+        background-color: red;
+    }
+    .child.child-2{
+        background-color: orange;
+    }
+</style>
+<body>
+    <div class="father">
+        <div class="child child-1"></div>
+        <div class="child child-2"></div>
+    </div>
+    
+
+    <script>
+        // 事件流的三个阶段
+        // 1. 事件捕获
+            // 触发事件 - document发出一个事件流 - DOM节点 - 目标元素target
+        // 2. 事件目标
+            // 执行处理函数
+        // 3. 事件冒泡
+            // 目标 - DOM节点 - document/window
+
+        window.addEventListener('click', function(){}, false)  // false不在捕获阶段处理；事件冒泡
+        var oFather = document.getElementsByClassName('father')[0],
+            oChild1 = document.getElementsByClassName('child-1')[0],
+            oChild2 = document.getElementsByClassName('child-2')[0]
+
+            oFather.onclick = function(e){
+                var e = e || window.event,
+                    tar = e.target || e.srcElement,
+                    tagName = tar.tagName;  // 子元素的名
+                    className = tar.className;
+            }
+
+            // 事件冒泡，从子元素开始 触发了事件 默认向父级元素传递
+            
+    </script>
+</body>
+</html>

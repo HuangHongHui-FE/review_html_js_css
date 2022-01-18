@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul></ul>
+
+    <script>
+        // 通过文档碎片document.createDocumentFragment()
+        var oListWrapper = document.getElementsByTagName('ul')[0];
+        var oFrag = document.createDocumentFragment();
+        for(var i = 0; i < 10; i++){
+            var oLi = document.createElement('li')
+            oLi.innerText = '列表第' + (i + 1) + '项'
+            oLi.onclick = function(){
+                console.log(this.innerText)
+                console.log(i)
+            }
+            oFrag.appendChild(oLi)
+        }
+        oListWrapper.appendChild(oFrag)
+
+        
+    </script>
+</body>
+</html>

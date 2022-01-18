@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+    }
+</style>
+<body>
+    <div id="box"></div>
+    <script type="text/javascript">
+        ;(function (doc) {
+            var Touch = function(selector) {
+
+                return Touch.prototype.init(selector);
+            }
+
+            Touch.prototype = {
+                init: function(selector){
+                    if (typeof(selector) == 'string'){
+                        this.elem = doc.querySelector(selector)
+                        return this;
+                    }
+                },
+
+                tap: function(callback){  // 单点事件
+                    this.elem.addEventListener('touchstart', fn);
+                    this.elem.addEventListener('touchend', fn);
+
+                    var sTime,endTime;
+                    function fn (e){
+                        e.preventDefault();  // 阻止click默认事件
+                        switch(e.type) {
+                            case 'touchstart':
+                                sTime = new Date().getTime();
+                                break;
+                            case 'touchend':
+                                eTime = new Date().getTime();
+
+                                if(eTime - sTime < 500){  // 如果小于500,是单点事件
+                                    callback.call(this, e)
+                                }
+                        }
+                    }
+                },
+
+                longtap: function(callback){
+                    this.elem.addEventListener('touchstart', fn, false)
+                    this.elem.addEventListener('touchmove', fn, false)
+                    this.elem.addEventListener('touchend', fn, false)
+                    var t = null, _self = this;
+                    function fn (e){
+                        switch (e.type) {
+                            case 'touchstart':
+                                t = setTimeout(function () {
+                                    callback.call(_self, e)
+                                }, 500);
+                                break;
+                            case 'touchmove':
+                                clearTimeout(t);
+                                t = null;
+                                break;
+                            case 'touchend':
+                                clearTimeout(t);
+                                t= null;
+                                break;
+                        }
+                    }
+                }
+            }
+
+            window.$ = window.Touch = Touch;
+        })(document);
+
+
+        $("#box").tap(function (e) {
+            console.log(e.changedTouches[0]);
+        })
+
+        $('#box').longtap(function (e) {
+            console.log(2)
+        })
+    </script>
+</body>
+</html>

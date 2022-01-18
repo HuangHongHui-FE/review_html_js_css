@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>列表1</li>
+        <li>列表2</li>
+        <li>列表3</li>
+    </ul>
+
+    <script>
+        // 绑定事件X   => 绑定事件处理函数
+
+
+        var oLi = document.getElementsByTagName('li')
+
+        // 1. 
+        // for(var i = 0; i < oLi.length; i++){
+        //     oLi[i].onclick = function(){  // 先绑定事件处理函数，但是并没有执行，等执行的时候i已经为3了
+        //         console.log(this.innerText);
+        //         console.log(i)
+        //     }
+        // }
+
+        // 2. 
+        for(var i = 0; i < oLi.length; i++){
+            (function (i){
+                oLi[i].onclick = function(){  // 先绑定事件处理函数，但是并没有执行，等执行的时候i已经为3了
+                    console.log(this.innerText);
+                    console.log(i)
+                }
+            })(i);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // 获取全局对象
+        // web: window, self, frames, this
+        // node: global
+        // worker: self
+        // 通用: globalThis
+
+        // 1. 
+        function test() {
+            'use strict';
+            return this;
+        }
+
+        console.log(test())
+        console.log(window.test());
+    </script>
+</body>
+</html>

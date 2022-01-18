@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .father{
+        width: 200px;
+        height: 200px;
+        border: 1px solid #000;
+    }
+    .child{
+        width: 100px;
+        height: 100px;
+
+        margin-left: 300px;
+    }
+    .child.child-1{
+        background-color: red;
+    }
+    .child.child-2{
+        background-color: orange;
+    }
+</style>
+<body>
+    <div class="father">
+        <div class="child child-1"></div>
+        <div class="child child-2"></div>
+    </div>
+    
+
+    <script>
+        var oFather = document.getElementsByClassName('father')[0],
+            oChild1 = document.getElementsByClassName('child-1')[0],
+            oChild2 = document.getElementsByClassName('child-2')[0]
+
+            oFather.onclick = function(){
+                console.log('father')
+            }
+            oChild1.onclick = function(e){
+                // 阻止冒泡,兼容ie
+                var e = e || window.event;
+                if (e.stopPropagation){
+                    e.stopPropagation()
+                }else{
+                    e.cancelBubble = true;
+                }
+
+                console.log('oChild1')
+            }
+            oChild2.onclick = function(){
+                console.log('oChild2')
+            }
+
+            // 事件冒泡，从子元素开始 触发了事件 默认向父级元素传递
+            
+    </script>
+</body>
+</html>
