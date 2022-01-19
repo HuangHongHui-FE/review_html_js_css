@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="../fastclick-main/lib/fastclick.js"> -->
+</head>
+    <style>
+        .mask{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .5);
+        }
+    </style>
+<body>
+    <div class="mask"></div>
+    <div class="opcity-mask"></div>
+    <button id='btn'>button</button> <br />
+    <a href="http://www.baidu.com" id="lk">link</a>
+    <input type="text">
+
+    <!-- 使用fastclick -->
+    <script src="../fastclick-main/lib/fastclick.js"></script>
+    <script>
+        FastClick.attach(document.body)
+
+        let oBtn = document.getElementById('btn')
+        let oMask = document.getElementsByClassName('mask')[0];
+
+        // oMask.addEventListener('touchstart', function() {
+        //     let _self = this;
+        //     // 1. 通过setTimeout解决穿透
+        //     setTimeout(function () {
+        //         _self.style.display = 'none'
+        //     }, 300);
+        // })
+
+        
+        // 加上fastclick后的使用方式
+        oMask.addEventListener('click', function() {
+            this.style.display = 'none'
+        })
+
+        oBtn.onclick = function() {
+            console.log(1);
+        }
+    </script>
+</body>
+</html>
