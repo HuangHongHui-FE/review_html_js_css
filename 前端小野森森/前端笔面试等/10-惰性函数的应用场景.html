@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn"></button>
+
+    <script>
+        let btn = document.getElementById('btn')
+
+        // 函数柯里化实现
+        var addEvent = (function() {
+            if(window.addEventListener){
+                return function(el, type, fn, capture){
+                    el.addEventListener(type, fn, capture)
+                }
+            }else if(window.attachEvent){
+                return function(el, type, fn){
+                    el.addEventListener('on', type, function(){
+                        fn.call(el);
+                    })
+                }
+            }else{
+                return function(el, type, fn){
+                    el['on' + type] = fn;
+                }
+            }
+        })();
+
+        // 惰性函数实现
+        var addEvent1 = function(el, type, fn, capture) {
+            if(el.addEventListener){
+                addEvent1 = function(el, type, fn, capture){
+                    el.addEventListener(type, fn, capture)
+                }
+            }else if(el.attachEvent){
+                addEvent1 =  function(el, type, fn){
+                    el.addEventListener('on', type, function(){
+                        fn.call(el);
+                    })
+                }
+            }else{
+                addEvent1 =  function(el, type, fn){
+                    el['on' + type] = fn;
+                }
+            }
+
+            addEvent(el, type, fn, capture);
+        };
+
+        addEvent(btn, 'click', btnClick, false)
+        function btnClick(){
+            console.log(1)
+        }
+
+
+        // 第二个应用的例子
+        function test(num){
+            switch(num){
+                case 1:
+                    test = function(){
+                        console.log('111')
+                    }
+                    break;
+                case 2:
+                    test = function(){
+                        console.log('222')
+                    }
+                    break;
+                case 3:
+                    test = function(){
+                        console.log('333')
+                    }
+                    break;
+            }
+            return test();
+        }
+        test(2);
+        test(3);
+    </script>
+</body>
+</html>
