@@ -1,0 +1,4 @@
+rootProject.name = 'industry-homework-4'
+
+include 'spaceship'
+include 'thumbnail-generator'

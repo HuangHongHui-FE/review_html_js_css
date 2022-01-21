@@ -1,0 +1,7 @@
+group 'ictgradschool.industry'
+version '1.0'
+
+tasks.named('wrapper') {
+    distributionType = Wrapper.DistributionType.ALL
+    gradleVersion = '7.3'
+}
