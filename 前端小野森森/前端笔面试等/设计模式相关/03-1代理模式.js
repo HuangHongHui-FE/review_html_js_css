@@ -12,6 +12,7 @@ var imgFunc = (function() {
     }
 })();
 
+
 var ProxyImage = (function() {
     var img = new Image();
     img.onload = function() {
