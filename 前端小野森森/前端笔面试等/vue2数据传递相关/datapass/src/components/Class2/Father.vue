@@ -1,7 +1,8 @@
 <template>
     <div>
         <h1>爸爸继承爷爷的资产: {{money}}</h1>
-        <Child :money="money" @useMoney="useMoney" />
+        <!-- <Child :money="money" @useMoney="useMoney" /> -->
+        <Child :money="money" @notice="notice" />
     </div>
 </template>
 
@@ -16,8 +17,12 @@ export default {
         money: Number
     },
     methods: {
-        useMoney(num){
-            this.$emit('useMoney', num)
+        // useMoney(num){
+        //     this.$emit('useMoney', num)
+        // }
+
+        notice(){
+            console.log('孩子：我也用钱了呦！')
         }
     }
 }

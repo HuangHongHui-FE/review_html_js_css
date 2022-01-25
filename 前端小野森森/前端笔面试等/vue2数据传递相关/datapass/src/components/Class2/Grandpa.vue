@@ -19,7 +19,9 @@ export default {
     },
     methods: {
         useMoney(num){
-            this.money -= num
+            this.money -= num,
+            // 爷爷向下，儿子，孙子，爸爸广播数据（注意child与father中的notice）
+            this.$eventBroadcast('notice')
         }
     }
 }
