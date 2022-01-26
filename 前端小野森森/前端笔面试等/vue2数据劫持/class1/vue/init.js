@@ -21,7 +21,6 @@ function initData(vm){
     }
 
     observe(vm._data);  // 观察者模式
-
 }
 
 export {

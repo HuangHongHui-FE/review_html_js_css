@@ -5,7 +5,7 @@ function Vue(options){
     this._init(options)
 }
 
-// 初始化
+// 初始化, 
 Vue.prototype._init = function(options){
     var vm = this;
     vm.$options = options;

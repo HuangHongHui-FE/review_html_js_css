@@ -1,9 +1,16 @@
 import defineReactiveData from './reactive'
+import {arrMethods} from './array'
+
+import observeArr from './obserceArr';
 
 function Observer(data){
     if(Array.isArray(data)) {
-
+        // 处理data为【】的问题
+        data.__prototype__ = arrMethods
+        // console.log(data)
+        observeArr(data);  // 进行递归
     } else {
+        // 处理data为对象的问题
         this.walk(data);
     }
 }
@@ -16,7 +23,7 @@ Observer.prototype.walk = function(data) {
         var key = keys[i],
             value = data[key];
 
-        // 有了数据,数据
+        // 有了数据,数据做响应式
         defineReactiveData(data, key, value)
     }
 }
