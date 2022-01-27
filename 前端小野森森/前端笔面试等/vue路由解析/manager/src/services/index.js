@@ -16,6 +16,9 @@ function getUserRouters(uid){
     })
 }
 
+
+
+
 export {
     getUserRouters
 }

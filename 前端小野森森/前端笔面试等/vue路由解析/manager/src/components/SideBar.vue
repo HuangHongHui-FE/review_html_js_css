@@ -1,12 +1,29 @@
 <template>
-    <div class="side-bar">aide-bar</div>
+    <div class="side-bar">
+        <!-- 循环组件 -->
+        <ul>
+            <li>
+                <router-link to="/">首页</router-link>
+            </li>
+        </ul>
+
+        <template v-for="(item, index) of $store.state.userRouters">
+            <MenuItem :key="index" :item="item"/>
+        </template>
+    </div>
 </template>
 
+
 <script>
+import MenuItem from './MenuItem.vue'
 export default {
-    name: 'SideBar'
+    name: 'SideBar',
+    components: {
+        MenuItem
+    }
 }
 </script>
+
 
 <style lang="less" scoped>
     .side-bar{

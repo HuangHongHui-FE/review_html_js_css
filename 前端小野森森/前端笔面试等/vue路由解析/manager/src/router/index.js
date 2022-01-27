@@ -9,7 +9,11 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
-  },
+  },{
+    path: '*',
+    name: 'NotFound',
+    component: () => import('../views/NotFound.vue')
+  }
 ]
 
 const router = new VueRouter({
