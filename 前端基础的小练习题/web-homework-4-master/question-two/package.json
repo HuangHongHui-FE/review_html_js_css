@@ -1,0 +1,12 @@
+{
+  "name": "web_practical_02_part_02_nodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "mariadb": "^2.5.2",
+    "multer": "^1.4.2"
+  }
+}

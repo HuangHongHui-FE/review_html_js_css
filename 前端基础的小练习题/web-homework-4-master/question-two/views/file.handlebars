@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Practical 02 - File List</title>
+
+        <style type="text/css">
+            input {
+                margin-bottom: 0.25em;
+            }
+
+            a, dl {
+                float: left;
+            }
+
+            div::after {
+                content: "";
+                clear:   both;
+                display: table;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h2>Upload New File</h2>
+            <form action="./upload" method="post" enctype="multipart/form-data">
+                <fieldset name="Upload">
+                    <label>
+                        File<br>
+                        <input type="file" accept="application/pdf" name="file"><br>
+                    </label>
+                    <label>
+                        File Title<br>
+                        <input type="text" name="title">
+                    </label><br>
+                    <label>
+                        File Description<br>
+                        <input type="text" name="description">
+                    </label>
+                    <input type="submit">
+                </fieldset>
+            </form>
+        </div>
+        <hr>
+        <div>
+            <h2>List of Files</h2>
+            {{!-- TODO: Update this so that one block is generated from each FileEntry item provided --}}
+            {{#each FileEntriesSorted}}
+                <div>
+
+                    
+                    <a href="uploaded-files/{{this.file_name}}">
+                        <img src="uploaded-files/icon12.png">
+                    </a>
+                    
+                    <dl>
+                        <dt>{{this.file_title}}</dt>
+                        <dd>{{this.file_description}}</dd>
+                    </dl>
+                    
+                </div>
+            {{/each}}
+        </div>
+    </body>
+</html>
