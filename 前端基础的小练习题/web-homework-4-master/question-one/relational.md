@@ -13,6 +13,11 @@ entityName(**primaryKey**, attribute, _foreignKey_)
 
 TODO:
 
+artists(**names**, phone number, Country of origin, store with a 2 letter code)
 
+companies(**names**, descriptions)
 
-![image-20220128183416477](relational.assets/image-20220128183416477.png)
+songs(**names**, number of sales)
+
+genres(**name**, description)
+
