@@ -9,7 +9,6 @@ router.get("/", function(req, res) {
     console.log(req.query.message)
 
     res.locals.message = req.query.message;
-    
 
     // TODO 4) Add the name, address, and phoneNum to res.locals. The values should be
     // obtained from the "details" cookie. Be sure to take into account the fact that the cookie
@@ -21,7 +20,7 @@ router.get("/", function(req, res) {
         res.locals.phoneNum = req.cookies.details.phoneNum;
     }
 
-    
+
 
     res.render("question-two-form", res.locals);
 });

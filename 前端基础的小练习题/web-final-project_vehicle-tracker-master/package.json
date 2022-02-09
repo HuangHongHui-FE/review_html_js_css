@@ -1,0 +1,13 @@
+{
+  "name": "web-final-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.4",
+    "mariadb": "^2.5.2"
+  }
+}

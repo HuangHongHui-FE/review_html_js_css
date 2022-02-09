@@ -1,0 +1,44 @@
+<div class="index">
+    <h1>首页</h1>
+    <div class="user">
+        <div id="index_register">用户注册</div>
+        <div id="index_out_login">退出登录</div>
+        <div id="index_user_manage">信息查看</div>
+        <div id="index_user_edit">修改信息</div>
+    </div>
+    <h1>管理员车辆</h1>
+    <div class="cheliang">
+        <div id="index_create_che">创建车辆</div>
+        <div id="index_delete_che">删除车辆</div>
+        <div id="index_edit_che">编辑车辆</div>
+    </div>
+
+    <h1>管理员管理车辆允许列表</h1>
+    {{!-- 每辆车的允许用户列表 --}}
+    <div class="yunxu">
+        <div>车辆允许用户列表</div>
+        <div>车辆排序</div>
+    </div>
+</div>
+
+<script>
+    let index_register = document.getElementById('index_register')
+    let index_out_login = document.getElementById('index_out_login')
+    let index_user_manage = document.getElementById('index_user_manage')
+
+    index_register.onclick = function(e){
+        document.location.replace("/register");
+    }
+
+    index_out_login.onclick = function(e){
+        document.location.replace('/login');
+    }
+
+    index_user_manage.onclick = function(e){
+        document.location.assign('/user_msg');
+    }
+
+    index_user_edit.onclick = function(e){
+        document.location.assign('/user_msg_edit')
+    }
+</script>

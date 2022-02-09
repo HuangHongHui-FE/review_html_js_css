@@ -1,0 +1,25 @@
+<div class="register">
+    <div>用户注册</div>
+    <form action="/register" method="post">
+        <input type="text" name="username" placeholder="请输入用户名">
+        <input type="password" name="password" placeholder="请输入密码">
+        <input type="password" name="password2" placeholder="请再次输入密码">
+        <input type="text" name="rel_name" placeholder="请输入真实姓名">
+        <input type="text" name="start_date" placeholder="请输入出生日期">
+        <input type="text" name="class_name" placeholder="请输入所属部门名称">
+        <button type="submit">注册</button>
+    </form>
+    <a>已有账号？去登录</a>
+</div>
+<script>
+    let res = document.getElementsByTagName('a')[0]
+    let pwd1 = document.getElementsByTagName('input')[1]
+    let pwd2 = document.getElementsByTagName('input')[2]
+    let btn = document.getElementsByTagName('button')[0]
+    
+    res.onclick = function(){
+        document.location.replace("/login");
+    }
+
+    
+</script>

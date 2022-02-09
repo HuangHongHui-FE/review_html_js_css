@@ -1,0 +1,26 @@
+<div class="user_msg_edit">
+    <form action="/user_msg_edit" method="post">
+        <div style="display: none;">
+            用户名：<input type="text" name="username" value="{{this.username}}">
+        </div>
+        <div>
+            用户名：{{this.username}}
+        </div>
+        <div>
+            密码：<input type="text" name="password" value="{{this.password}}">
+
+        </div>
+        <div>
+            真实名字：<input type="text" name="rel_name" value="{{this.rel_name}}">
+        </div>
+        <div>
+            出生日期：<input type="text" name="born_date" value="{{this.born_date}}">
+        </div>
+        <div>
+            类名：<input type="text" name="class_name" value="{{this.class_name}}">
+        </div>
+        <input type="submit" value="提交修改"/>
+    </form>
+    
+
+</div>

@@ -22,8 +22,6 @@
             <a href="">已有账号？去登录。</a>
         </div>
     </div>
-    
-    
 </template>
 
 <script>
