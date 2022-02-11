@@ -1,0 +1,42 @@
+<div class="createChe" style="display:flex;">
+    {{#each data}}
+    <div style="padding-bottom: 60px; margin-right:30px;"></div>
+        <form action="/edit_che" method="post">
+            <div style="display: none;">
+                字母数字注册号（唯一）: <input type="text" name="register_number" value="{{this.register_number}}">
+            </div>
+
+            <div style="color: red;">
+                字母数字注册号（唯一）:
+                <strong>{{this.register_number}}</strong>
+            </div>
+            <div>
+                制造商名称: <input type="text" name="maker" value="{{this.maker}}">
+            </div>
+            <div>
+                型号: <input type="text" name="model" value="{{this.model}}">
+            </div>
+            <div>
+                车型年: <input type="text" name="year" value="{{this.year}}">
+            </div>
+            <div>
+                起始里程值: <input type="text" name="start_value" value="{{this.start_value}}">
+            </div>
+            <div>
+                车辆颜色: <input type="text" name="color" value="{{this.color}}">
+            </div>
+            <div>
+                车辆拥有的座椅数量: <input type="text" name="nums" value="{{this.nums}}">
+            </div>
+            <div>
+                车辆照片: <img src="upload/{{this.picture_path}}" alt="" style="width: 100px;height:100px;">
+            </div>
+            <input type="submit" value="修改">
+        </form>
+    </div>
+    {{/each}}
+</div>
+
+<script>
+
+</script>

@@ -1,0 +1,64 @@
+<div class="carsBookUser">
+    {{#each cars_data}}
+        <p>
+            车辆注册号：&nbsp;&nbsp;&nbsp;&nbsp;{{register_number}}
+        </p>
+        <div style="display: flex;">
+            <ul>用户列表
+                {{#each user_data}}
+                    <li>{{this.username}}</li>
+                {{/each}}
+            </ul>
+            <ul id="{{register_number}}">是否允许预约
+                {{#each user_data}}
+                    <li>
+                        <label for="yes">
+                            <input id="yes" type="radio" name="{{username}}" value="允许" class="yes_user">
+                        允许</label>
+                        <label for="no">
+                            <input id="no" type="radio" name="{{username}}" value="拒绝" class="no_user">
+                        拒绝</label>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    {{/each}}
+</div>
+
+<script>
+    var username = ''
+    var register_number = ''
+    {{!-- 为单选框添加事件 --}}
+    let yes_user = document.getElementsByClassName('yes_user')
+    for(let j of yes_user){
+        j.onclick = function(e){
+            console.log(e)
+            {{!-- 进行增加，减少关系操作 --}}
+            {{!-- e.target.name:用户名，  e.path[3].id：车排名 --}}
+            axios.get('/add_book', {params: {username: e.target.name, register_number: e.path[3].id}})
+                .then((res)=>{
+                    console.log(res)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+            
+        }
+    }
+
+    let no_user = document.getElementsByClassName('no_user')
+    for(let j of no_user){
+        j.onclick = function(e){
+            {{!-- 删除关系 --}}
+            {{!-- e.target.name:用户名，  e.path[2].id：车排名 --}}
+            axios.get('/delete_book', {params: {username: e.target.name, register_number: e.path[3].id}})
+                .then((res)=>{
+                    console.log(res)
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+            
+        }
+    }
+</script>

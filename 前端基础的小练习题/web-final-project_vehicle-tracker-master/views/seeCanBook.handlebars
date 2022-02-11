@@ -1,0 +1,62 @@
+<div class="seeCanBook">
+    <h3>可预订的车辆有：</h3>
+    {{#each data}}
+        <div class="car_msg" id="{{this.register_number}}">{{this.register_number}}&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="btn" onclick="yuding('{{this.register_number}}')">预定</button>
+        </div>
+    {{/each}}
+</div>
+
+<script>
+    let car_msg = document.getElementsByClassName('car_msg')
+    for(let i of car_msg){
+        i.onclick = function(e){
+            data_dom_append(e.target.innerText)
+        }
+    }
+
+    function data_dom_append(register_number){
+        axios.get('/data_car', {params: {
+            register_number: register_number
+        }})
+        .then((res)=>{
+            console.log(res.data[0])
+            let div = document.createElement("div")
+            let p1 = document.createElement("p")
+            let p2 = document.createElement("p")
+            let p3 = document.createElement("p")
+            let p4 = document.createElement("p")
+            let p5 = document.createElement("p")
+            let p6 = document.createElement("p")
+            let p7 = document.createElement("p")
+            let img = document.createElement("img")
+            p1.innerText = "车牌号:" + res.data[0].register_number
+            p2.innerText = "制造商:" + res.data[0].maker
+            p3.innerText = "model:" + res.data[0].model
+            p4.innerText = "year:" +res.data[0].year
+            p5.innerText = "start_value:" + res.data[0].start_value
+            p6.innerText = "color:" + res.data[0].color
+            p7.innerText = "nums:" + res.data[0].nums
+            img.src = "/upload/"+res.data[0].picture_path
+            img.style = "width: 50px; height: 50px;"
+            div.appendChild(p1)
+            div.appendChild(p2)
+            div.appendChild(p3)
+            div.appendChild(p4)
+            div.appendChild(p5)
+            div.appendChild(p6)
+            div.appendChild(p7)
+            div.appendChild(img)
+
+            {{!-- 通过id获取对应的父节点 --}}
+            {{!-- 将生成的div子节点渲染到页面上 --}}
+            let parentNode = document.getElementById(register_number)
+            parentNode.appendChild(div)
+        })
+        .catch((err) => {})
+    }
+
+    function yuding(register_number){
+        document.location.assign(`/yuding_msg?register_number=${register_number}`);
+    }
+</script>

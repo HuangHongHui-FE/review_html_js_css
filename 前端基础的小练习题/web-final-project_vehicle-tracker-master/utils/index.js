@@ -6,7 +6,7 @@ const secret = "HHHH";
 function createToken(payload){
     // payload.nbf = new Date();
     // payload.rtiem = new Date();
-    payload.exp = 60 * 60 * 2 *10000000;
+    payload.exp = 60 * 60 * 2 *1000000000;
     return jwt.sign(payload,secret);
 }
 
@@ -25,12 +25,3 @@ function checkToken(token){
 module.exports = {
     createToken,checkToken
 }
-// 使用的时候：
-
-
-// if(){
-//     let token = createToken({username:req.query.name});
-//     res.json({err:0,msg:'OK',token});
-// }else{
-//     res.json({err:-1,msg:'fail'});
-// }

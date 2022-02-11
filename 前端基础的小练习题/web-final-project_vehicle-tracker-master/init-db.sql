@@ -40,17 +40,6 @@ CREATE TABLE IF NOT EXISTS pro_users_cars (
 );
 
 
-# 车辆预定列表
-DROP TABLE IF EXISTS pro_reserve;
-
-CREATE TABLE IF NOT EXISTS pro_reserve (
-    id INT NOT NULL AUTO_INCREMENT REFERENCES members(video_out),
-    start_time INT,
-    end_time INT,
-    register_number VARCHAR(6) NOT NULL,  # 6个字符的字母数字注册号
-    username VARCHAR(64) NOT NULL,
-    PRIMARY KEY (id)
-);
 
 
 # 车辆预定添加用户自己的记录

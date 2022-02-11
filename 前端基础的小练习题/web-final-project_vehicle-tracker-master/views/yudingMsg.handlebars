@@ -1,0 +1,35 @@
+<div>
+    <p>你正在预定&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{this.register_number}}</p>
+    <form action="/yuding_msg" method="post">
+        <div>
+            开始时间：<input type="text" name="start_time">
+        </div>
+        <div>
+            结束时间<input type="text" name="end_time">
+        </div>
+        <div>
+            车牌号：{{this.register_number}}
+            <input type="text" name="register_number" value="{{this.register_number}}" style="display: none;">
+        </div>
+        <div>
+            距离：<input name="distance" type="number" id="distance" onchange="changeDis()">
+        </div>
+        <div>
+            用户名：{{this.username}}<input type="text" name="username" value="{{this.username}}" style="display: none;">
+        </div>
+        <div>
+            钱：<input type="text" name="money" id="money">
+        </div>
+
+        <input type="submit" value="提交">
+    </form>
+</div>
+
+<script>
+    let money = document.getElementById('money')
+    let distance = document.getElementById('distance')
+
+    function changeDis(){
+        money.value = distance.value * 2
+    }
+</script>

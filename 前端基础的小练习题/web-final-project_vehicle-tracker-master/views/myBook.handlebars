@@ -1,0 +1,46 @@
+<div>
+    {{#each result}}
+    <div>
+        <h3>{{@index}}-{{this.id}}</h3>
+        <div>
+            开始时间：{{this.start_time}}
+        </div>
+        <div>
+            结束时间: {{this.end_time}}
+        </div>
+        <div>
+            车牌号：{{this.register_number}}
+        </div>
+        <div>
+            距离：{{this.distance}}
+        </div>
+        <div>
+            用户名：{{this.username}}
+        </div>
+        <div>
+            钱：{{this.money}}
+        </div>
+        <div>
+            <input value="删除预定" name="{{this.id}}" class="delete_yuding" type="submit"></input>
+        </div>
+    </div>
+    {{/each}}
+</div>
+
+<script>
+    let delete_yuding = document.getElementsByClassName('delete_yuding')
+    for(let i of delete_yuding){
+        i.onclick=function(e){
+            delete_yuding_fun(e.target.name)
+        }
+    }
+
+    {{!-- 调用接口删除预定 --}}
+    function delete_yuding_fun(id){
+        axios.post('/delete_yuding', {id: id}).then((res)=>{
+            console.log(res)
+        }).catch((err)=> {
+            return err
+        })
+    }
+</script>
