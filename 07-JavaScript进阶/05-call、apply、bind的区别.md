@@ -1,12 +1,3 @@
----
-title: 05-call、apply、bind的区别
-publish: true
----
-
-<ArticleTopAd></ArticleTopAd>
-
-
-
 ## call()和apply()
 
 ### 介绍
@@ -22,10 +13,6 @@ publish: true
 ### 显式绑定this
 
 JS提供的绝大多数函数以及我们自己创建的所有函数，都可以使用call 和apply方法。
-
-它们的第一个参数是一个对象。因为你可以直接指定 this 绑定的对象，因此我们称之为显式绑定。
-
-例1：
 
 ```javascript
     function foo() {
@@ -102,16 +89,6 @@ call()和apply()方法都可以将实参在对象之后依次传递，但是appl
 - bind()是将函数返回，因此后面还需要加`()`才能调用。
 
 bind()传参的方式与call()相同。
-
-参考链接：
-
-- <https://www.jianshu.com/p/56a9c2d11adc>
-
-- <https://github.com/lin-xin/blog/issues/7>
-
-- <https://segmentfault.com/a/1190000007402815>
-
-- [JS中改变this指向的方法](http://www.xiaoxiaohan.com/js/38.html)
 
 
 

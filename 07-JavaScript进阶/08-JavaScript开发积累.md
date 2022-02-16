@@ -54,13 +54,7 @@ function getFirstNode(ele){
 this.todayList.splice(0, 0, ...dataList);
 ```
 
-**对象赋值的正确写法**：
 
-```javascript
-Object.assign(obj2, obj1);
-```
-
-上方代码中，是将`obj1` 的值追加到`obj2`中。如果对象里的属性名相同，会被覆盖。
 
 
 ### 在新的窗口中打开url
@@ -78,28 +72,6 @@ window.open('你所要跳转的新页面');
 ```
 
 
-### JavaScript 新特性：Optional Chaining（可选链式调用）语法
-
-以往写代码，我们一般都这么写：
-
-```javascript
-if (result && result.user && result.user.name && result.user.name.length) {
-    console.log('qianguyihao');
-}
-```
-
-有了 Optinal Chain 语法之后，就简洁很多了，可以这么写：
-
-
-```javascript
-if (result?.user?.name?.length) {
-    console.log('qianguyihao');
-}
-```
-
-- 了解 JavaScript 新特性：Optional Chaining：<https://www.infoq.cn/article/2JDORgXrU6VmZ7jlyuFD>
-
-- 原文链接： https://v8.dev/features/optional-chaining
 
 
 

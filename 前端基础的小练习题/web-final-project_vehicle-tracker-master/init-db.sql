@@ -47,8 +47,8 @@ DROP TABLE IF EXISTS pro_reserve_record;
 
 CREATE TABLE IF NOT EXISTS pro_reserve_record (
     id INT NOT NULL AUTO_INCREMENT,
-    start_time INT,  # 行程开始时间
-    end_time INT,  # 行程结束时间
+    start_time TEXT,  # 行程开始时间
+    end_time TEXT,  # 行程结束时间
     register_number VARCHAR(6) NOT NULL,  # 6个字符的字母数字注册号
     distance VARCHAR(64) NOT NULL,  # 行程距离
     username VARCHAR(64) NOT NULL,

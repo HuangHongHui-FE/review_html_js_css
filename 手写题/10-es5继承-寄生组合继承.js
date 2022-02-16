@@ -20,7 +20,7 @@ Child.prototype.study = function(){
 
 
 // 测试
-let Child = new Child('xiaoming', 16)
-console.log(Child.name)  // xiaoming
-Child.eat()  //  xiaoming is eating
-Child.study() // xiaoming is studying
+let Child1 = new Child('xiaoming', 16)
+console.log(Child1.name)  // xiaoming
+Child1.eat()  //  xiaoming is eating
+Child1.study() // xiaoming is studying

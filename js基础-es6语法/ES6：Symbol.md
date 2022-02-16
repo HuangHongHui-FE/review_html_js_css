@@ -24,12 +24,6 @@ Symbol是函数，但并不是构造函数。创建一个Symbol数据类型：
     console.log(mySymbol);         //打印结果：Symbol()
 ```
 
-打印结果：
-
-![](http://img.smyhvae.com/20180317_1134.png)
-
-下面来讲一下Symbol的使用。
-
 ### 1、将Symbol作为对象的属性值
 
 ```javascript

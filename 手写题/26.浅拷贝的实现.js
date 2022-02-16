@@ -1,10 +1,3 @@
-
-## 对象赋值
-
-
-### 用 Object.assgin() 实现浅拷贝
-
-```js
 const obj1 = {
     name: 'qianguyihao',
     age: 28,
@@ -20,10 +13,5 @@ const obj2 = {
 Object.assign(obj2, obj1);
 
 console.log(JSON.stringify(obj2));
-```
-
-打印结果：
-
-```
-{"name":"qianguyihao","sex":"男","age":28,"desc":"hello world"}
-```
+console.log(obj2);
+console.log(obj1);

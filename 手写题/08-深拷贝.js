@@ -1,9 +1,8 @@
 function deepClone(obj, cache = new WeakMap()){
     if(typeof obj !== 'object') return obj
     if(obj === null) return obj
-    if(cache.get(obj)) return cache.get(obj)  // 防止循环引用，程序进入死循环
-    if(obj instanceof Date) return new Date(obj)
-    if(obj instanceof RegExp) return new RegExp(obj)
+    if(cache.has(obj)) return cache.get(obj)  // 防止循环引用，程序进入死循环
+    
 
     // 找到所属原型上的contructor， 所属原型上的constructor指向当前对象的构造函数
     let cloneObj = new obj.constructor()

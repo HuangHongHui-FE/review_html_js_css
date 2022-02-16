@@ -1,27 +1,3 @@
-```javascript
-var a = 1;
-{
-    var a = 2;
-}
-
-console.log(a); //这里的 a，指的是 区块 里的 a
-```
-
-上方代码的输出结果为 2 ，因为 var 是全局声明的。
-
-**总结：**
-
-用 var 定义的全部变量，有时候会污染整个 js 的作用域。我们在如今的实战中，基本都是用的 ES6 语法，所以请**尽量避免**使用 var 定义变量。
-
-
-
-
-
-**经典面试题**：
-
-let 可以防止数据污染，我们来看下面这个 **for 循环**的经典面试题。
-
-**总结：**我们要习惯用 let 声明，减少 var 声明带来的**污染全局空间**。
 
 ### 3、const：定义常量
 
@@ -167,26 +143,3 @@ function foo() {
 foo(); // 执行函数后，控制台报错：Uncaught ReferenceError: Cannot access 'name' before initialization
 ```
 
-### ES5 中如何定义常量
-
-ES5中有`Object.defineProperty`这样一个api，可以定义常量。这个API中接收三个参数。
-
-代码举例：
-
-```js
-// 定义常量 PI
-Object.defineProperty(window, 'PI', {
-    value: 3.14,
-    writable: false,
-});
-
-console.log(PI); // 打印结果：3.14
-PI = 6; //尝试修改常量
-console.log(PI); //打印结果：3.14，说明修改失败
-```
-
-
-
-## 参考链接：
-
--   [阮一峰 | ECMAScript 6 入门](http://es6.ruanyifeng.com/)

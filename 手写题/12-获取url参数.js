@@ -1,9 +1,9 @@
 // 1. URLSearchParams方法
 // 创建一个URLSearchParams实例
-const URLSearchParams = new URLSearchParams(window.location.search);
+// const URLSearchParams1 = new URLSearchParams(window.location.search);
 
 // 把键值对列表转发成一个对象
-const params = Object.fromEntries(URLSearchParams.entries())
+// const params = Object.fromEntries(URLSearchParams1.entries())
 
 
 // fromEntries
@@ -18,11 +18,12 @@ console.log(obj);
 // Object { foo: "bar", baz: 42 }
 
 
+
 //   Object.entries()方法返回一个给定对象自身可枚举属性的键值对数组
 const object1 = {
     a: 'somestring',
     b: 42
-  };
+};
   
   for (const [key, value] of Object.entries(object1)) {
     console.log(`${key}: ${value}`);
