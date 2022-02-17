@@ -22,13 +22,12 @@
             let timer;
             return function(){
                 if(timer) return false;
-                // 改变指向this按钮,并执行
-                fn.apply(this, arguments);
-
+                // 改变this指向按钮，并执行
+                fn.apply(this, arguments)
                 timer = setTimeout(() => {
                     clearTimeout(timer)
-                    timer = null
-                }, delay || 3000)
+                    timer = null;
+                }, delay || 5000)
             }
         }
     </script>

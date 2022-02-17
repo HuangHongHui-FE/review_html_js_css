@@ -19,4 +19,3 @@ function Person(name, age){
 }
 
 console.log(myNew(Person, "ding", 100))
-

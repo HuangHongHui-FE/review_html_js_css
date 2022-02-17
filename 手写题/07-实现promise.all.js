@@ -16,3 +16,9 @@ function promiseAll(promises){
         })
     })
 }
+
+
+
+
+
+

@@ -89,3 +89,23 @@
 // let color = `rgb(${r}, ${g}, ${b})`
 
 
+// 8. 给定两个字符串 strA 和 strB, 求 strB 在 strA 中出现的次数
+// str1 = 'aaaabbabaaa'
+// str2 = 'aa'
+
+// function nums(strA, strB){
+//     let left = 0;
+//     let count = 0;
+//     let lenB = strB.length
+//     while(left < strA.length){
+//         if(strA.slice(left, left + lenB) == strB){
+//             count++;
+//             left=left+lenB;
+//         }else{
+//             left++
+//         }
+//     }
+//     return count;
+// }
+
+// console.log(nums(str1, str2))
