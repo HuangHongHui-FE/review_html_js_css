@@ -24,17 +24,3 @@
 //     console.log(test);
 // })
 
-
-function myNew(fn, ...args){
-    // 1. 创建一个空对象
-    const obj = {}
-
-    // 2. 继承构造函数的原型
-    obj.__proto__ = fn.prototype
-
-    // 3. this指向obj，并调用构造函数
-    fn.apply(obj, args)
-
-    // 4. 返回对象
-    return obj;
-}

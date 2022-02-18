@@ -109,3 +109,67 @@
 // }
 
 // console.log(nums(str1, str2))
+
+
+
+
+// 9. 找出数组中重复出现的元素
+const test = [1, 2, 4, 4, 3, 3, 1, 5, 3]
+
+// 1. 
+// let len = test.length
+// const res = []
+// const res2 = []
+// for(let i = 0; i < len; i++){
+//     if(!res.includes(test[i])){
+//         res.push(test[i])
+//     }else{
+//         if(!res2.includes(test[i])){
+//             res2.push(test[i])
+//         }
+//     }
+// }
+// console.log(res2)
+
+// 2. 
+// const len = test.length;
+// const hash = new Map();
+// for(let i = 0; i < len; i++){
+//     if(!hash.has(test[i])){
+//         hash.set(test[i], 1)
+//     }else{
+//         let count = hash.get(test[i])
+//         count++
+//         hash.set(test[i], count);
+//     }
+// }
+
+// const res = []
+// for(let key of hash.keys()){
+//     if(hash.get(key) !== 1){
+//         res.push(key)
+//     }
+// }
+
+// console.log(res)
+
+
+
+
+// 10. 假设有个这样的函数add 接受任意数量的数字作为输入，
+// 返回一个函数，该函数也能接受数量的数字作为输入，数出结果为前后输入的所有数字之和
+function add(...args){
+    console.log(args)
+    return function add_index(...args2){
+        let sum = 0
+        for(let i = 0; i < args.length; i++){
+            sum += args[i]
+        }
+        for(let i = 0; i < args2.length; i++){
+            sum += args2[i]
+        }
+        return sum
+    } 
+}
+
+console.log(add(1,2,3)(1,2,3,4))

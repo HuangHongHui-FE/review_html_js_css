@@ -17,8 +17,3 @@ function promiseAll(promises){
     })
 }
 
-
-
-
-
-
