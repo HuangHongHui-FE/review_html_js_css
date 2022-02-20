@@ -13,7 +13,6 @@ class MyPromise{
             // 有错误直接执行reject
             this.reject(e)
         }
-        
     }
 
     initBind(){

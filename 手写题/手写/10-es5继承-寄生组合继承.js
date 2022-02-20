@@ -21,6 +21,7 @@ Child.prototype = Object.create(Parent.prototype)
 // 修复构造函数指向
 Child.prototype.contructor = Child
 
+
 Child.prototype.study = function(){
     console.log(this.name + ' is studying')
 }

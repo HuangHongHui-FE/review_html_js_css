@@ -114,7 +114,7 @@
 
 
 // 9. 找出数组中重复出现的元素
-const test = [1, 2, 4, 4, 3, 3, 1, 5, 3]
+// const test = [1, 2, 4, 4, 3, 3, 1, 5, 3]
 
 // 1. 
 // let len = test.length
@@ -130,6 +130,7 @@ const test = [1, 2, 4, 4, 3, 3, 1, 5, 3]
 //     }
 // }
 // console.log(res2)
+
 
 // 2. 
 // const len = test.length;
@@ -158,18 +159,150 @@ const test = [1, 2, 4, 4, 3, 3, 1, 5, 3]
 
 // 10. 假设有个这样的函数add 接受任意数量的数字作为输入，
 // 返回一个函数，该函数也能接受数量的数字作为输入，数出结果为前后输入的所有数字之和
-function add(...args){
-    console.log(args)
-    return function add_index(...args2){
-        let sum = 0
-        for(let i = 0; i < args.length; i++){
-            sum += args[i]
-        }
-        for(let i = 0; i < args2.length; i++){
-            sum += args2[i]
-        }
-        return sum
-    } 
-}
+// function add(...args){
+//     console.log(args)
+//     return function add_index(...args2){
+//         let sum = 0
+//         for(let i = 0; i < args.length; i++){
+//             sum += args[i]
+//         }
+//         for(let i = 0; i < args2.length; i++){
+//             sum += args2[i]
+//         }
+//         return sum
+//     } 
+// }
 
-console.log(add(1,2,3)(1,2,3,4))
+// console.log(add(1,2,3)(1,2,3,4))
+
+
+// 11. 看输出
+// const a = 10;
+// const obj = {
+//     a: 13,
+//     b: () => {
+//         console.log(this.a);
+//     },
+//     c: function () {
+//         console.log(this.a)
+//     },
+//     d: function () {
+//         return () => {
+//             console.log(this);
+//         }
+//     },
+//     e: function () {
+//         return this.b
+//     }
+// }
+// obj.b()
+// obj.c()
+// obj.d()()
+// obj.e()()
+
+
+
+// 12. 属性有null的就移除， 考虑嵌套
+// let obj = {
+//     a: 123,
+//     b: null,
+//     c: {
+//         c1: 222,
+//         c2: null, 
+//         c3: {
+//             c33: 333,
+//             d33: null
+//         },
+//         c4: [1,2,3]
+//     },
+//     d: "abc" 
+// }
+
+// function clean_null(obj){
+//     for(let key in obj){
+//         if(obj[key] == null){
+//             delete obj[key]
+//         }else if(obj[key] instanceof Object && !Array.isArray(obj[key])){
+//             clean_null(obj[key])
+//         }
+//     }
+//     return obj
+// }
+
+// console.log(clean_null(obj))
+
+
+
+
+// 13. js版本号排序
+// let ls = ["3.1.4522.74", "0.2.45.4", "0.2.23.456", "1.0.1"]
+
+// ls.sort((a, b) => {
+//     return (Number("0." + a.split(".").join("")) - Number("0." + b.split(".").join("")))
+// })
+
+// console.log(ls)
+
+
+
+// 14. 看输出结果
+// var obj = {
+//     value : 'obj',
+//     fn : function(){ console.log(this.value) }
+// }
+// var fn = obj.fn;
+// fn();
+// obj.fn()
+
+// fn.apply(obj)
+
+
+
+// 15. 闭包用于在对象中创建私有变量
+// var aaa = (function(){
+//     var a = 1;
+
+//     function bbb(){
+//         a++
+//         console.log(a);
+//     }
+
+
+//     function ccc(){
+//         a++
+//         console.log(a)
+//     }
+
+//     return {
+//         b: bbb,
+//         c: ccc
+//     }
+// })();
+// console.log(aaa.a)  // underfined
+// aaa.b();  // 2
+// aaa.c();  // 3 
+
+
+
+// 16. 找出数组中第一个没出现的最小整数
+// function firstNum(nums){
+//     for(let i = 1; i <= nums.length+1; i++){
+//         if(!nums.includes(i)){
+//             return i
+//         }
+//     }
+// }
+
+
+// function firstNum(nums){
+//     let set = new Set()
+//     for(let i = 1; i < nums.length; i++){
+//         set.add(nums[i])
+//     }
+
+//     for(let i = 1; i <= nums.length + 1; i++){
+//         if(!set.has(i)){
+//             return i
+//         }
+//     }
+// }
