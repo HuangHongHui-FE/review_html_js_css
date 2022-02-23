@@ -32,6 +32,10 @@ export default {
         notice(){
             console.log('回家吃饭了');
         }
+    },
+    mounted(){
+        // 注意$attrs
+        console.log(this)
     }
 }
 </script>
