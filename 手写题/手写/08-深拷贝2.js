@@ -1,22 +1,19 @@
 function deepClone(target, map = new Map()){
     // 基本数据类型直接返回
     if(typeof target !== 'object'){return target}
-
     // 判断是数组还是对象
     const temp = Array.isArray(target) ? [] : {}
-
     if(map.get(target)){
         // 已存在则直接返回
         return map.get(target)
     }
-
     // 不存在则第一次设置
     map.set(target, temp)
-
     for(const key in target){
         // 递归
         temp[key] = deepClone(target[key], map)
     }
+    // console.log(map)
     return temp
 }
 
@@ -30,3 +27,4 @@ a.key = a // 环引用
 const b = deepClone(a)
 
 console.log(b)
+

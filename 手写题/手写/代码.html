@@ -1,4 +1,154 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .father{
+            position: relative;
+            min-height: 500px;
+            background: pink;
+        }
+        .son {
+            position: absolute;
+            width: 200px;
+            height: 100px;
+            background: red;
+            top: 50%;
+            left: 50%;
+            margin-top: -50px;
+            margin-left: -100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son">子元素的内容</div>
+    </div>
+    <script></script>
+</body>
+</html> -->
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .father{
+            display: flex;
+            min-height: 100vh;
+            background: pink;
+        }
+        .son {
+            margin: auto;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son">子元素的内容，想水平垂直居中</div>
+        <div class="son2">这个元素不想水平垂直居中</div>
+    </div>
+    <script></script>
+</body>
+</html> -->
+
+
+
+
+<!-- 红包居中代码 -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            /* 整个弹窗组件 */
+            .component_popup {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 100;
+            }
+
+            /* 遮罩背景 */
+            .popup_mask {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.7);
+            }
+
+            /* 弹窗区域（内容 + close）：严格居中 */
+            .popup_content {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            /* 弹窗的内容部分 */
+            .content_box {
+                width: 15.45rem;
+                height: 19.32rem;
+                background: url(http://img.smyhvae.com/20191010_1500_red-packet.png) no-repeat;
+                background-size: 15.45rem 19.32rem;
+            }
+
+            /* 弹窗的close图标 */
+            .content_close {
+                width: 1.25em;
+                height: 1.25em;
+                background: url(http://img.smyhvae.com/20191010_1500_close.png) no-repeat;
+                background-size: 1.25rem 1.25rem;
+                margin: 0 auto;
+                margin-top: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="content">默认文档流中的页面主体</div>
+
+        <div class="component_popup">
+            <div class="popup_mask"></div>
+            <div class="popup_content">
+                <div class="content_box"></div>
+                <div class="content_close"></div>
+            </div>
+        </div>
+    </body>
+</html> -->
+
+
+
+
+<!-- 圣杯布局 -->
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,17 +157,225 @@
     <title>Document</title>
 </head>
 <style>
-    
+    /* body {
+        min-width: 600px;
+    }
+    .container {
+        padding-left: 210px;
+        padding-right: 190px;
+    }
+    .main {
+        float: left;
+        width: 100%;
+        height: 300px;
+        background-color: rgb(255, 0, 0);
+    }
+    .sub {
+        position: relative;
+        left: -210px;
+        float: left;
+        width: 200px;
+        height: 300px;
+        margin-left: -100%;
+        background-color: rgb(0, 255, 0);
+    }
+    .extra {
+        position: relative;
+        right: -190px;
+        float: left;
+        width: 180px;
+        height: 300px;
+        margin-left: -180px;
+        background-color: rgb(0, 0, 255);
+    } */
+
+    .container {
+        position: relative;
+        background-color: aqua;
+        height: 600px;
+    }
+    .main {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 100px;
+        height: 600px;
+        background-color: rgb(255, 0, 0);
+    }
+    .sub {
+        background-color: rgb(0, 255, 0);
+    }
+    .extra {
+        position: absolute;
+        right: 0px;
+        top: 0px;
+        width: 100px;
+        height: 600px;
+        background-color: rgb(0, 0, 255);
+    }
 </style>
 <body>
-    <p>
-        <span>
-            会覅2
-        </span>
-        <span>
-            急急急
-        </span>
-    </p>
-
+    <div class="container">
+        <div class="main"></div>
+        <div class="sub"></div>
+        <div class="extra"></div>
+    </div>
 </body>
-</html>
+</html> -->
+
+
+
+
+
+<!-- 双飞翼布局 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .main-wrapper {
+        float: left;
+        width: 100%;
+    }
+    .main {
+        height: 300px;
+        margin-left: 210px;
+        margin-right: 190px;
+        background-color: rgba(255, 0, 0, .5);
+    }
+    .sub {
+        float: left;
+        width: 200px;
+        height: 300px;
+        margin-left: -100%;
+        background-color: rgba(0, 255, 0, .5);
+    }
+    .extra {
+        float: left;
+        width: 180px;
+        height: 300px;
+        margin-left: -180px;
+        background-color: rgba(0, 0, 255, .5);
+    }
+</style>
+<body>
+    <div class="main-wrapper">
+        <div class="main"></div>
+    </div>
+    <div class="sub"></div>
+    <div class="extra"></div>
+</body>
+</html> -->
+
+
+
+
+
+<!-- 圣杯布局 -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            display: flex;
+        }
+
+        .left,
+        .right {
+            width: 200px;
+            height: 300px;
+            background-color: #6cf;
+        }
+
+        .center {
+            flex: 1;
+            background-color: #0a0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="left"></div>
+        <div class="center">
+           内容部分
+        </div>
+        <div class="right"></div>
+    </div>
+</body>
+
+</html> -->
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            position: relative;
+        }
+
+        .center {
+            height: 300px;
+            padding: 0 200px;
+            background-color: #0a0;
+        }
+
+        .left,
+        .right {
+            position: absolute;
+            top: 0;
+            width: 200px;
+            height: 300px;
+            background-color: #6cf;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+  
+    <div class="box">
+        <div class="left"></div>
+        <div class="center">
+        内容部分
+        </div>
+    
+        <div class="right"></div>
+    </div>
+</body>
+
+</html> -->

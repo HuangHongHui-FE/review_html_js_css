@@ -1,6 +1,6 @@
 document.domain = 'test.com'  // 设置domain相同
 
-// 通过ifraame嵌入跨域的页面
+// 通过iframe嵌入跨域的页面
 const iframe = document.createElement('iframe')
 iframe.setAttribute('src', 'b.test.com/xxx.html')
 iframe.onload = function(){

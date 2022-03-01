@@ -4,7 +4,7 @@
 
 - relative：相对定位。相对于元素本身进行偏移，**不会改变它所占据的空间**。
 
-- absolute：绝对定位。相对于父元素中最近的 relative/absolute 进行偏移，会脱离文档流。音标：[ˈæbsəluːt]。
+- absolute：绝对定位。相对于父元素中最近的 relative/absolute 进行偏移
 
 
 ### 常见的布局方法
@@ -107,18 +107,3 @@
 ![](http://img.smyhvae.com/20191005_2200.png)
 
 上面的代码，存在两个问题。
-
-**问题一**：如果设置`div2`的宽度为 200px 之后，`div2` 掉下来。
-
-**问题二**：`div1`和`div2`设置为 inline-block之后，这两个盒子之间存在了间隙。这是因为，此时的 `div1`和`div2` 已经被当成文本了。文本和文本之间，本身就会存在间隙。
-
-为了去掉这个间隙，可以有几种解决办法：
-
-办法1：设置父元素`container`的字体大小为0，即`font-size: 0`，然后设置子元素 `div1`、`div2`的字体`font-size: 12px`。
-
-办法2：在写法上，去掉`div1`和`div2`之间的换行。改为：
-
-```html
-<div class="div1">div1的inline-block 属性</div><div class="div2">div2的inline-block 属性</div>
-```
-
