@@ -10,6 +10,8 @@ console.log(res)
 //     return eval("(" + json + ")")
 // }
 
+console.log(parse(res))
+
 let res2 = JSON.parse(res)
 console.log(res2)
 

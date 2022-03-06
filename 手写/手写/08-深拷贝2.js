@@ -13,7 +13,6 @@ function deepClone(target, map = new Map()){
         // 递归
         temp[key] = deepClone(target[key], map)
     }
-    // console.log(map)
     return temp
 }
 
@@ -25,6 +24,8 @@ const a = {
 }
 a.key = a // 环引用
 const b = deepClone(a)
+b.words = [111,111]
 
 console.log(b)
+console.log(a)
 

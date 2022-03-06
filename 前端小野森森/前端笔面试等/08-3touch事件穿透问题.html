@@ -27,24 +27,25 @@
     <!-- 使用fastclick -->
     <script src="../fastclick-main/lib/fastclick.js"></script>
     <script>
-        FastClick.attach(document.body)
+        // FastClick.attach(document.body)
 
         let oBtn = document.getElementById('btn')
         let oMask = document.getElementsByClassName('mask')[0];
 
-        // oMask.addEventListener('touchstart', function() {
-        //     let _self = this;
-        //     // 1. 通过setTimeout解决穿透
-        //     setTimeout(function () {
-        //         _self.style.display = 'none'
-        //     }, 300);
-        // })
+        oMask.addEventListener('touchstart', function() {
+            // this.style.display = 'none'
+            let _self = this;
+            // 1. 通过setTimeout解决穿透
+            setTimeout(function () {
+                _self.style.display = 'none'
+            }, 300);
+        })
 
         
         // 加上fastclick后的使用方式
-        oMask.addEventListener('click', function() {
-            this.style.display = 'none'
-        })
+        // oMask.addEventListener('click', function() {
+        //     this.style.display = 'none'
+        // })
 
         oBtn.onclick = function() {
             console.log(1);

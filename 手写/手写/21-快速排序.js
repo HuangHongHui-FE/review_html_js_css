@@ -1,5 +1,5 @@
 function kp_core(li, left, right){  // left为列表最左边下标
-    tmp = li[left]
+    let tmp = li[left]
     while(left < right){
         while(left < right && li[right] >= tmp){
             right = right - 1  // 往左走一步
