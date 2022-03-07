@@ -343,35 +343,82 @@
 // await async
 // 当调用一个 async 函数时，会返回一个 Promise 对象 (关键)
 // async/await 出现的异常是无法捕获的，需要借助 try/catch 来捕获异常
-function sleep(flag) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            if(flag){
-                resolve('success')
-            }else{
-                reject('Error')
-            }
-        }, 2000)
-    })
-}
+// function sleep(flag) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             if(flag){
+//                 resolve('success')
+//             }else{
+//                 reject('Error')
+//             }
+//         }, 2000)
+//     })
+// }
 
 
 
-// async await 的用法
-async function fn(flag) {
-    try {
-        let result = await sleep(flag)
-        return result
-    } catch (err) {
-        return err
+// // async await 的用法
+// async function fn(flag) {
+//     try {
+//         let result = await sleep(flag)
+//         return result
+//     } catch (err) {
+//         return err
+//     }
+// }
+// // 返回的 a,b 是一个 promise 对象
+// var a = fn(true)
+// var b = fn(false)
+// a.then((res)=>{
+//     console.log(res) // success
+// })
+// b.then((res)=>{
+//     console.log(res) // Error
+// })
+
+
+
+// 设计一个defer函数，实现defer(30).then(res => {  // 30ms后执行})
+// function defer(delay){
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             resolve()
+//         }, delay)
+//     })
+// }
+
+// defer(3000).then(res => {
+//     console.log("aaa")
+// })
+
+
+
+// apply
+// function myApply(fn, obj, args){
+//     if(obj == undefined || obj == null){
+//         obj = globalThis
+//     }
+//     obj.temp = fn
+//     let result = obj.temp(...args)
+//     delete obj.temp
+//     return result
+// }
+
+
+// bind
+
+Function.prototype.bind = function () {
+    console.log(this)
+    var self = this,                        // 保存原函数
+    context = [].shift.call(arguments), // 保存需要绑定的this上下文
+    args = [].slice.call(arguments);    // 剩余的参数转为数组
+    return function () {                    // 返回一个新函数
+        self.apply(context,[].concat.call(args, [].slice.call(arguments)));
     }
 }
-// 返回的 a,b 是一个 promise 对象
-var a = fn(true)
-var b = fn(false)
-a.then((res)=>{
-    console.log(res) // success
-})
-b.then((res)=>{
-    console.log(res) // Error
-})
+
+function a(){
+    console.log("a")
+}
+b = {}
+a.bind(b)

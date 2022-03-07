@@ -409,7 +409,7 @@
 
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -434,5 +434,162 @@
         };
         console.log(a.distinct())
     </script>
+</body>
+</html> -->
+
+
+
+<!-- 双栏布局 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .con{
+        display: flex;
+        background-color: aquamarine;
+    }
+    .ya{
+        width: 200px;
+        background-color: antiquewhite;
+    }
+    .a{
+        /* flex: 1; */
+        background-color: blue;
+    }
+</style>
+<body>
+    <div class="con">
+        <div class="ya">呀呀呀</div>
+        <div class="a">啊啊啊</div>
+    </div>
+</body>
+</html> -->
+
+
+
+<!-- 父子元素高度不确定的垂直居中 -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        
+    }
+    body{
+        background-color: blue;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .father{
+        background-color: aqua;
+    }
+
+    .son{
+        background-color: bisque;
+    }
+</style>
+<body>
+    <div class="father">fff
+        <div class="son">aaa</div>
+    </div>
+</body>
+</html> -->
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        
+    }
+    body{
+        background-color: blue;
+        position: relative;
+        height: 100vh;
+    }
+    .father{
+        background-color: aqua;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .son{
+        background-color: bisque;
+    }
+</style>
+<body>
+    <div class="father">fff
+        <div class="son">aaa</div>
+    </div>
+</body>
+</html> -->
+
+
+
+
+<!-- 九宫格 -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .father{
+        width: 800px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .father div{
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        line-height: 200px;
+        background-color: aqua;
+        margin-left: 20px;
+    }
+</style>
+<body>
+    <div class="father">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+    </div>
 </body>
 </html>
