@@ -10,3 +10,5 @@ function createObject(name, age){
 
 let s1 = createObject("hhh", "21")
 s1.sayHello()
+
+
