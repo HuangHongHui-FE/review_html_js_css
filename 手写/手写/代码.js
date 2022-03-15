@@ -1,18 +1,3 @@
-// 1. 变量提升
-// var a = 1;
-
-// function foo() {
-//     console.log(a);
-//     a = 2;     // 此处的a相当于window.a
-// }
-
-// foo();
-// console.log(a);   //打印结果是2
-
-
-// 2. 
-// console.log(typeof typeof typeof null)
-
 
 // 3.
 // function f(x){
@@ -38,26 +23,6 @@
 
 // obj.getName()
 
-
-// 5
-// setTimeout(() => {
-//     console.log('quick timer')
-// }, 0)
-
-// new Promise((resolve, reject) => {
-//     console.log('init promise')
-//     process.nextTick(resolve)
-// }).then(() => {
-//     console.log('promise.then')
-// })
-
-// process.nextTick(() => {
-//     console.log('nexttack')
-// })
-
-// setImmediate(() => {
-//     console.log('setImmediate')
-// })
 
 
 // 6. 
@@ -86,35 +51,35 @@
 // let r = Math.round(Math.random()*255);
 // let g = Math.round(Math.random()*255);
 // let b = Math.round(Math.random()*255);
-// let color = `rgb(${r}, ${g}, ${b})`
+// let color = `rgb(${r}, ${g}, ${b})`;
+// console.log(color)
 
 
 // 8. 给定两个字符串 strA 和 strB, 求 strB 在 strA 中出现的次数
 // str1 = 'aaaabbabaaa'
 // str2 = 'aa'
 
-// function nums(strA, strB){
-//     let left = 0;
-//     let count = 0;
-//     let lenB = strB.length
-//     while(left < strA.length){
-//         if(strA.slice(left, left + lenB) == strB){
+// function A_B(str1, str2){
+//     let left = 0, right = str1.length-1, count = 0;
+//     while(left < right){
+//         if(str1.slice(left, left + str2.length) == str2){
 //             count++;
-//             left=left+lenB;
+//             left = left + str2.length
 //         }else{
 //             left++
 //         }
 //     }
-//     return count;
+//     return count
 // }
 
-// console.log(nums(str1, str2))
+// console.log(A_B(str1, str2))
 
 
 
 
 // 9. 找出数组中重复出现的元素
 // const test = [1, 2, 4, 4, 3, 3, 1, 5, 3]
+
 
 // 1. 
 // let len = test.length
@@ -238,23 +203,11 @@
 // let ls = ["3.1.4522.74", "0.2.45.4", "0.2.23.456", "1.0.1"]
 
 // ls.sort((a, b) => {
-//     return (Number("0." + a.split(".").join("")) - Number("0." + b.split(".").join("")))
+//     return (Number("0." + a.split('.').join(""))) - (Number("0." + b.split('.').join("")))
 // })
 
 // console.log(ls)
 
-
-
-// 14. 看输出结果
-// var obj = {
-//     value : 'obj',
-//     fn : function(){ console.log(this.value) }
-// }
-// var fn = obj.fn;
-// fn();
-// obj.fn()
-
-// fn.apply(obj)
 
 
 
@@ -393,32 +346,170 @@
 
 
 
-// apply
-// function myApply(fn, obj, args){
-//     if(obj == undefined || obj == null){
-//         obj = globalThis
+// bind
+
+// Function.prototype.bind = function () {
+//     console.log(this)
+//     var self = this,                        // 保存原函数
+//     context = [].shift.call(arguments), // 保存需要绑定的this上下文
+//     args = [].slice.call(arguments);    // 剩余的参数转为数组
+//     return function () {                    // 返回一个新函数
+//         self.apply(context,[].concat.call(args, [].slice.call(arguments)));
 //     }
-//     obj.temp = fn
-//     let result = obj.temp(...args)
-//     delete obj.temp
-//     return result
+// }
+
+// function a(){
+//     console.log("a")
+// }
+// b = {}
+// a.bind(b)
+
+
+
+// 数组嵌套层级
+// let arr  =[1, 2, 3, [1, 5, 6, [7, 9, [11, 32]]], 10]
+// let a = 1
+
+// function multiarr(arr){
+//     for(let i = 0; i < arr.length; i++){
+//         if(arr[i] instanceof Array){
+//             a++;
+//             arr = arr[i];
+//             multiarr(arr);
+//         }
+//     }
+//     return a
+// }
+
+// console.log(multiarr(arr))
+
+
+// 数组原型上添加方法，返回数组的嵌套层数
+// Array.prototype.ceng = function(){
+//     let a = 1
+//     function multiarr(arr){
+//         for(let i = 0; i < arr.length; i++){
+//             if(Array.isArray(arr[i])){
+//                 a++;
+//                 arr = arr[i];
+//                 multiarr(arr);
+//             }
+//         }
+//         return a
+//     }
+//     return multiarr(this)
+// }
+
+// console.log(arr.ceng())
+
+
+
+
+// console.log(hello())
+// var hello = function(){}
+
+
+
+
+
+
+// in   of
+
+// let obj = {
+//     a: 1,
+//     b: 2,
+//     c: 3
+// }
+
+// let ls = [1,2,3]
+
+// for(let k in ls){
+//     console.log(k)
 // }
 
 
-// bind
 
-Function.prototype.bind = function () {
-    console.log(this)
-    var self = this,                        // 保存原函数
-    context = [].shift.call(arguments), // 保存需要绑定的this上下文
-    args = [].slice.call(arguments);    // 剩余的参数转为数组
-    return function () {                    // 返回一个新函数
-        self.apply(context,[].concat.call(args, [].slice.call(arguments)));
-    }
-}
 
-function a(){
-    console.log("a")
-}
-b = {}
-a.bind(b)
+
+// 26个英文字母中随机取四位
+// let p = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+// let str = ''
+// for (var i = 0; i < 4; i++) { // 生成4个字符
+//     str += p.charAt(Math.random() * (p.length - 1))
+// }
+// // console.log(p.charAt(2.8))  // 选择指定下标的字符
+// console.log(str)
+
+
+
+
+// function countMenus(menus){
+//     let sum = 0
+//     function mid(menus, sum){
+//         let sum = 0;
+//         for(let i = 0; i < menus.length; i++){
+//             if(menus[i].name){
+//                 sum++
+//             }
+//             if(menus[i].children){
+//                 mid(menus[i].children, sum)
+//             }
+//         }
+//     }
+//     mid(menus, sum)
+//     return sum
+    
+// }
+
+
+
+
+
+// function kp_core(li, left, right){  // left为列表最左边下标
+//     let tmp = li[left].info.age
+//     let mid = li[left]
+//     while(left < right){
+//         while(left < right && li[right].info.age >= tmp){
+//             right = right - 1  // 往左走一步
+//         }
+//         li[left] = li[right]  // 右边的值写道左边的空位上
+//         while(left < right && li[left].info.age <= tmp){
+//             left = left + 1
+//         }
+//         li[right] = li[left]  // 左边的值写到右边的空位上
+//     }
+//     // 这时候left === right
+//     li[left] = mid  // 把tmp补到空位上
+//     return left
+// }
+
+// function kp(li, left, right){
+//     if(left < right){
+//         mid = kp_core(li, left, right)
+//         kp(li, left, mid - 1)
+//         kp(li, mid+1, right)
+//     }
+// }
+// let ls = [
+//     {
+//         "name": 'a',
+//         "info": {
+//             "genera": 'nan',
+//             "age": 10
+//         }
+//     },
+//     {
+//         "name": 'b',
+//         "info": {
+//             "genera": 'nan',
+//             "age": 12
+//         }
+//     },
+//     {
+//         "name": 'c',
+//         "info": {
+//             "genera": 'nan',
+//             "age": 9
+//         }
+//     }
+// ]

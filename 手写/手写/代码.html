@@ -555,7 +555,7 @@
 <!-- 九宫格 -->
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -590,4 +590,288 @@
         <div>7</div>
     </div>
 </body>
+</html> -->
+
+
+
+<!-- keyframe实现盒子从左到右 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        width: 200px;
+        height: 200px;
+        animation-name: left_right;
+        animation-duration: 2s;
+        position: absolute;
+        background-color: aqua;
+    }
+    @keyframes left_right{
+        0%{
+            left: 0px;
+        }
+        100%{
+            left: 500px;
+        }
+    }
+</style>
+<body>
+    <div></div>
+</body>
+</html> -->
+
+
+
+
+
+<!-- 图片随着鼠标不停地旋转 -->
+<!-- 1. -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+    }
+    img{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        animation-name: ro;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        left: 100px;
+    }
+    @keyframes ro{
+        0%{
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(360deg);
+        }
+    }
+</style>
+<body>
+    <img src="./01.png" alt="">
+    <script>
+    let img = document.getElementsByTagName('img')[0]
+    console.log(img)
+    document.addEventListener('mousemove',function (e) {
+        //mousemove 只要鼠标一移动，就会触发事件
+        //获取鼠标最新的坐标
+        // console.log(e.pageY, e.pageX)
+        // console.log(e)
+        img.style.left = e.pageX - 50 + 'px'
+        img.style.top = e.pageY- 50 + "px"
+    })
+    </script>
+</body>
+</html> -->
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    img{
+        width: 100px;
+        height: 100px;
+        position: absolute;
+
+    }
+</style>
+<body>
+    <img src="./01.png" alt="">
+
+    <script>
+        let img = document.getElementsByTagName('img')[0]
+        document.addEventListener('mousemove', function(e){
+            img.style.left = e.pageX - 50 + 'px'
+            img.style.top = e.pageY - 50 + 'px'
+        })
+
+        requestAnimationFrame
+    </script>
+</body>
+</html> -->
+
+
+
+
+<!-- 清除浮动 -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .divcss5{ 
+        width:400px; 
+        border:1px solid #F00; 
+        background:#FF0;
+    }
+    .divcss5::after{
+        content: '';
+        clear: both;
+        display: block;
+    }
+    .divcss5-left,.divcss5-right{ 
+        width:180px; 
+        height:100px; 
+        border:1px solid #00F; 
+        background:rgb(243, 198, 198)
+    } 
+    .divcss5-left{ 
+        float:left
+    } 
+    .divcss5-right{ 
+        float:right
+    }
+
+
+</style>
+<body>
+    <div class="divcss5"> 
+        <div class="divcss5-left">left浮动</div> 
+        <div class="divcss5-right">right浮动</div> 
+
+    </div> 
+</body>
+</html> -->
+
+
+
+
+
+<!-- 事件冒泡与事件捕获 -->
+<style> 
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #box1 {
+    height: 150px;
+    background-color: red;
+   
+  }
+  #box2 {
+    width: 80%;
+    height: 100px;
+    background-color: yellow;
+  }
+  #box3 {
+    width: 80%;
+    height: 50px;
+    background-color: green;
+  }
+</style>
+<body>
+  <div id="box1">
+    <div id="box2">
+      <div id="box3"></div>
+    </div>
+  </div>
+</body>
 </html>
+<script  type="text/javascript">
+  var box1 = document.getElementById("box1");
+  var box2 = document.getElementById("box2");
+  var box3 = document.getElementById("box3");
+  // addEventListener 事件默认为false，也就是我们所说的事件冒泡过程
+//   box1.addEventListener('click', function(){
+//     alert("box1 被触发了");
+//   })
+
+//   box2.addEventListener('click', function(){
+//     alert("box2 被触发了");
+//   })
+
+//   box3.addEventListener('click', function(){
+//     alert("box3 被触发了");
+//   })
+
+  // 点击box3打印结果
+  // box3 
+  // box2
+  // box1
+  
+  // 当我们将 addEventListener 设置为true时，此时就成了事件捕获的过程
+//   box1.addEventListener('click', function(){
+//     alert("box1 被触发了");
+//   }, true)
+
+//   box2.addEventListener('click', function(){
+//     alert("box2 被触发了");
+//   }, true)
+
+//   box3.addEventListener('click', function(){
+//     alert("box3 被触发了");
+//   })
+
+  // 点击box3打印结果
+  // box1 
+  // box2
+  // box3
+
+
+  // 阻止事件冒泡
+//   box1.addEventListener('click', function(){
+//     alert("box1 被触发了");
+//     event.stopPropagation();
+//   })
+
+//   box2.addEventListener('click', function(event){
+//     alert("box2 被触发了");
+//     event.stopPropagation();
+//   })
+
+//   box3.addEventListener('click', function(){
+//     alert("box3 被触发了");
+//     // event.stopPropagation();
+//   })
+
+  // 点击box3打印结果
+  // box3
+  // box2
+  
+  // 阻止事件捕获
+  box1.addEventListener('click', function(){
+    alert("box1 被触发了");
+  }, true)
+
+  box2.addEventListener('click', function(event){
+    alert("box2 被触发了");
+    event.stopPropagation();
+  }, true)
+
+  box3.addEventListener('click', function(){
+    alert("box3 被触发了");
+  })
+
+  // 点击box3打印结果
+  // box1
+  // box2
+
+</script>

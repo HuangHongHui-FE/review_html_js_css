@@ -16,6 +16,8 @@ function jsonp({url, params, callback}){
             }, [])
             .join("&");
 
+        // console.log(requestParams)
+
         // 构造get请求的url地址
         const src = `${url}?${requestParams}`;
         script.setAttribute('src', src);
