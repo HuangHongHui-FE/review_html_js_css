@@ -221,3 +221,152 @@
 //     }
 //     return true
 // }
+
+
+
+
+
+
+// function PromiseAll(promises){
+//     return new Promise((resolve, reject) => {
+//         if(!Array.isArray(promises)){
+//             throw('必须是个数组')
+//         }
+//         let count = 0, result = [];
+//         promises.forEach((promise, index) => {
+//             promise.then(res => {
+//                 result.push(res);
+//                 count++;
+//                 if(count == promises.length){
+//                     resolve(result)
+//                 }
+//             }, err => {
+//                 reject(err)
+//             })
+//         })
+//     })
+// }
+
+
+
+
+// function PromiseRace(promises){
+//     return new Promise((resolve, reject) => {
+//         if(!Array.isArray(promises)){
+//             throw("必须是数组")
+//         }
+//         for(let i = 0; i < promises.length; i++){
+//             Promise.resolve(promises[i]).then(res => {
+//                 resolve(res)
+//             }, err=>{
+//                 reject(err)
+//             })
+//         }
+//     })
+// }
+
+
+
+
+
+// function deepClone(target, map = new Map()){
+//     if(typeof target !== 'object'){
+//         return target
+//     }
+//     const temp = Array.isArray(target) ? [] : {};
+//     if(map.get(target)){
+//         return map.get(target)
+//     }
+//     map.set(target, temp);
+//     for(let key in map){
+//         temp[key] = deepClone(target[key], map)
+//     }
+//     return temp
+// }
+
+
+
+
+
+
+// function limit(ls, count = 3){
+//     return new Promise((resolve, reject) => {
+//         let i = 0;
+//         let result = []
+//         while(i < count){
+//             start(i)
+//             i++
+//         }
+//         function start(i){
+//             if(i == ls.lengh - 1){
+//                 resolve(result)
+//             }
+//             axios.get().then((res) => {
+//                 result[i] = res
+//             })
+            
+//         }
+//     })
+// }
+
+
+
+
+
+
+
+// function Son(name){
+//     this.name = name
+//     // console.log(this)
+// }
+
+
+// Son.prototype.eat = function(){
+//     console.log(this.name + "会吃")
+// }
+
+
+// function Father(name, age){
+//     Son.call(this, name)
+//     this.age = age;
+// }
+
+
+// Father.prototype = Object.create(Son.prototype);
+// Father.prototype.constructor = Father
+
+// res = new Father("叭叭", 20)
+// res.eat()
+// console.log(res.name)
+// console.log(res.age)
+
+
+
+
+
+
+// class Father{
+//     constructor(name){
+//         this.name = name
+//     }
+//     eat(){
+//         console.log(this.name + "能吃！")
+//     }
+// }
+
+// class Son extends Father{
+//     constructor(name, age){
+//         super(name)
+//         this.age = age
+//     }
+// }
+
+
+// let cs = new Son("佬子", 20)
+// console.log(cs.name)
+// console.log(cs.age)
+// cs.eat()
+
+
+
+

@@ -513,3 +513,20 @@
 //         }
 //     }
 // ]
+
+
+
+
+// console.log(this)
+
+
+
+
+
+// 计算字符串表达式的值：
+    function calc (expr){
+        return Function('return (' + expr + ')')()
+    }
+
+    str = "1+1*3-2"
+    console.log(calc(str))  // 2
