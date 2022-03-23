@@ -7,3 +7,5 @@ function timedCount()
     setTimeout("timedCount()",500);
 }
 timedCount();
+
+// 可调用close关闭自身

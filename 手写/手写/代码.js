@@ -524,9 +524,53 @@
 
 
 // 计算字符串表达式的值：
-    function calc (expr){
-        return Function('return (' + expr + ')')()
-    }
+    // function calc (expr){
+    //     return Function('return (' + expr + ')')()
+    // }
 
-    str = "1+1*3-2"
-    console.log(calc(str))  // 2
+    // str = "1+1*3-2"
+    // console.log(calc(str))  // 2
+
+
+
+
+
+// 大数据
+
+function back(path){
+    if(path.length === 3){
+        res.push(path);
+        return;
+    }
+    nums.forEach(item => {
+        if(path.includes(item)){
+            return;
+        }
+        back(path.concat(item))
+    })
+}
+
+
+let nums = [1,2,3,4];
+const res = [];
+back([]);
+console.log(res);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

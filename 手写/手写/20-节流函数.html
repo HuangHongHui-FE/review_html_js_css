@@ -22,6 +22,7 @@
             let timer;
             return function(){
                 if(timer) return false;
+                // console.log(this)
                 // 改变this指向按钮，并执行
                 fn.apply(this, arguments)
                 timer = setTimeout(() => {

@@ -1,3 +1,4 @@
+let arr = [1,2,3,4,5,6,3,2,4]
 // 1.
 const ls = [...new Set(arr)]
 

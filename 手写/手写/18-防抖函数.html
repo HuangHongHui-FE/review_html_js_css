@@ -18,12 +18,12 @@
 
         function clickHandle(e){
             // pointerEvent事件
-            
+            // 可以在做很耗时的请求的时候，加个效果让Button不能点击，
+            // 请求结果过来后，在让button可以点击
             setTimeout(() => {
                 console.log(e)
             }, 3000)
         }
-
         function deb(fn, delay){
             let timer;
             return function(){
@@ -31,7 +31,7 @@
                     clearTimeout(timer)
                 }
                 timer = setTimeout(() => {
-                    console.log(this)  // button
+                    // console.log(this)  // button
                     // console.log(arguments)
                     fn.apply(this, arguments)  // 这里不传arguments， clickHandle里面的e是undefined
                 }, delay || 3000)

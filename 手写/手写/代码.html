@@ -765,7 +765,7 @@
 
 
 <!-- 事件冒泡与事件捕获 -->
-<style> 
+<!-- <style> 
   div {
     display: flex;
     align-items: center;
@@ -874,4 +874,49 @@
   // box1
   // box2
 
-</script>
+</script> -->
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let url = 'http://www.baidu.com?user=HHH&password=PPP'
+        // var url = "q=URLUtils.searchParams&topic=api"
+        var url = "http://www.baidu.com?user=HHH&password=PPP"
+        var searchParams = new URLSearchParams(url);
+        // var searchParams = new URLSearchParams(url).entries;
+        for (let [i, p] of searchParams) {
+            console.log(i, p);
+        }
+
+        searchParams.has("topic") === true; // true
+        searchParams.get("topic") === "api"; // true
+        searchParams.getAll("topic"); // ["api"]
+        searchParams.get("foo") === null; // true
+        searchParams.append("topic", "webdev");
+        searchParams.toString(); // "q=URLUtils.searchParams&topic=api&topic=webdev"
+        searchParams.set("topic", "More webdev");
+        searchParams.toString(); // "q=URLUtils.searchParams&topic=More+webdev"
+        searchParams.delete("topic");
+        searchParams.toString(); // "q=URLUtils.searchParams"
+    </script>
+</body>
+</html> -->
+
+
+
+
+

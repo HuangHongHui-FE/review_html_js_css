@@ -1,3 +1,4 @@
+// 弹出框组件
 <template>
     <div class="dialog" v-show="showMask">
         <div class="dialog-container">

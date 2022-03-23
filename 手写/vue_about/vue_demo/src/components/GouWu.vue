@@ -1,3 +1,4 @@
+// 商品的全选与反选
 <template>
     <div class="gouwu">
         <label for="1">商品1

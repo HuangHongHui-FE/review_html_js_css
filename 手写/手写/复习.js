@@ -269,17 +269,17 @@
 
 
 
-// function deepClone(target, map = new Map()){
-//     if(typeof target !== 'object'){
+// function deepClone(target, map=new Map()){
+//     if(typeof target != 'object'){
 //         return target
 //     }
 //     const temp = Array.isArray(target) ? [] : {};
 //     if(map.get(target)){
 //         return map.get(target)
 //     }
-//     map.set(target, temp);
-//     for(let key in map){
-//         temp[key] = deepClone(target[key], map)
+//     map.set(target, temp)
+//     for(let k in target){
+//         temp[k] = deepClone(temp[k], map)
 //     }
 //     return temp
 // }
@@ -366,6 +366,253 @@
 // console.log(cs.name)
 // console.log(cs.age)
 // cs.eat()
+
+
+
+
+
+
+// let arr = [1,2,3,4,5,5,4,3,2,3,4]
+
+// console.log([...new Set(arr)])
+
+
+// let ls = []
+// for(let i = 0; i < arr.length; i++){
+//     if(!ls.includes(arr[i])){
+//         ls.push(arr[i])
+//     }
+// }
+// console.log(ls)
+
+
+
+// console.log(Array.from(new Set(arr)))
+
+
+
+
+// function _render(vnode){
+//     if(typeof vnode == 'number'){
+//         return String(vnode)
+//     }
+//     if(typeof vnode == 'string'){
+//         return document.createTextNode(vnode)
+//     }
+//     const dom = document.createElement(vnode.tag)
+//     Object.keys(vnode.attrs).forEach(item => {
+//         dom.setAttribute(item, vnode.attrs[item])
+//     })
+//     vnode.children.forEach(item => {
+//         dom.appendChild(_render(item))
+//     })
+// }
+
+
+
+
+
+
+// class Emit{
+//     constructor(){
+//         this.cache = {}
+//     }
+
+//     on(name, fn){
+//         if(this.cache[name]){
+//             this.cache[name].push(fn)
+//         }else{
+//             this.cache[name] = [fn]
+//         }
+//     }
+
+//     off(name){
+//         const temp = this.cache[name].slice();
+//         temp
+//     }
+
+//     emit(name, fn){
+//         let tasks = this.cache[name]
+//         let index = tasks.indexof(fn)
+//         if(index != '-1'){
+//             tasks.splice(index, 1)
+//         }
+//     }
+
+//     once(name, fn){
+//         this.on(name, fn)
+//         this.emit(name)
+//         this.off(name)
+//     }
+// }
+
+
+
+
+
+// function _new(fn, ...args){
+//     let obj = {};
+//     obj.__proto__ = fn.prototype;
+//     let res = fn.apply(obj, args)
+//     return res instanceof Object ? res : obj;
+// }
+
+// function eat(...args){
+//     console.log(args)
+// }
+
+// let res = _new(eat, "111", '222')
+
+
+
+
+
+// function _instanceof(left, right){
+    
+//     while(left){
+//         if(left.__proto__ == right.prototype){
+//             return true
+//         }
+//         left = left.__proto__
+//     }
+//     return false
+// }
+
+
+
+
+// let ls = [2,3,4,5,6,7,8,9]
+
+// function ef(ls, val){
+//     let left = 0, right = ls.length - 1;
+//     while(left <= right){
+//         let mid = parseInt((left+right) / 2);
+//         if(ls[mid] == val){
+//             return mid
+//         }else if(ls[mid] > val){
+//             right = mid - 1
+//         }else{
+//             left = mid + 1
+//         }
+//     }
+//     return null
+// }
+// console.log(ef(ls, 3))
+
+
+
+
+
+
+// function kp_core(ls, left, right){
+//     let cur = ls[left]
+//     while(left < right){
+//         while(left < right && cur <=ls[right]){
+//             right--
+//         }
+//         ls[left] = ls[right]
+//         while(left < right && cur >= ls[left]){
+//             left++
+//         }
+//         ls[right] = ls[left]
+//     }
+//     ls[left] = cur;
+//     return left
+// }
+
+
+// function kp(ls, left, right){
+//     if(left < right){
+//         let temp = kp_core(ls, left, right)
+//         kp(ls, left, temp - 1)
+//         kp(ls, temp+1, right)
+//     }
+// }
+
+// ls = [2,1,5,3,7,4,6,9]
+
+// kp(ls, 0, ls.length-1)
+// console.log(ls)
+
+
+
+
+
+// console.log(parseFloat((0.1 + 0.2).toFixed(10)))
+
+
+
+
+
+
+// function _apply(fn, obj, args){
+//     if(!obj){
+//         obj = globalThis
+//     }
+//     obj.temp = fn;
+//     let result = obj.temp(...args)
+//     delete obj.temp
+//     return result
+// }
+
+
+
+
+
+// function fd(fn, delay){
+//     let timer;
+//     return function(){
+//         if(timer){
+//             clearTimeout(timer)
+//         }
+
+//         timer = setTimeout(() => {
+//             fn.apply(this, arguments)
+//         }, delay)
+//     }
+// }
+
+
+
+// function jl(fn, delay){
+//     let timer;
+//     return function(){
+//         if(timer){
+//             return false;
+//         }
+//         fn.apply(this, arguments)
+//         timer = setTimeout(() => {
+//             clearTimeout(timer)
+//             timer = null
+//         }, delay)
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
