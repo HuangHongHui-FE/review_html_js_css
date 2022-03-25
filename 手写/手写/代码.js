@@ -1,33 +1,6 @@
-
-// 3.
-// function f(x){
-//     var x;
-//     console.log(x)
-// }
-
-// f(5)
-
-
-
-// 4 ??
-// var name = '123'
-// var obj = {
-//     name: '456',
-//     getName: function(){
-//         function printName(){
-//             console.log(this.name)
-//         }
-//         printName()
-//     }
-// }
-
-// obj.getName()
-
-
-
 // 6. 
 // // 手写一个repeact()函数，加上下面的代码运行，使每3秒打印一个helloword，总共执行4次
-//  const repeatFunc = repeact(console.log,4,3000) repeatFunc('helloword')
+//  const repeatFunc = repeact(console.log,4,3000)         repeatFunc('helloword')
 
 // function repeact(way, nums, time){
 //     return function repeactI(con){
@@ -537,30 +510,51 @@
 
 // 大数据
 
-function back(path){
-    if(path.length === 3){
-        res.push(path);
-        return;
+// function back(path){
+//     if(path.length === 3){
+//         res.push(path);
+//         return;
+//     }
+//     nums.forEach(item => {
+//         if(path.includes(item)){
+//             return;
+//         }
+//         back(path.concat(item))
+//     })
+// }
+
+
+// let nums = [1,2,3,4];
+// const res = [];
+// back([]);
+// console.log(res);
+
+
+
+
+
+// add(1)(2)(3)的链式调用
+// function add(x){
+//     x += +add || 0;
+//     add.valueOf = add.toString = function(){
+//         return x
+//     }
+//     return add;
+// }
+
+// console.log( add(1)(2)(3) )
+
+var a = 0;
+function add(n) {
+    if (arguments.length) {
+        a += n;
+        return add;
     }
-    nums.forEach(item => {
-        if(path.includes(item)){
-            return;
-        }
-        back(path.concat(item))
-    })
+    return a;
 }
 
-
-let nums = [1,2,3,4];
-const res = [];
-back([]);
-console.log(res);
-
-
-
-
-
-
+var x = add(2)(3)(4)(5);
+console.log(x());
 
 
 
