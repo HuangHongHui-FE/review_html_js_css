@@ -3,7 +3,7 @@
         <div class="inner">
             <header class="header">
                 <h1 class="title">{{title}}</h1>
-                <span class="close-btn">X</span>
+                <span class="close-btn" @click="$messageBox.hide()">X</span>  // 绑定点击关闭事件
             </header>
             <div class="content">
                 {{content}}
