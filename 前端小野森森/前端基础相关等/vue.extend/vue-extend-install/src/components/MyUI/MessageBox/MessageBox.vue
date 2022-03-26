@@ -3,7 +3,7 @@
         <div class="inner">
             <header class="header">
                 <h1 class="title">{{title}}</h1>
-                <span class="close-btn" @click="$messageBox.hide()">X</span>  // 绑定点击关闭事件
+                <span class="close-btn" @click="hideMessageBox">X</span>
             </header>
             <div class="content">
                 {{content}}
@@ -36,6 +36,13 @@ export default{
                     'danger'
                 ].includes(value);
             }
+        }
+    },
+    methods: {
+        hideMessageBox(){
+            this.$messageBox.hide(() => {
+                console.log("hide的回调执行")
+            })
         }
     }
 }
