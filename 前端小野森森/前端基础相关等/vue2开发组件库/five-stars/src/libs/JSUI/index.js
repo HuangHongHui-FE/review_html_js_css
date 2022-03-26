@@ -1,4 +1,4 @@
-import Stars from './conponents/Stars'
+import Stars from './components/Stars'
 
 const JSUI = {};
 

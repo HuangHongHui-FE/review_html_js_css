@@ -2,20 +2,33 @@
   <div id="app">
     <!-- 默认点亮的星星个数，以及星星的大小 -->
     <Stars 
-      :num="num"
+      :num="starNum"
       :size="size"
+      @getStarNum="getStarNum"
     />
   </div>
 </template>
 
 <script>
+// import Stars from './libs/JSUI/components/Stars.vue'
 
 export default {
   name: 'App',
+  components: {
+    // Stars
+  },
   data () {
-    return{
-      num: 3,
+    return {
+      // 星星数，星星大小
+      starNum: 3,
       size: 30
+    }
+  },
+  methods: {
+    getStarNum(number){
+      this.starNum = number
+      // 这里获取到选择的星星
+      console.log(this.starNum)
     }
   }
 }

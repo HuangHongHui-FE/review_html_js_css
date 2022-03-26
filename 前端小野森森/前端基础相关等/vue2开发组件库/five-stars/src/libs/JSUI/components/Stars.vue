@@ -6,9 +6,10 @@
             :key="number"
             :class="[
                 'iconfont icon-xingxing', 
-                number <= num ? 'active' : ''
+                number <= starNum ? 'active' : ''
             ]"
             :style="{ fontSize: size + 'px' }"
+            @click="setStarNum(number)"
         >
         </span>
     </div>
@@ -25,6 +26,20 @@
             size: {
                 type: Number,
                 default: 16
+            }
+        },
+        data(){
+            return{
+                // 注意这里， 不能直接改props传过来的值
+                starNum: this.num
+            }
+        },
+        methods: {
+            setStarNum(number){
+                this.starNum = number;
+
+                // 触发调用这个组件的组件的方法
+                this.$emit('getStarNum', this.starNum);
             }
         }
     }
