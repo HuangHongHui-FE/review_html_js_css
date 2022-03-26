@@ -508,7 +508,7 @@
 
 
 
-// 大数据
+// 大数据作业
 
 // function back(path){
 //     if(path.length === 3){
@@ -528,12 +528,18 @@
 // const res = [];
 // back([]);
 // console.log(res);
+// console.log(res.length);
+
+
+
+
 
 
 
 
 
 // add(1)(2)(3)的链式调用
+
 // function add(x){
 //     x += +add || 0;
 //     add.valueOf = add.toString = function(){
@@ -544,18 +550,109 @@
 
 // console.log( add(1)(2)(3) )
 
-var a = 0;
-function add(n) {
-    if (arguments.length) {
-        a += n;
-        return add;
-    }
-    return a;
-}
+// var a = 0;
+// function add(n) {
+//     if (arguments.length) {
+//         a += n;
+//         return add;
+//     }
+//     return a;
+// }
 
-var x = add(2)(3)(4)(5);
-console.log(x());
+// var x = add(2)(3)(4)(5);
+// console.log(x());
 
+
+
+
+
+
+
+
+
+// // 输入
+// const arr = [
+//     {
+//         "id": "123",
+//         "count": 100,
+//         "children": [
+//             {
+//                 "id": "1234",
+//                 "count": 50
+//             }
+//         ]
+//     },
+//     {
+//         "id": "456",
+//         "count": 200,
+//         "children": [
+//             {
+//                 "id": "4567",
+//                 "count": 100,
+//                 "children": [
+//                     {
+//                         "id": "45678",
+//                         "count": 50
+//                     }
+//                 ]
+//             }
+//         ]
+//     },
+//     {
+//         "id": "201",
+//         "count": 60,
+//         "children": []
+//     }
+// ]
+
+// // 输出
+// [
+//     {
+//         "id": "123",
+//         "count": 150
+//     },
+//     {
+//         "id": "456",
+//         "count": 350
+//     },
+//     {
+//         "id": "201",
+//         "count": 60
+//     }
+// ]
+// let res = []
+// for(let i = 0; i < arr.length; i++){
+//     let item = arr[i], obj = {};
+//     for(let k in item){
+//         if(k != 'children'){
+//             obj[k] = item[k]
+//         }
+//     }
+//     res.push(obj)
+// }
+// console.log(res)
+
+
+
+
+
+
+// function fun(n, o){
+//     console.log(o);
+//     return {
+//         fun: function(m){
+//             return fun(m, n)
+//         }
+//     }
+// }
+
+
+// var a = fun(0);
+// a.fun(1);
+// a.fun(2);
+// a.fun(3);
+
+// var b = fun(0).fun(1).fun(2).fun(3);
 
 
 
