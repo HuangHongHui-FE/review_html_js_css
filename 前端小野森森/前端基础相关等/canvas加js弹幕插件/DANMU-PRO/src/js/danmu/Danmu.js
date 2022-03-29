@@ -1,6 +1,6 @@
 // 每条弹幕数据进行包装
 
-import { getTextWidth } from "./utils";
+import { getTextWidth, getTextPosition } from "./utils";
 
 class Danmu{
     // fCtx...this
@@ -19,7 +19,18 @@ class Danmu{
         this.speed = this.danmu.speed || this.ctx.speed;
         this.fontSize = 30;
         this.width = getTextWidth(this.content, this.fontSize);
-        console.log(this.width);
+        // console.log(this.width);
+        getTextPosition(this.ctx.canvas, this.fontSize, this);
+
+        console.log(this)
+    }
+
+    // 控制字体
+    draw(){
+        this.ctx.canvasCtx.font = this.fontSize + 'px';
+        this.ctx.canvasCtx.fillStyle = this.color;
+        this.ctx.canvasCtx.fillText(this.content, this.ctx, this.Y);
+
     }
 }
 

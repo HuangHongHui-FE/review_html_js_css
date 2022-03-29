@@ -28,10 +28,38 @@ class VideoDanmu{
         // 每条弹幕数据包装一下
         this.danmuPool = this.createDanmuPool();
 
-        console.log(this.danmuPool)
+        // console.log(this.danmuPool)
+
+        // 起始先渲染一下；
+        this.render();
     }
     createDanmuPool(){
         return this.danmuData.map(dm => new Danmu(dm, this))
+    }
+
+
+    render(){
+        this.clearRect();
+        // 专门来绘制弹幕
+        this.drawDanmu();
+
+        !this.danmuPaused && requestAnimationFrame(this.render.bind(this));  // 原本this指向window
+    }
+
+    drawDanmu(){
+        let currentTime = this.video.currentTime;
+
+        this.danmuPool.map((danmu) => {
+            if(!danmu.stopDrawing && currentTime >= danmu.runTime){
+                if(!danmu.isInitialized){
+                    
+                }
+            }
+        })
+    }
+
+    clearRect(){
+        this.canvas.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 }
 

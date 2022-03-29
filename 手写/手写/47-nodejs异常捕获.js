@@ -37,9 +37,9 @@ testFunc();
 // 2. 多进程模式加异常捕获后重启
 // const cluster = require('cluster');	
 // const os = require('os');	
-// const http = require('http');	
-// const domain = require('domain');	
-	
+// const http = require('http');
+// const domain = require('domain');
+
 // const d = domain.create();	
 	
 // if (cluster.isMaster) {	

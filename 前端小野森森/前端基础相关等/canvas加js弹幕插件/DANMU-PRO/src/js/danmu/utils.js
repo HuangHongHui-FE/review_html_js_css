@@ -19,8 +19,21 @@ function getTextWidth(content, fontSize){
     return width;
 }
 
+
+function getTextPosition(canvas, fontSize, ctx){
+    let X = canvas.width;
+    let Y = canvas.height * Math.random();
+
+    Y < fontSize && (Y == fontSize);
+    Y > canvas.height - fontSize && (Y = canvas.height - fontSize);
+
+    ctx.X = X;
+    ctx.Y = Y;
+}
+
 export {
     isArray,
     isObject,
-    getTextWidth
+    getTextWidth,
+    getTextPosition
 }
