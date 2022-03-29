@@ -510,25 +510,25 @@
 
 // 大数据作业
 
-// function back(path){
-//     if(path.length === 3){
-//         res.push(path);
-//         return;
-//     }
-//     nums.forEach(item => {
-//         if(path.includes(item)){
-//             return;
-//         }
-//         back(path.concat(item))
-//     })
-// }
+function back(path){
+    if(path.length === 3){
+        res.push(path);
+        return;
+    }
+    nums.forEach(item => {
+        if(path.includes(item)){
+            return;
+        }
+        back(path.concat(item))
+    })
+}
 
 
-// let nums = [1,2,3,4];
-// const res = [];
-// back([]);
-// console.log(res);
-// console.log(res.length);
+let nums = [1,2,3,4];
+const res = [];
+back([]);
+console.log(res);
+console.log(res.length);
 
 
 
