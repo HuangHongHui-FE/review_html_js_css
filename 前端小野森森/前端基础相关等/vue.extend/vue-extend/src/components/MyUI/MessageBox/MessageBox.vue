@@ -9,11 +9,10 @@
                 {{content}}
             </div>
         </div>
-    </div>    
+    </div>
 </template>
 
 <script>
-
 export default{
     name: "MessageBox",
     props: {

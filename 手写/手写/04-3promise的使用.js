@@ -13,6 +13,9 @@ function ajax(url, success, fail) {
     };
 }
 
+
+
+
 new Promise((resolve, reject) => {
     ajax('a.json', (res) => {
         console.log('a接口返回的内容：' + res);

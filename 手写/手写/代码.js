@@ -510,25 +510,25 @@
 
 // 大数据作业
 
-function back(path){
-    if(path.length === 3){
-        res.push(path);
-        return;
-    }
-    nums.forEach(item => {
-        if(path.includes(item)){
-            return;
-        }
-        back(path.concat(item))
-    })
-}
+// function back(path){
+//     if(path.length === 3){
+//         res.push(path);
+//         return;
+//     }
+//     nums.forEach(item => {
+//         if(path.includes(item)){
+//             return;
+//         }
+//         back(path.concat(item))
+//     })
+// }
 
 
-let nums = [1,2,3,4];
-const res = [];
-back([]);
-console.log(res);
-console.log(res.length);
+// let nums = [1,2,3,4];
+// const res = [];
+// back([]);
+// console.log(res);
+// console.log(res.length);
 
 
 
@@ -658,10 +658,97 @@ console.log(res.length);
 
 
 
+// 数组扁平化：加上层级
+// let ls = [1, 2, 3, [4, 5, 6, [7, 8]], [9, 0], 10]
+
+// var res = []
+// let n = 2
+// function flat(ls, level){
+//     if(Array.isArray(ls) && level <= n ){
+//         for(let i = 0; i < ls.length; i++){
+//             flat(ls[i], level+1)
+//         }
+//     }else{
+//         res.push(ls)
+//     }
+// }
+// flat(ls, 1)
+
+// console.log(res)
 
 
-// nodejs异常捕获：
 
+// 找到数组中重复最多的元素
+
+// let ls = [1,2,3,4,5,6,7,1,2,3,4,1,2,2]
+
+// function countMax(ls){
+//     let map = new Map();
+//     for(let i = 0; i < ls.length; i++){
+//         if(map.get(ls[i])){
+//             map.set(ls[i], map.get(ls[i]) + 1)
+//         }else{
+//             map.set(ls[i], 1)
+//         }
+//     }
+    
+//     let max = 0;
+//     let res = 0;
+//     for(let k of map){
+//         if(max < k[1]){
+//             max = k[1]
+//             res = k[0];
+//         }
+//     }
+//     return res;
+// }
+// console.log(countMax(ls))
+
+
+
+
+
+// 看代码：
+// ```js
+// Promise(a).then(b).catch(c).then(d)没有抛出错误会执行什么
+
+// b里抛出错误会执行什么
+// a里抛出错误会执行什么
+// ```
+
+
+
+// let ls = [1,2,3,4]
+// let ls1 = ls.map((item) => {
+// })
+// console.log(ls1)
+
+
+
+
+
+
+// acm输入
+
+// let [r, c] = readline().split(' ').map(e => parseInt(e));
+
+
+
+
+// rgb(1, 2, 255)  ->   #ffffff
+// function rgb2hex(sRGB) {
+//     const rgb = sRGB.match(/\d+/g);
+//     return rgb
+// }
+// let ls = rgb2hex('rgb(1, 2, 255)');
+// let str = '#'
+// for(let i =0; i < ls.length; i++){
+//     str= str + ('0' + Number(ls[i]).toString(16)).slice(-2)  // 不足两位的补够两位
+// }
+
+// console.log(str)
+// // 测试
+// console.log(rgb2hex('rgb(255, 255, 255)'))
 
 
 
