@@ -28,7 +28,6 @@ export function axios({method, url, params, data}){
         xhr.responseType = 'json';
         //4. 处理结果
         xhr.onreadystatechange = function(){
-            //
             if(xhr.readyState === 4){
                 //判断响应状态码 2xx
                 if(xhr.status >= 200 && xhr.status < 300){
@@ -50,7 +49,7 @@ export function axios({method, url, params, data}){
 axios.get = function(url, options){
     //发送 AJAX 请求 GET
     let config = Object.assign(options, {method:'GET', url: url});
-   
+
     return axios(config);
 }
 

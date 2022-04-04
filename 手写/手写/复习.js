@@ -593,6 +593,169 @@
 
 
 
+// function promiseAll(promises){
+//     return new Promise((resolve, reject) => {
+//         if(!Array.isArray(promises)){
+//             throw ('promises要是数组');
+//         }else{
+//             let res = [], count = 0;
+
+//             for(let i = 0; i< promises.length; i++){
+//                 promises[i].then(r => {
+//                     res[i] = r;
+//                     if(count == promises.length - 1){
+//                         resolve(res)
+//                     }
+//                     count++;
+//                 }, err=> {
+//                     reject(err)
+//                 })
+//             }
+//         }
+//     })
+// }
+
+
+
+
+// function promiseRace(promises){
+//     return new Promise((resolve, reject) =>{
+//         if(!Array.isArray(promises)){
+//             throw "promises要是数组"
+//         }else{
+//             for(let i = 0; i < promises.length; i++){
+//                 promises[i].then(r => {
+//                     resolve(r)
+//                 }, err=>{
+//                     reject(err)
+//                 })
+//             }
+//         }
+//     })
+    
+// }
+
+
+
+
+// function deepClone(target, map = new Map()){
+//     if(typeof target !== 'object'){
+//         return target
+//     }
+
+//     const tmp = Array.isArray(target) ? [] : {};
+//     if(map.get(target)){
+//         return map.get(target)
+//     }
+//     map.set(target, tmp);
+    
+//     for(const k in target){
+//         console.log(k)
+//         tmp[k] = deepClone(target[k], map)
+//     }
+//     return tmp;
+// }
+
+// const a = [{
+//     name: 'sunshine_lin',
+//     age: 23,
+//     hobbies: { sports: '篮球', tv: '雍正王朝' },
+//     works: ['2020', '2021']
+// }, 1]
+// const target2 = deepClone(a)
+// console.log(a)
+// console.log(target2)
+
+
+
+
+
+// function limit(arr, count){
+//     new Promise((resolve, reject) => {
+//         let i = 0;
+//         while(i < count){
+//             start();
+//             i++;
+//         }
+//         function start(){
+//             let task = arr.shift();
+//             axios.get(task).finally(() => {
+//                 if(arr.length == 0){
+//                     reject()
+//                 }else{
+//                     i--
+//                 }
+//             })
+//         }
+//     })
+// }
+
+
+
+
+// function father(name){
+//     this.name = name;
+// }
+
+// father.prototype.eat = function(){
+//     console.log(this.name + 'is eating')
+// }
+
+
+// function child(){
+//     father.call(this, child);
+// }
+
+
+// let ls = [1,2,3,4,2,2,1,2,3,4]
+
+// // let res = [...new Set(ls)]
+// // let res = Array.from(new Set(ls))
+// console.log(res)
+
+
+
+
+
+
+// class eventBus{
+//     constructor(){
+//         this.cache = {}
+//     }
+
+//     on(name, fn){
+//         if(this.cache[name]){
+//             this.cache[name].push(fn)
+//         }else{
+//             this.cache[name] = []
+//         }
+//     }
+
+//     off(name, fn){
+//         if(this.cache[name]){
+//             const index = this.cache[name].findIndex((f) => f === fn)
+//             if (index >= 0){
+//                 this.cache[name].splice(index, 1)
+//             }
+//         }
+//     }
+
+//     emit(name){
+//         if(this.cache[name]){
+//             let tasks = this.cache[name].slice();
+//             for(let i of tasks){
+//                 i()
+//             }
+//         }
+        
+//     }
+
+//     once(name, fn){
+//         this.on(name, fn)
+//         this.emit(name)
+//         this.off(name, fn)
+//     }
+// }
 
 
 
@@ -600,6 +763,55 @@
 
 
 
+// function fd(callback, delay){
+//     let timer;
+//     return function(){
+//         if(timer){
+//             clearTimeout(timer)
+//         }
+//         timer = setTimeout(()=> {
+//             callback.apply(this, arguments)
+//             timer = null;
+//         }, delay || 2000)
+//     }
+// }
+
+
+
+// function jl(callback, delay){
+//     let timer;
+//     return function(){
+//         if(timer){
+//             return;
+//         }
+
+//         callback.apply(this, arguments)
+//         timer = setTimeout(() => {
+//             clearTimeout(timer)
+//             timer = null
+//         }, delay || 2000)
+//     }
+// }
+
+
+
+// ls = [1,4,6,8,0,2,4,6,87,9]
+
+// function bubble(ls){
+
+//     for(let i = 0; i < ls.length; i++){
+//         for(let j = 0; j < ls.length - i - 1; j++){
+//             if(ls[j] > ls[j+1]){
+//                 let tmp = ls[j];
+//                 ls[j] = ls[j+1];
+//                 ls[j+1] = tmp
+//             }
+//         }
+//     }
+//     return ls
+// }
+
+// console.log(bubble(ls))
 
 
 
@@ -607,9 +819,112 @@
 
 
 
+// ls = [1,4,6,8,0,2,4,6,87,9]
+// kp(ls, 0, ls.length - 1)
+// console.log(ls)
+
+// function kp(ls, left, right){
+//     if(left < right){
+//         let mid = kp_core(ls, left, right);
+//         kp(ls, left, mid - 1)
+//         kp(ls, mid + 1, right)
+//     }
+// }
+
+
+// function kp_core(ls, left, right){
+//     let tmp = ls[left]
+//     while(left < right){
+//         while(left < right && ls[right] >= tmp){
+//             right--
+//         }
+//         ls[left] = ls[right];
+//         while(left < right && ls[left] <= tmp){
+//             left++
+//         }
+//         ls[right] = ls[left];
+//     }
+//     ls[left] = tmp
+//     return left
+// }
 
 
 
 
+
+
+// function mySetInterval(callback, delay){
+//     let timer;
+//     let interval = () =>{
+//         callback();
+//         timer = setTimeout(interval, delay)
+//     }
+//     setTimeout(interval, delay)
+//     return {
+//         cancel: () => {
+//             clearTimeout(timer)
+//         }
+//     }
+
+// }
+
+// let {cancel}  = mySetInterval(() => {
+//     console.log("11")
+// }, 3000)
+
+
+// setTimeout(cancel, 10000)
+
+
+
+
+// function _new(fn, ...args){
+//     let obj = {};
+//     obj.__proto__ = fn.prototype;
+//     let res = fn.apply(obj, args);
+//     return res instanceof Object ? res : obj;
+// }
+
+
+
+// mySetTimeout(fn, delay){
+//     let timer;
+//     let inter = () =>{
+//         fn();
+//         timer = setTimeout(inter, delay)
+//     }
+
+//     setTimeout(inter, delay)
+//     return {
+//         cancel: () => {
+//             clearTimeout(timer)
+//         }
+//     }
+// }
+
+
+
+
+
+class Father{
+    constructor(name){
+        this.name = name
+    }
+    eat(){
+        console.log(this.name + ' is eating')
+    }
+}
+
+
+class Child extends Father{
+    constructor(name, age){
+        super(name)
+        this.age = age
+    }
+}
+
+let son = new Child('HHH', 21)
+son.eat()
+console.log(son)
 
 

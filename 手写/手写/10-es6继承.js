@@ -1,28 +1,27 @@
-// class Parent{
-//     constructor(name){
-//         this.name = name
-//     }
-
-//     eat(){
-//         console.log(this.name + ' is eating')
-//     }
-// }
-
-
-// class Child extends Parent {
-//     constructor(name, age){
-//         super(name)
-//         this.age = age
-//     }
-// }
+class Parent{
+    constructor(name){
+        this.name = name
+    }
+    eat(){
+        console.log(this.name + ' is eating')
+    }
+}
 
 
-// // 测试
-// let xm = new Child('xiaoming', 12)
+class Child extends Parent {
+    constructor(name, age){
+        super(name)
+        this.age = age
+    }
+}
 
-// console.log(xm.name)
-// console.log(xm.age)
-// xm.eat()
+
+// 测试
+let xm = new Child('xiaoming', 12)
+
+console.log(xm.name)
+console.log(xm.age)
+xm.eat()
 
 
 

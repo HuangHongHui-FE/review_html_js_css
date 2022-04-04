@@ -17,7 +17,6 @@ export default {
         // 调用Grandpa传过来的自定义事件
         this.$listeners.notice();
     }
-    
 }
 </script>
 

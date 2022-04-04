@@ -30,6 +30,7 @@ export default {
                         });
                     }
                 });
+                
                 // 实例化, 实例可以继承Vue的
                 messageBox = new MessageBox();
 

@@ -28,23 +28,6 @@ let vnode = {
         } 
     ] 
 }
-function _render(vnode){
-    if(typeof vnode == 'number'){
-        return String(vnode)
-    }
-    if(typeof vnode == 'string'){
-        return document.createTextNode(vnode)
-    }
-
-    const dom = document.createElement(vnode.tag);
-    Object.keys(vnode.attrs).forEach((item) => {
-        dom.setAttribute(item, vnode.attrs[item])
-    })
-
-    vnode.children.forEach(item => {
-        dom.appendChild(_render(item))
-    })
-}
 //  把上诉虚拟Dom转化成下方真实Dom 
 // <div id="app"> 
 //     <span> 

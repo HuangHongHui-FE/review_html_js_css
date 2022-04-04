@@ -5,7 +5,6 @@
     <button @click="openSuccessMessageBox">SUCCESS</button>
     <button @click="openWarnMessageBox">WARN</button>
     <button @click="openDangerMessageBox">DANGER</button>
-
   </div>
 </template>
 

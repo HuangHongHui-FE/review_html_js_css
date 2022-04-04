@@ -754,3 +754,38 @@
 
 
 
+// 转成千位技术
+// let num = "12345678";
+
+// num = num.split('')
+// let str = '', index = 1;
+// // let reg = /(?!^)(?=(\d{3})+$)/g; 
+
+// // console.log(num.replace(reg, ",")); 
+// for(let i = num.length-1; i >= 0; i--){
+//     if(index % 3 !== 0 || i === 0){
+//         str = num[i] + str
+        
+//     }else{
+//         str ='.' + num[i] + str
+//     }
+//     index++
+// }
+
+// console.log(str)
+
+
+
+
+
+
+// Number.prototype.add = function (val) {
+//     return this.valueOf() + val
+// }
+
+// Number.prototype.minus = function(val){
+//     return this.valueOf() - val
+// }
+
+// console.log((5).add(3).minus(2))
+

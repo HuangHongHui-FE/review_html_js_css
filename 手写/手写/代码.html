@@ -881,9 +881,9 @@
 
 
 
+<!-- 
 
-
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -896,10 +896,14 @@
         // let url = 'http://www.baidu.com?user=HHH&password=PPP'
         // var url = "q=URLUtils.searchParams&topic=api"
         var url = "http://www.baidu.com?user=HHH&password=PPP"
+        // var searchParams = new URLSearchParams(url);
         var searchParams = new URLSearchParams(url);
-        // var searchParams = new URLSearchParams(url).entries;
-        for (let [i, p] of searchParams) {
-            console.log(i, p);
+        
+        const params = Object.fromEntries(searchParams.entries())
+        console.log(params)
+        for (let [i, v] of searchParams) {
+            console.log(i);
+            console.log(v);
         }
 
         searchParams.has("topic") === true; // true
@@ -1152,3 +1156,30 @@
 </html> -->
 
 
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Number.prototype.add = function (val) {
+            console.log(this.valueOf())
+            return this.valueOf() + val
+        }
+
+        Number.prototype.minus = function(val){
+            return this.valueOf() - val
+        }
+
+        console.log((5).add(3).minus(2))
+    </script>
+</body>
+</html>
