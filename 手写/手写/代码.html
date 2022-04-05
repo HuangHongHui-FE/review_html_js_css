@@ -1160,7 +1160,7 @@
 
 
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1182,4 +1182,92 @@
         console.log((5).add(3).minus(2))
     </script>
 </body>
-</html>
+</html> -->
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Foo() {
+            getName = function () { alert (1); };
+            return this;
+        }
+        Foo.getName = function () { alert (2);};
+        Foo.prototype.getName = function () { alert (3);};
+        var getName = function () { alert (4);};
+        function getName() { alert (5);}
+
+        //请写出以下输出结果：
+        Foo.getName();
+        getName();
+        Foo().getName();
+        getName();
+        new Foo.getName();
+        new Foo().getName();
+        new new Foo().getName();
+    </script>
+</body>
+</html> -->
+
+
+
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>1</h3>
+    <script>
+    setTimeout(function() {
+        //settimeout1
+        console.log(2)
+    }, 0);
+    const intervalId = setInterval(function() {
+        //setinterval1
+        console.log(3)
+    }, 0)
+    setTimeout(function() {
+    //settimeout2
+        console.log(10)
+        new Promise(function(resolve) {
+            //promise1
+            console.log(11)
+            resolve()
+        })
+        .then(function() {
+            console.log(12)
+        })
+        .then(function() {
+            console.log(13)
+            clearInterval(intervalId)
+        })
+    }, 0);
+
+    //promise2
+    Promise.resolve()
+    .then(function() {
+        console.log(7)
+    })
+    .then(function() {
+        console.log(8)
+    })
+    console.log(9)
+    </script>
+</body>
+</html> -->
