@@ -277,12 +277,6 @@
 
 <!-- 圣杯布局 -->
 
-
-
-
-
-
-
 <!-- <!DOCTYPE html>
 <html lang="en">
 
@@ -364,7 +358,7 @@
         background-color: aquamarine;
     }
     .right{
-        flex: 1;
+        flex: 1 1 auto;
         height: 200px;
         background-color: brown;
     }
@@ -377,33 +371,6 @@
     
 </body>
 </html> -->
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <a href="#">link1</a>
-    <a href="#">link2</a>
-    <a href="#">link3</a>
-    <script>
-        var taga = document.getElementsByTagName('a')
-        for(let i = 0; i < taga.length; i++){
-            taga[i].onclick = function(){
-                alert(i)
-            }
-        }
-    </script>
-</body>
-</html> -->
-
-
-
 
 
 
@@ -472,82 +439,8 @@
 
 
 
-<!-- 父子元素高度不确定的垂直居中 -->
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    *{
-        margin: 0px;
-        padding: 0px;
-        
-    }
-    body{
-        background-color: blue;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .father{
-        background-color: aqua;
-    }
-
-    .son{
-        background-color: bisque;
-    }
-</style>
-<body>
-    <div class="father">fff
-        <div class="son">aaa</div>
-    </div>
-</body>
-</html> -->
 
 
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    *{
-        margin: 0px;
-        padding: 0px;
-        
-    }
-    body{
-        background-color: blue;
-        position: relative;
-        height: 100vh;
-    }
-    .father{
-        background-color: aqua;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-    }
-
-    .son{
-        background-color: bisque;
-    }
-</style>
-<body>
-    <div class="father">fff
-        <div class="son">aaa</div>
-    </div>
-</body>
-</html> -->
 
 
 
@@ -588,6 +481,8 @@
         <div>5</div>
         <div>6</div>
         <div>7</div>
+        <div>8</div>
+        <div>9</div>
     </div>
 </body>
 </html> -->
@@ -682,41 +577,14 @@
 
 
 
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    img{
-        width: 100px;
-        height: 100px;
-        position: absolute;
-
-    }
-</style>
-<body>
-    <img src="./01.png" alt="">
-
-    <script>
-        let img = document.getElementsByTagName('img')[0]
-        document.addEventListener('mousemove', function(e){
-            img.style.left = e.pageX - 50 + 'px'
-            img.style.top = e.pageY - 50 + 'px'
-        })
-
-        requestAnimationFrame
-    </script>
-</body>
-</html> -->
-
-
 
 
 <!-- 清除浮动 -->
+<!-- 我们前面说过，浮动本质是用来做一些文字混排效果的，但是被我们拿来做布局用，则会有很多的问题出现。 -->
+ 
+<!-- 　　由于浮动元素不再占用原文档流的位置，所以它会对后面的元素排版产生影响，为了解决这些问题，
+此时就需要在该元素中清除浮动。 -->
+
 <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -727,26 +595,27 @@
 </head>
 <style>
     .divcss5{ 
-        width:400px; 
+        width:600px; 
         border:1px solid #F00; 
         background:#FF0;
+        /* overflow: hidden; */
     }
-    .divcss5::after{
+    /* .divcss5::after{
         content: '';
         clear: both;
         display: block;
-    }
+    } */
     .divcss5-left,.divcss5-right{ 
-        width:180px; 
+        width:200px; 
         height:100px; 
         border:1px solid #00F; 
-        background:rgb(243, 198, 198)
+        background:rgb(243, 198, 198);
     } 
     .divcss5-left{ 
-        float:left
+        float:left;
     } 
     .divcss5-right{ 
-        float:right
+        float:left;
     }
 
 
@@ -754,11 +623,13 @@
 <body>
     <div class="divcss5"> 
         <div class="divcss5-left">left浮动</div> 
-        <div class="divcss5-right">right浮动</div> 
-
-    </div> 
+        <div class="divcss5-right">right浮动</div>  -->
+        <!-- <div style="clear: both;"></div> -->
+        
+    <!-- </div> 
 </body>
 </html> -->
+
 
 
 
@@ -857,18 +728,18 @@
   // box2
   
   // 阻止事件捕获
-  box1.addEventListener('click', function(){
-    alert("box1 被触发了");
-  }, true)
+//   box1.addEventListener('click', function(){
+//     alert("box1 被触发了");
+//   }, true)
 
-  box2.addEventListener('click', function(event){
-    alert("box2 被触发了");
-    event.stopPropagation();
-  }, true)
+//   box2.addEventListener('click', function(event){
+//     alert("box2 被触发了");
+//     event.stopPropagation();
+//   }, true)
 
-  box3.addEventListener('click', function(){
-    alert("box3 被触发了");
-  })
+//   box3.addEventListener('click', function(){
+//     alert("box3 被触发了");
+//   })
 
   // 点击box3打印结果
   // box1
@@ -879,46 +750,6 @@
 
 
 
-
-
-<!-- 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <script>
-        // let url = 'http://www.baidu.com?user=HHH&password=PPP'
-        // var url = "q=URLUtils.searchParams&topic=api"
-        var url = "http://www.baidu.com?user=HHH&password=PPP"
-        // var searchParams = new URLSearchParams(url);
-        var searchParams = new URLSearchParams(url);
-        
-        const params = Object.fromEntries(searchParams.entries())
-        console.log(params)
-        for (let [i, v] of searchParams) {
-            console.log(i);
-            console.log(v);
-        }
-
-        searchParams.has("topic") === true; // true
-        searchParams.get("topic") === "api"; // true
-        searchParams.getAll("topic"); // ["api"]
-        searchParams.get("foo") === null; // true
-        searchParams.append("topic", "webdev");
-        searchParams.toString(); // "q=URLUtils.searchParams&topic=api&topic=webdev"
-        searchParams.set("topic", "More webdev");
-        searchParams.toString(); // "q=URLUtils.searchParams&topic=More+webdev"
-        searchParams.delete("topic");
-        searchParams.toString(); // "q=URLUtils.searchParams"
-    </script>
-</body>
-</html> -->
 
 
 
@@ -933,18 +764,29 @@
 </head>
 <body>
     <script>
-        var name = '123'
-        var obj = {
-            name: '456',
-            getName: function(){
-                function printName(){
-                    console.log(this.name)
-                }
-                printName()
-            }
+        var url = "http://www.baidu.com?user=HHH&password=PPP"
+        let host = url.split('?')[0]
+        url = url.split('?')[1]
+        var searchParams = new URLSearchParams(url);
+
+        for (let [i, v] of searchParams) {
+            console.log(i);
+            console.log(v);
         }
 
-        obj.getName()
+        // const params = Object.fromEntries(searchParams.entries())
+        // console.log(params)
+
+        searchParams.has("topic") === true; // true
+        searchParams.get("topic") === "api"; // true
+        searchParams.getAll("topic"); // ["api"]
+        searchParams.get("foo") === null; // true
+        searchParams.append("topic", "webdev");
+        searchParams.toString(); // "q=URLUtils.searchParams&topic=api&topic=webdev"
+        searchParams.set("topic", "More webdev");
+        searchParams.toString(); // "q=URLUtils.searchParams&topic=More+webdev"
+        searchParams.delete("topic");
+        searchParams.toString(); // "q=URLUtils.searchParams"
     </script>
 </body>
 </html> -->
@@ -1002,19 +844,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .transform{
+        .tran{
             width:100px;
             height:100px;
             background: red;
             transition: all 2s ease-out;
         }
-        .transform:hover{
+        .tran:hover{
             transform: rotate(360deg);
         }
     </style>
 </head>
 <body>
-    <div class="transform"></div> 
+    <div class="tran"></div> 
 
 
 </body>
@@ -1104,7 +946,7 @@
 
 
 
-
+<!-- ？？？？？？ -->
 
 <!-- <!DOCTYPE html>
 <html lang="en">
@@ -1188,6 +1030,8 @@
 
 
 
+<!-- // 看不懂 -->
+
 <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1199,31 +1043,31 @@
 <body>
     <script>
         function Foo() {
-            getName = function () { alert (1); };
+            getName = function () { console.log(1); };
             return this;
         }
-        Foo.getName = function () { alert (2);};
-        Foo.prototype.getName = function () { alert (3);};
-        var getName = function () { alert (4);};
-        function getName() { alert (5);}
+        Foo.getName = function () { console.log (2);};
+        Foo.prototype.getName = function () { console.log (3);};
+        var getName = function () { console.log (4);};
+        function getName() { console.log (5);}
 
         //请写出以下输出结果：
-        Foo.getName();
-        getName();
-        Foo().getName();
-        getName();
-        new Foo.getName();
-        new Foo().getName();
-        new new Foo().getName();
+        Foo.getName();  // 2
+        getName();  // 4
+        Foo().getName();  // 1
+        getName();  // 1
+        new Foo.getName();  // 2
+        new Foo().getName();  // 3
+        new new Foo().getName();  // 3
     </script>
 </body>
 </html> -->
 
 
 
-<!-- 
 
-<!DOCTYPE html>
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -1235,18 +1079,14 @@
     <h3>1</h3>
     <script>
     setTimeout(function() {
-        //settimeout1
         console.log(2)
     }, 0);
     const intervalId = setInterval(function() {
-        //setinterval1
         console.log(3)
     }, 0)
     setTimeout(function() {
-    //settimeout2
         console.log(10)
         new Promise(function(resolve) {
-            //promise1
             console.log(11)
             resolve()
         })
@@ -1260,8 +1100,9 @@
     }, 0);
 
     //promise2
-    Promise.resolve()
-    .then(function() {
+    Promise.resolve('aaa')
+    .then(function(res) {
+        console.log(res)
         console.log(7)
     })
     .then(function() {
@@ -1280,7 +1121,7 @@
 
 
 
-
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1293,7 +1134,6 @@
         *{
             padding: 0;
             margin: 0;
-
         }
         body, html{
             height: 100%;
@@ -1313,15 +1153,147 @@
             transform: rotate(-50%, -50%);
         } */
 
-        /* .father{
+        .father{
             text-align: center;
             line-height: 100vh;
-        } */
-
+        }
     </style>
 <body>
     <div class="father">
         <span class="son">居中</span>
     </div>
 </body>
+</html> -->
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Function.prototype.call2 = function(obj){
+            var obj = obj || window;
+
+            var args = [];
+            for(var i=1; i<arguments.length; i++){
+                args.push('arguments[' + i + ']');
+            }
+
+            obj.fn = this;
+            var result = eval('obj.fn('+args+')'); // eval方法拼成一个函数
+            delete obj.fn;
+            return result;
+        }
+
+        var foo = {
+            value: 1
+        };
+
+        function bar(name,age) {
+            console.log(name,age);
+            return {
+                name: name
+            }
+        }
+        console.log(bar.call2(null, "Ailse","18"));
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        Function.prototype.call = function(obj, ...args){
+            var obj = obj || globalThis;
+            // console.log(this)
+
+            obj.fn = this;
+            let res  = obj.fn(...args)
+            delete obj.fn;
+            return res;
+        }
+
+        var foo = {
+            value: 1
+        };
+
+        function bar(name,age) {
+            // console.log(name,age);
+            // console.log(this)
+            return {
+                name: name
+            }
+        }
+        console.log(bar.call(foo, "Ailse","18"));
+    </script>
+</body>
+</html> -->
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<title>document</title> 
+<style> 
+div{
+    width:100px;
+    height:100px;
+    background:red;
+    position:relative;
+    animation:mymove 5s;
+    /* animation-play-state:paused; */
+    /* Safari and Chrome */
+    -webkit-animation:mymove 5s;
+    /* -webkit-animation-play-state:paused; */
+}
+
+@keyframes mymove
+{
+    from {
+        left:0px;
+    }
+    to {
+        left:200px;
+    }
+}
+@-webkit-keyframes mymove /* Safari and Chrome */
+{
+    from {
+        left:0px;
+    }
+    to {
+        left:200px;
+    }
+}
+</style>
+</head>
+<body>
+<p><strong>注意:</strong> animation-play-state属性不兼容 Internet Explorer 9以及更早版本的浏览器.</p>
+<div></div>
+</body>
+
 </html>

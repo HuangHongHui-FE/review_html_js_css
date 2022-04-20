@@ -15,20 +15,26 @@ ls = [2,1,5,6,7,4,3,8,9,0]
 //     }
 //     return ls
 // }
+
 // console.log(xuan(ls))
 
 
 
-// function maopao(ls){
-//     for(let i = 0; i < ls.length; i++){
-//         for(let j = i; j < ls.length; j++){
-//             if(ls[j] < ls[i]){
-//                 let temp = ls[j]
-//                 ls[j] = ls[i]
-//                 ls[i] = temp
+// function xuan(arr){
+//     let min = 0;
+//     for(let i = 0; i < arr.length - 1; i++){
+//         min = i;
+//         for(let j = i+1; j < ls.length; j++){
+//             if(arr[j] < arr[min]){
+//                 min = j
 //             }
 //         }
+
+//         let tmp = ls[i];
+//         ls[i] = ls[min];
+//         ls[min] = tmp;
 //     }
 //     return ls
 // }
-// console.log(maopao(ls))
+
+console.log(xuan(ls))

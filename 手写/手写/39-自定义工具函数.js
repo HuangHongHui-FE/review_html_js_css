@@ -14,6 +14,22 @@ let ls = [1,2,3,4,5]
 //     return res
 // }
 
+// Array.prototype.map = function(callback){
+//     let res = [];
+//     for(let i = 0; i < this.length; i++){
+//         res.push(callback(this[i], i))
+//     }
+//     return res
+// }
+
+// let res = ls.map((item, index) => {
+//     return item*2
+// })
+// console.log(res)
+// console.log(ls)
+
+
+
 
 
 // filter
@@ -34,6 +50,20 @@ let ls = [1,2,3,4,5]
 //     }
 //     return res
 // }
+
+
+
+// Array.prototype.filter = function(callback){
+//     let res = [];
+//     for(let i = 0 ; i < this.length; i++){
+//         if(callback(this[i], i)){
+//             res.push(this[i])
+//         }
+//     }
+//     return res
+// }
+
+
 
 // console.log(filter(ls, (item, index) => {
 //     return index == 1 || index == 2
@@ -67,10 +97,11 @@ let ls = [1,2,3,4,5]
 
 // reduce
 
-// let res = ls.reduce((result, value) => {
-//     return result + value
-// }, 0)
-// console.log(res)
+let res = ls.reduce((result, value) => {
+    // console.log(result)
+    return result + value
+}, 0)
+console.log(res)
 
 // function reduce(ls, callback, initValue){
 //     let res = initValue;
@@ -110,10 +141,10 @@ let ls = [1,2,3,4,5]
 
 // concat两种传参方式
 
-// const ls1 = [1,2,3]
-// // ls = ls.concat(ls1)
-// ls = ls.concat(ls1, 1, 1, 1)
-// console.log(ls)
+const ls1 = [1,2,3]
+// ls = ls.concat(ls1)
+ls = ls.concat(ls1, 1, 1, 1)
+console.log(ls)
 
 // function concat(ls, ...args){
 //     let res = ls
@@ -132,33 +163,33 @@ let ls = [1,2,3,4,5]
 
 
 
-// 深拷贝
-function deepClone(target){
-    if(typeof target === 'object' && target !== null){
-        const res = Array.isArray(target) ? []: {};
-        for(let key in target){
-            if(target.hasOwnProperty(key)){
-                res[key] = deepClone(target[key])
-            }
-        }
-        return res
-    }else{
-        return target
-    }
-}
-// 测试
-const obj = {
-    a: 1,
-    b: ['e', 'f', 'g'],
-    c: {h: 20},
-    // JSON不能克隆方法
-    d: function(){}
-};
+// // 深拷贝
+// function deepClone(target){
+//     if(typeof target === 'object' && target !== null){
+//         const res = Array.isArray(target) ? []: {};
+//         for(let key in target){
+//             if(target.hasOwnProperty(key)){
+//                 res[key] = deepClone(target[key])
+//             }
+//         }
+//         return res
+//     }else{
+//         return target
+//     }
+// }
+// // 测试
+// const obj = {
+//     a: 1,
+//     b: ['e', 'f', 'g'],
+//     c: {h: 20},
+//     // JSON不能克隆方法
+//     d: function(){}
+// };
 
-// 递归拷贝
-const result = deepClone(obj)
+// // 递归拷贝
+// const result = deepClone(obj)
 
-result.b = ['a', 'b', 'c']
-console.log(obj)
-console.log(result)
+// result.b = ['a', 'b', 'c']
+// console.log(obj)
+// console.log(result)
 

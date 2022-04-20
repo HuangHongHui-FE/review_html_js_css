@@ -1,11 +1,9 @@
 function Parent(name){
     this.name = name
 }
-
 Parent.prototype.eat = function(){  // 将需要复用，共享的代码定义在父类原型上
     console.log(this.name + ' is eating')
 }
-
 function Child(name, age){
     Parent.call(this, name)
     this.age = age
@@ -20,6 +18,7 @@ Child.prototype.contructor = Child
 Child.prototype.study = function(){
     console.log(this.name + ' is studying')
 }
+
 // 测试
 let Child1 = new Child('xiaoming', 16)
 console.log(Child1.name)  // xiaoming

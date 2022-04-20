@@ -906,25 +906,40 @@
 
 
 
-class Father{
-    constructor(name){
-        this.name = name
-    }
-    eat(){
-        console.log(this.name + ' is eating')
-    }
-}
+// class Father{
+//     constructor(name){
+//         this.name = name
+//     }
+//     eat(){
+//         console.log(this.name + ' is eating')
+//     }
+// }
 
 
-class Child extends Father{
-    constructor(name, age){
-        super(name)
-        this.age = age
-    }
-}
+// class Child extends Father{
+//     constructor(name, age){
+//         // 这一步相当于调用父组件的constructor方法
+//         super(name)
+//         this.age = age
+//     }
+// }
 
-let son = new Child('HHH', 21)
-son.eat()
-console.log(son)
+// let son = new Child('HHH', 21)
+// son.eat()
+// console.log(son)
+
+// let father = new Father("bbb")
+// console.log(father)
+// console.log(son)
+
+
+
+
+let a = 0
+console.log(Object.prototype.toString.call(a))
+
+
+
+
 
 

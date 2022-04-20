@@ -1,19 +1,19 @@
 // 1. try   catch
-try{
-    throw new Error("这里出错了！");
-}catch(e){
-    console.log(e)
-}
+// try{
+//     throw new Error("这里出错了！");
+// }catch(e){
+//     console.log(e)
+// }
 
 // 2. callback.
-var fs = require("fs");
-fs.readFile("./a.json",'utf8', function(error, result) {
-  if (error) {
-    console.log(error);
-    return;
-  }
-  console.log(JSON.parse(result));
-});
+// var fs = require("fs");
+// fs.readFile("./a.json",'utf8', function(error, result) {
+//   if (error) {
+//     console.log(error);
+//     return;
+//   }
+//   console.log(JSON.parse(result));
+// });
 
 
 // 3. promise（不能捕获异步）
@@ -22,8 +22,9 @@ fs.readFile("./a.json",'utf8', function(error, result) {
 
 // process(可以捕获异步)
 process.on('uncaughtException', (e) => {
-  console.log('我能进来，说明可以处理异常');
   console.log(e);
+  console.log('我能进来，说明可以处理异常');
+  
 });
 
 function testFunc() {

@@ -9,12 +9,12 @@ console.log(res1)
 // 2. 这样都变成了字符串类型
 let str2 = JSON.stringify(ls)
 let res2 = "[" + str2.replace(/\[|\]/g, '') + "]"
-console.log(res2)
+console.log(JSON.parse(res2))
 
 
 // 3. 递归
 let result = [];
-let fn = function(ary) {
+function fn(ary) {
     for(let i = 0; i < ary.length; i++){
         let item = ary[i];
         if (Array.isArray(item)){

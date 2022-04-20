@@ -1,3 +1,4 @@
+
 document.domain = 'test.com'  // 设置domain相同
 
 // 通过iframe嵌入跨域的页面

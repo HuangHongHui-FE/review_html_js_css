@@ -27,7 +27,7 @@
         // console.log(obj[n])
 
 
-        // 2.这样可以取不出Symbol
+        // 2.这样取不出Symbol
         // let obj = {
         //     name: 'zhufeng',
         //     age: 12,
@@ -84,7 +84,6 @@
         // arr[Symbol.iterator] = function(){
         //     let index = 0, self = this;
         //     // console.log(this)
-
         //     return {
         //         next(){
         //             if(index > self.length - 1){
@@ -190,16 +189,17 @@
         //         }, 1000);
         //     });
         // }
+        
 
         // // 链式调用
         // (async () => {
         //     let obj = {};
         //     obj[Symbol.asyncIterator] = async function* (){
-        //         // console.log('1Start');
+        //         console.log('1Start');
         //         yield func1();
-        //         // console.log('2Start');
+        //         console.log('2Start');
         //         yield func2();
-        //         // console.log('3Start');
+        //         console.log('3Start');
         //         yield func3();
         //     };
 
@@ -223,18 +223,37 @@
 
 
         // 隐式原型设置
-        class Fn{
-            constructor(){
-                this.x = Symbol("x");
+        // class Fn{
+        //     constructor(){
+        //         this.x = Symbol("x");
+        //     }
+        // }
+
+        // let f = new Fn();
+        // console.log(f instanceof Fn);  // true
+
+        // let arr = [1, 2, 3];
+        // // Object.setPrototypeOf(arr, Fn.prototype);  // arr.__proto__ = Fn.prototype
+        // console.log(arr instanceof Fn);  // false   // true
+
+
+        // 9. 定义类的石油属性
+        class Login {
+            constructor(username, password) {
+                const PASSWORD = Symbol()
+                this.username = username
+                this[PASSWORD] = password
+            }
+            checkPassword(pwd) { 
+                return this[PASSWORD] === pwd 
             }
         }
 
-        let f = new Fn();
-        console.log(f instanceof Fn);  // true
+        const login = new Login('123456', 'hahah')
 
-        let arr = [1, 2, 3];
-        // Object.setPrototypeOf(arr, Fn.prototype);  // arr.__proto__ = Fn.prototype
-        console.log(arr instanceof Fn);  // false   // true
+        console.log(login.PASSWORD) // 报错
+        console.log(login[PASSWORD]) // 报错
+        console.log(login[PASSWORD]) // 报错
 
     </script>
 </body>

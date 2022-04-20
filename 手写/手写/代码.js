@@ -757,11 +757,14 @@
 // 转成千位技术
 // let num = "12345678";
 
+
 // num = num.split('')
 // let str = '', index = 1;
 // // let reg = /(?!^)(?=(\d{3})+$)/g; 
 
+
 // // console.log(num.replace(reg, ",")); 
+
 // for(let i = num.length-1; i >= 0; i--){
 //     if(index % 3 !== 0 || i === 0){
 //         str = num[i] + str
@@ -848,3 +851,232 @@
 //     console.log('promise2');
 // });
 // console.log('script end');
+
+
+
+// 同步的：
+// 中间件函数
+// 定义几个中间间函数
+// const m1 = (req, res, next) => {
+//   console.log('m1 run')
+//   next()
+// }
+ 
+// const m2 = (req, res, next) => {
+//     setTimeout(() => {
+//         console.log('m2 run')
+//     }, 2000)
+  
+//   next()
+// }
+ 
+// const m3 = (req, res, next) => {
+//   console.log('m3 run')
+//   next()
+// }
+ 
+// // 中间件集合
+// const middlewares = [m1, m2, m3]
+ 
+// function useApp (req, res) {
+//   const next = () => {
+//     const middleware = middlewares.shift()
+//     if (middleware) {
+//       // 将返回值包装为Promise对象
+//       return Promise.resolve(middleware(req, res, next))
+//     }else {
+//       return Promise.resolve("end")
+//     }
+//   }
+//   next()
+// }
+ 
+// // 第一次请求流进入
+// useApp()
+
+
+
+// const m1 = async (req, res, next) => {
+//     // something...
+//     setTimeout(() => {
+//         console.log('node1')
+//     }, 2000)
+//     let result = await next();
+//   }
+  
+//   const m2 = async (req, res, next) => {
+//     // something...
+//     setTimeout(() => {
+//         console.log('node2')
+//     }, 2000)
+//     let result = await next();
+//   }
+//   const m3 = async (req, res, next) => {
+//     // something...
+//     // console.log('node3')
+//     let result = await next();
+//     return result;
+//   }
+ 
+// const middlewares = [m1, m2, m3];
+ 
+// function useApp (req, res) {
+//     const next = () => {
+//       const middleware = middlewares.shift()
+//       if (middleware) {
+//         return Promise.resolve(middleware(req, res, next))
+//       }else {
+//         return Promise.resolve("end")
+//       }
+//     }
+//     next()
+//   }
+// // 启动中间件
+// useApp()
+
+
+
+
+
+// 图片是否加载成功
+// 1、加载成功
+
+// 图片加载成功时触发load事件，失败不会触发
+// document.addEventListener("load", function (event) {
+//   var ev = event ? event : window.event;
+//   var elem = ev.target;
+
+//   if (elem.tagName.toLowerCase() == 'img') {  
+//     //  图片加载成功
+//     //  do something...
+//   }
+// }, true);
+ 
+
+// // 2、加载失败
+
+// // 图片加载成功时触发error事件，成功不会触发
+// document.addEventListener("error", function (event) {
+//   var ev = event ? event : window.event
+//   var elem = ev.target;
+
+//   if (elem.tagName.toLowerCase() == 'img') { 
+//     // 图片加载失败  --替换为默认 
+//     elem.src = "../img/default.jpg";
+//   }
+// }, true);
+
+
+
+
+// let obj = {a: 1, b: 2}
+// console.log(Object.keys(obj))
+
+
+
+
+
+
+
+// let arr = [1,2,3,4,5]
+
+// Array.prototype.reverse = function(){
+//     let left = 0, right = this.length - 1;
+//     while(left <= right){
+//         let tmp = this[left];
+//         this[left] = this[right];
+//         this[right] = tmp
+//         left++;
+//         right--
+//     }
+// }
+
+// console.log(arr.reverse())
+// console.log(arr)
+
+
+
+
+
+// 对象的深度对比
+
+// function isObject(obj) {
+//     return typeof obj === 'object' && null !== obj;
+// }
+
+// function compare(obj1, obj2) {
+//     // 1.判断是不是引用类型
+//     if (!isObject(obj1) || !isObject(obj2)) {
+//         return obj1 === obj2
+//     }
+//     // 2.比较是否为同一个内存地址
+//     if (obj1 === obj2) return true
+//     // 3.比较 key 的数量
+//     const obj1_len = Object.keys(obj1).length
+//     const obj2_len = Object.keys(obj2).length
+//     if (obj1_len !== obj2_len) return false
+//     // 4.比较 value 的值
+//     for (let key in obj1) {
+//         const result = compare(obj1[key], obj2[key])
+//         if (!result) return false
+//     }
+//     return true
+// }
+
+// let obj1 = {a: 1, b: 2}
+// let obj2 = {a: 1, b: 2}
+
+
+// console.log(compare(obj1, obj2))
+
+
+
+
+
+// 两个耗时操作同时进行
+// const fs = require( "fs" );
+// function foo() {
+//     // 另一个读取相同mp3文件任务
+//     function beginAnotherTask() {
+//         let anotherFile = fs.createReadStream( "./ipx.mp3" );
+//         anotherFile.on( "data", function ( dataChunk ) {
+//             console.log( "读取到%d字节", dataChunk.length );
+//         } )
+//     }
+//     process.nextTick( beginAnotherTask );
+// }
+// // 定义一个读取mp3文件的任务
+// let file = fs.createReadStream( "./ipx.mp3" );
+// file.on( "data", function ( dataChunk ) {
+//     console.log( "从ipx.mp3文件中读取到%d字节", dataChunk.length );
+// })
+
+// // 执行另一个读取的任务
+// foo();
+
+
+
+// 看promise状态
+// const test = new Promise(r => {
+//     setTimeout(() => {
+//         r(1);
+//     }, 1000);
+// }).then(() => console.log(test)); // pending
+
+
+// setTimeout(() => {
+//     console.log(test); // fullfilled
+// }, 2000);
+
+
+
+
+// function fn(){
+//     console.log(b)
+// }
+// function bar(fn){
+//     let b=1
+//     fn()
+// }
+// bar(fn)
+
