@@ -125,5 +125,9 @@
 // . 匹配除了回车和换行的所有字符
 // let reg = /./g;
 // let str = 'This\nis\ra\ttest';
-
 // console.log(str.match(reg))
+
+
+
+
+
