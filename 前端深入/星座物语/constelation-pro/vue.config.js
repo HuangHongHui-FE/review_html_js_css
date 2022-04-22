@@ -6,7 +6,7 @@ module.exports = {
         target: "http://web.juhe.cn:8080/",
         changeOrigin: true,
         ws: true,
-        secure: false,
+        secure: false,  // 不检查https
         pathRewrite: {
           '^/api': ''
         }

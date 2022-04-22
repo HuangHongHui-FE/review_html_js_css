@@ -17,6 +17,7 @@
 
 <script>
 
+// 组件封装
 import TabIcon from './Icon';
 
 import tabData from '@/datas/tab';

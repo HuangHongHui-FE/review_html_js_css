@@ -1,13 +1,13 @@
 <template>
-  <router-link
-    :to="path"
-    class="tab-icon"
-  >
-    <i class="icon">{{ iconText }}</i>
-    <p class="text">
-      <slot></slot>
-    </p>
-  </router-link>
+    <router-link
+      :to="path"
+      class="tab-icon"
+    >
+      <i class="icon">{{ iconText }}</i>
+      <p class="text">
+        <slot></slot>
+      </p>
+    </router-link>
 </template>
 
 <script>
@@ -45,7 +45,7 @@ export default {
       transition: color .5s;
     }
 
-    // 这个类，当路由被选中的时候会显示这样
+    // 这个类，当路由被选中的时候会显示这样！！！
     &.router-link-active {
       .icon {
         background-color: #DB7093;

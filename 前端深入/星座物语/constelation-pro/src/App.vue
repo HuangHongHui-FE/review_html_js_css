@@ -8,6 +8,7 @@
         <component :is="Component" />
       </keep-alive>
     </router-view>
+
     <!-- 底部的tab -->
     <tab />
   </div>
@@ -36,11 +37,13 @@
             state = store.state,
             router = useRouter();
       
+      // 刷新页面，回到跟路由
       router.push('/');
       store.commit('setField', 'today');
       
       watch(() => {
-        return router.currentRoute.value.name;
+        // console.log(router)  // 当前的路由信息
+        return router.currentRoute.value.name;   // return 出去的为value
       }, (value) => {
         store.commit('setField', value);
       });

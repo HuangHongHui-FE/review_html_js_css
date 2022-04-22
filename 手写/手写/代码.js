@@ -1080,3 +1080,43 @@
 // }
 // bar(fn)
 
+
+
+// var p = new Promise((resolve, reject) => {
+//         // resolve 既是函数也是参数，它用于处理成功的； 在异步任务成功的时候，去调用resolve
+//         // reject 既是函数也是参数，它用于处理失败的； 在异步任务失败的时候，去调用reject
+//         resolve()
+// }).then((res) => {
+//     return res
+//     // console.log(res)
+// }).then((res) => {
+//     console.log(res)
+// })
+
+// console.log(p)
+
+
+
+
+
+
+// fn();
+// var fn=function(){
+//     console.log("函数体没有提前")
+// }
+//结果：fn is not a function
+
+
+
+
+
+// console.log(a);  // [Function: a]
+// function a(){
+//     console.log("学习成功")
+// }
+// var a="坚持学习";
+
+
+
+
+
