@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas1" width="600" height="600">
+        这里的内容，正常的画布不会显示，您的浏览器不支持canvas
+    </canvas>
+
+
+    <script>
+        let canvas1 = document.querySelector('#canvas1');
+        let ctx = canvas1.getContext('2d');
+        // console.log(ctx)
+
+        // ctx.beginPath()  // 下笔，重置当前路径
+        // 绘制的起始点
+        ctx.moveTo(50,50)
+        // 设置经过某个位置
+        ctx.lineTo(50, 300)
+        ctx.lineTo(300, 100)
+        ctx.lineTo(300, 250)
+        ctx.closePath()  // 松开笔， 设置线返回开始点
+
+
+        // console.log(ctx.lineCap)  // 平角默认
+        ctx.lineCap = 'round'  // 起始路径的线段边缘设置为圆角
+        // ctx.lineJoin = 'round'  // 拐角的边缘部分圆角
+        // ctx.miterLimit = 2  // 裁剪拐角，设置最大的斜接长度
+
+
+        ctx.lineWidth = 20;
+        ctx.strokeStyle = 'salmon';
+        ctx.stroke();
+
+        // ctx.fill()  // 注意带与不带的差别
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- canvas三要素：
+                id: 唯一标识
+                width: 与style的宽高有区别
+                height: 
+                canvas仅仅是一个标签，要绘制内容，必须用js绘制
+         -->
+    <canvas id="canvas1" width="600" height="600">
+        这里的内容，正常的画布不会显示，您的浏览器不支持canvas
+    </canvas>
+
+
+    <script>
+        let canvas1 = document.querySelector('#canvas1');
+
+        // 上下文对象
+        let ctx = canvas1.getContext('2d');
+        // console.log(ctx)
+
+        ctx.rect(50,50, 300, 300)  // 设置x, y, 宽，高
+
+        // 填充
+        ctx.fillStyle = 'aqua';
+        ctx.fill()  // 渲染到页面上
+
+        // 描边
+        ctx.lineWidth = 20;
+        ctx.strokeStyle = 'salmon';
+        ctx.stroke();
+    </script>
+</body>
+</html>

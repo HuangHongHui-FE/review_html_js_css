@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas1" width="600" height="600">
+        这里的内容，正常的画布不会显示，您的浏览器不支持canvas
+    </canvas>
+
+
+    <script>
+        let canvas1 = document.querySelector('#canvas1');
+        let ctx = canvas1.getContext('2d');
+        
+        let img = new Image();
+        img.src = './img/01.png';
+        
+        let img2 = new Image();
+        img2.src = './img/02.png'
+
+        // ctx.drawImage(图片， 图像裁剪的位置x, y, 裁剪的宽度， 高度， x位置， y位置， 宽度， 高度)
+
+        img.onload = function(){
+            ctx.drawImage(img, 50, 50, 400, 400)
+            console.log(img)
+        }
+
+        img2.onload = function(){
+            ctx.drawImage(img2, 100, 300)  // 后面两个参数为位置， 宽度，高度
+            // console.log(img2)
+            ctx.font = "20px 微软雅黑"
+            ctx.fillText('图片', 200, 200)
+        }
+
+    </script>
+</body>
+</html>
