@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 主线程, 第二个参数，用来区分不同的worker
+        var myWorker = new Worker('worker.js', { name : 'myWorker' });
+        // Worker 线程
+        self.name // myWorker
+    </script>
+</body>
+</html>
