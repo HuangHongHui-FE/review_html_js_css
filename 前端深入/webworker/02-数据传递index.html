@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebWork</title>
+</head>
+<body>
+    <div id="msg"></div>
+    <button>111</button>
+    <script>
+        var w = new Worker('./01.js');
+        // 1. UI发,js接收
+        w.postMessage('123')
+
+
+        // 2. UI收，js发
+        w.onmessage = function(event){
+            console.log("接受Worker:" + event.data)
+        }
+
+        // 3. 不能再02.js里操作DOM/BOM
+        w.onmessage = function(event){
+            let res = event.data;
+            console.log(res)
+            let msg = document.getElementById('msg');
+            msg.innerHTML = res
+        }
+    </script>
+    <button>222</button>
+</body>
+</html>
