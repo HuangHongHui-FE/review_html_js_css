@@ -56,7 +56,7 @@ axios.get = function(url, options){
 axios.post = function(url, options){
     //发送 AJAX 请求 GET
     let config = Object.assign(options, {method:'POST', url: url});
-   
+    
     return axios(config);
 }
 

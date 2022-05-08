@@ -1,49 +1,56 @@
-const PENDING = 'pending';
-const FULFILLED = 'fulfilled';
-const REJECTED = 'rejected';
+class MyPromise {
+  static PENDING = 'pending'
+  static FULFILLED = 'fulfilled'
+  static REJECTED = 'rejected'
 
-class PromiseH2O {
-    constructor(executor) {
-        this.status = PENDING;
-        this.value = undefined;
-        this.reason = undefined;
-        this.onFulfilledCallbacks = [];
-        this.onRejectedCallbacks = [];
-        
-        let resolve = (value) => {
-            if (this.status === PENDING) {
-                this.status = FULFILLED;
-                this.value = value;
-                this.onFulfilledCallbacks.forEach((fn) => fn(this.value));
-            }
-        };
-        
-        let reject = (reason) => {
-            if (this.status === PENDING) {
-                this.status = REJECTED;
-                this.reason = reason;
-                this.onRejectedCallbacks.forEach((fn) => fn(this.reason));
-            }
-        };
-        
-        try {
-            executor(resolve, reject);
-        } catch (error) {
-            reject(error);
-        }
-    }
-    
-    then(onFulfilled, onRejected) {
-      // 如果调用的时候状态已经确定下来了,就直接执行:
-      if(this.status === FULFILLED && onFulfilled) onFulfilled(this.value)
-      if(this.status === REJECTED && onRejected) onFulfilled(this.reason)
-      if(this.status === PENDING) {
-        this.onFulfilledCallbacks.push(onFulfilled)
-        this.onRejectedCallbacks.push(onRejected)
+  constructor (executor) {
+    let self = this
+    // 初始状态为等待
+    self.state = MyPromise.PENDING
+    self.value = undefined
+    self.reason = undefined
+    this.onResolvedCallbacks = []
+    this.onRejectedCallbacks = []
+    // 成功
+    let resolve = function (value) {
+      if (self.state === MyPromise.PENDING) {
+        self.state = MyPromise.FULFILLED
+        self.value = value
+        self.onResolvedCallbacks.forEach(fn => fn())
       }
     }
-
-    catch() {
-
+    // 失败
+    let reject = function (reason) {
+      if (self.state === MyPromise.PENDING) {
+        self.state = MyPromise.REJECTED
+        self.reason = reason
+        self.onRejectedCallbacks.forEach(fn => fn())
+      }
     }
+    // 立即执行
+    try {
+      executor(resolve, reject)
+    } catch (err) {
+      reject(err)
+    }
+  }
+
+  then (onFulfilled, onRejected) {
+    // 同步直接处理
+    if (this.state === MyPromise.FULFILLED) {
+      onFulfilled(this.value)
+    }
+    if (this.state === MyPromise.REJECTED) {
+      onRejected(this.reason)
+    }
+    // 异步将函数放入数组，待resolve或reject时处理
+    if (this.state === MyPromise.PENDING) {
+      this.onResolvedCallbacks.push(() => {
+        onFulfilled(this.value)
+      })
+      this.onRejectedCallbacks.push(() => {
+        onRejected(this.reason)
+      })
+    }
+  }
 }

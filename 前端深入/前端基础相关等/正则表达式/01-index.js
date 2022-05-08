@@ -21,11 +21,11 @@
 
 
 // 3. 这种情况，当v变量的时候只能使用这种
-// let v = 'Test';
-// let reg = new RegExp(v, 'i');
-// let str = "This is a test";
-// console.log(reg.test(str))
-// console.log(str.match(reg))
+let v = 'Test';
+let reg = new RegExp(v, 'i');
+let str = "This is a test";
+console.log(reg.test(str))
+console.log(str.match(reg))
 
 
 

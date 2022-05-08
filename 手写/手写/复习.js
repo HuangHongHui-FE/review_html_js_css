@@ -935,11 +935,140 @@
 
 
 
-let a = 0
-console.log(Object.prototype.toString.call(a))
+// let a = 0
+// console.log(Object.prototype.toString.call(a))
+
+
+
+
+
+// let ls = [1,2,3,4]
+// Array.prototype.reduce = function(callback, args){
+//     let pre = args, res = 0;
+//     for(let i = 0; i < this.length; i++){
+//         let cur = this[i]
+//         res = callback(pre, cur)
+//         pre = res;
+//     }
+//     return res
+// }
+
+// let total = ls.reduce((pre, cur) => {
+//     return pre + cur
+// }, 0)
+
+// console.log(total)
+
+
+
+
+// 大数相加
+// function big(a, b){
+//     let l1 = a.length - 1, l2 = b.length - 1;
+//     let total = '', m = 0;
+//     while(l1>=0 || l2>=0 || m){
+//         let t = (parseInt(a[l1]) || 0) + (parseInt(b[l2]) || 0) + m
+//         total = t % 10 + total;
+//         m = t > 9 ? 1: 0;
+//         l1--, l2--
+//     }
+//     return total
+// }
+
+
+// console.log(big('123', '234'))
+
+
+
+
+// function dc(target, map = new Map()){
+//     if(typeof target != 'object'){
+//         return target
+//     }
+
+//     let tmp = Array.isArray(target) ? [] : {};
+//     if(map.has(target)){
+//         return map.get(target)
+//     }else{
+//         map.set(target)
+//     }
+//     for(let k in target){
+//         tmp[k] = dc(target[k], map)
+//     }
+//     return tmp
+// }
+
+// const a = {
+//     name: 'sunshine_lin',
+//     age: 23,
+//     hobbies: { sports: '篮球', tv: '雍正王朝' },
+//     works: ['2020', '2021']
+// }
+// a.key = a // 环引用
+// const b = dc(a)
+// a.works[2] = '0'
+// console.log(b)
+// console.log(a)
 
 
 
 
 
 
+
+
+// class queue{
+//     constructor(){
+//         this.stack1 = [];
+//         this.stack2 = [];
+//     }
+
+//     jin(item){
+//         this.stack1.push(item);
+//         return this.stack1.length + this.stack2.length
+//     }
+    
+//     chu(){
+//         if(this.stack2.length == 0){
+//             while(this.stack1.length > 0){
+//                 this.stack2.push(this.stack1.pop())
+//             }
+//             return this.stack2.pop();
+//         }else{
+//             return this.stack2.pop();
+//         }
+//     }
+// }
+
+// let arr = new queue();
+// console.log(arr.jin(0))
+// arr.jin(2)
+// arr.jin(3)
+
+// // arr.chu()
+// console.log(arr.chu())
+
+
+
+
+
+// 字符串压缩
+let str = 'aaaabbcccd'
+
+console.time('aa')
+function ys(str){
+    let res = ''
+    let n = 1;
+    for(let i = 0; i < str.length-1; i++){
+        if(str[i] != str[i+1]){
+            res = res + n + str[i]
+            n = 1
+        }else{
+            n++
+        }
+    }
+    res= res + n + str[str.length - 1]
+    return res
+}
+console.timeEnd('aa')
+console.log(ys(str))

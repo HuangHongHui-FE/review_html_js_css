@@ -1119,4 +1119,121 @@
 
 
 
+// new 
 
+
+
+// 对象将key转大写字母换成_小写
+// const address = [
+//   {
+//     addressId: 1,
+//     addressName: '北京市',
+//     subDistrict: [
+//       {
+//         addressId: 11,
+//         addressName: '海淀区',
+//         subDistrict: [
+//           {
+//             addressId: 111,
+//             addressName: '中关村',
+//           },
+//         ],
+//       },
+//       {
+//         addressId: 12,
+//         addressName: '朝阳区',
+//       },
+//     ],
+//   },
+//   {
+//     addressId: 2,
+//     addressName: '河北省',
+//   },
+// ];
+
+
+// function convert(arr) {
+//   let newArr = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     let obj = arr[i];
+//     let newObj = {};
+//     for (const key in obj) {
+//       const newKey = key.replace(/([A-Z])/g, '_$1').toLowerCase();
+//       if (Array.isArray(obj[key])) {
+//         newObj[newKey] = convert(obj[key]);
+//       } else {
+//         newObj[newKey] = obj[key];
+//       }
+//     }
+//     newArr.push(newObj);
+//   }
+//   return newArr;
+// }
+
+
+
+// var a = function () { this.b = 3 };
+// var c = new a();
+// a.prototype.b = 9;
+// var b = 7;
+// a();
+// // 给出下面的执行结果
+// console.log(b);
+// console.log(c.b);
+
+
+
+// setTimeout(function() {
+//     console.log("setTimeout");
+// })
+// new Promise(function(resolve) {
+//     console.log("promise");
+//     for (var i = 0; i < 10000; i++) {
+//       if(i === 10) {
+//           console.log("for");
+//       }
+//       if(i === 9999) {
+//           resolve("resolve");
+//       }
+//     }
+// }).then(function(val){
+//     console.log(val)
+// });
+// console.log("console");
+
+
+
+
+
+// const newObj = new Proxy(obj, {
+//     get: function(target, key, receive){
+
+//     },
+//     set: function(target, key, value, receive){
+        
+//     }
+// })
+
+
+
+
+
+
+let arr = [1,[2,[3,[4]],5]], n = 2
+let ls = []
+
+for(let i = 0; i < n; i++){
+    for(let j = 0; j < arr.length; j++){
+        if(Array.isArray(arr[j])){
+            for(let k = 0; k < arr[j].length; k++){
+                ls.push(arr[j][k])
+            }
+            // ls.push(...arr[j])
+        }else{
+            ls.push(arr[j])
+        }
+    }
+    arr = ls
+    ls = []
+}
+console.log(arr)

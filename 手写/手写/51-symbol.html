@@ -66,7 +66,7 @@
         // let n = Symbol.for("AAA");
         // console.log(Symbol.for('AAA') === n)  // true
 
-        // 拿到注册表的唯一值
+        // // 拿到注册表的唯一值
         // console.log(Symbol.keyFor(n));
 
 
@@ -162,8 +162,8 @@
         // console.log(itor.next())  // 输出'A' {done: false, value: 10}
         // console.log(itor.next())  // 输出'B' {done: false, value: 20}
         // console.log(itor.next())  // 输出'C' {done: false, value: 20}
-        // console.log(itor.next())  // 输出'D' {done: false, value: 40}
-        // console.log(itor.next())  // 
+        // console.log(itor.next())  // 输出'D' {done: true, value: 40}
+        // console.log(itor.next())
 
 
 
@@ -192,21 +192,21 @@
         
 
         // // 链式调用
-        // (async () => {
-        //     let obj = {};
-        //     obj[Symbol.asyncIterator] = async function* (){
-        //         console.log('1Start');
-        //         yield func1();
-        //         console.log('2Start');
-        //         yield func2();
-        //         console.log('3Start');
-        //         yield func3();
-        //     };
+        (async () => {
+            let obj = {};
+            obj[Symbol.asyncIterator] = async function* (){
+                console.log('1Start');
+                yield func1();
+                console.log('2Start');
+                yield func2();
+                console.log('3Start');
+                yield func3();
+            };
 
-        //     for await (let x of obj){  //这个格式不能变
-        //         console.log(x)
-        //     }
-        // })();
+            for await (let x of obj){  //这个格式不能变
+                console.log(x)
+            }
+        })();
 
 // 下面不对
         // func1().then(res => {
@@ -238,22 +238,22 @@
 
 
         // 9. 定义类的石油属性
-        class Login {
-            constructor(username, password) {
-                const PASSWORD = Symbol()
-                this.username = username
-                this[PASSWORD] = password
-            }
-            checkPassword(pwd) { 
-                return this[PASSWORD] === pwd 
-            }
-        }
+        // class Login {
+        //     constructor(username, password) {
+        //         const PASSWORD = Symbol()
+        //         this.username = username
+        //         this[PASSWORD] = password
+        //     }
+        //     checkPassword(pwd) { 
+        //         return this[PASSWORD] === pwd 
+        //     }
+        // }
 
-        const login = new Login('123456', 'hahah')
+        // const login = new Login('123456', 'hahah')
 
-        console.log(login.PASSWORD) // 报错
-        console.log(login[PASSWORD]) // 报错
-        console.log(login[PASSWORD]) // 报错
+        // console.log(login.PASSWORD) // 报错
+        // console.log(login[PASSWORD]) // 报错
+        // console.log(login[PASSWORD]) // 报错
 
     </script>
 </body>

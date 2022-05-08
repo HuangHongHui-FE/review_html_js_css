@@ -1,4 +1,3 @@
-
 // 封装 ajax 请求：传入回调函数 success 和 fail
 function ajax(url, success, fail) {
     var xmlhttp = new XMLHttpRequest();
@@ -11,7 +10,7 @@ function ajax(url, success, fail) {
             fail(new Error('接口请求失败'));
         }
     };
-}
+};
 
 
 
@@ -36,7 +35,7 @@ new Promise((resolve, reject) => {
         console.log('b成功');
     });
 
-//     a接口返回的内容
-// a成功
-// b成功
-// b接口返回的内容
+//   a接口返回的内容
+//   a成功
+//   b成功
+//   b接口返回的内容
