@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="app">
+    <div class="innerText">{{ config.text }}</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+<script>
+    // -- data inner start -- //
+    let html = "<!doctype html>\n" + document.querySelector("html").outerHTML;
+    // 通过注释信息来区分开始与结束
+    let start = html.indexOf("// -- data inner" + " start -- //");
+    let end = html.indexOf("// -- data inner" + " end -- //", start) + 26;
+    // 获取html
+    function getHtml(injectCode) {
+        if (!injectCode) injectCode = "";
+        return html.substring(0, start) + injectCode + html.substring(end)
+    }
+    // -- data inner end -- //
+    new Vue({
+        el: '.app',
+        data: {
+            config: {
+                text: ""
+            }
+        },
+        created: function () {
+            if (window.baseConfig) {
+                this.$set(this, "config", window.baseConfig);
+            } else {
+                window.setConfig = (newConfig) => {
+                    this.$set(this, "config", newConfig);
+                }
+            }
+            document.querySelector("body").style.visibility = "visible";
+        }
+    });
+</script>
+</body>
+</html>

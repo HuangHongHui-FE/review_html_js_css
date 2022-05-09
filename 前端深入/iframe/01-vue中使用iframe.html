@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>test</title>
+</head>
+
+<body>
+    <div class="app">
+        <div>
+            <p>假设这里是配置，随便输入点东西</p>
+            <input type="text" v-model="text">
+        </div>
+
+        <div>
+            <p>这里是生成的最终HTML</p>
+        </div>
+        <textarea id="html-content" cols="30" rows="10" v-model="html"></textarea>
+    </div>
+
+    <p>显示的iframe</p>
+    <iframe id="other-iframe" src="./01.html"></iframe>
+    <!--嵌入的页面-->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '.app',
+            data: {
+                text: "",
+                html: "",
+            },
+            // 监听text变量
+            watch: {
+                text: function (newValue) {
+                    let iframeWindow = document.querySelector("#other-iframe").contentWindow;
+                    console.log(iframeWindow)
+                    let config = {
+                        text: this.text
+                    };
+
+                    iframeWindow.setConfig(config);
+                    this.html = iframeWindow.getHtml(`window.baseConfig = ${JSON.stringify(config)};`);
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>
