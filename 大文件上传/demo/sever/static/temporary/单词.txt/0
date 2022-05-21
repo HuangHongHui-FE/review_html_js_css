@@ -1,0 +1,36 @@
+JSBridage，rotate，scale,accept，compiler，babel，resize，connection，proxy，aggregate，authorization，cluster，fork，Referer
+iterator
+let max = num = nums[0];
+    for(let i = 1; i < nums.length; i++){
+        num = num > 0 ? num + nums[i] : nums[i];
+        max = num > max ? num: max;
+    }
+    return max
+
+
+
+
+// 初始化队列 queue
+  const queue = []
+  // 根节点入队
+  queue.push(root)
+  // 定义结果数组
+  const res = []
+  while(queue.length) {
+    // 队头元素出队
+    const top = queue[0]
+    if(top) {
+      // 存入结果数组
+      res.push(top.val)
+      // 广度优先遍历，若当前节点有其他节点，则入队
+      if(top.left) {
+        queue.push(top.left)
+      }
+      if(top.right) {
+        queue.push(top.right)
+      }
+    }
+    // 当前元素出队
+    queue.shift()
+  }
+  return res

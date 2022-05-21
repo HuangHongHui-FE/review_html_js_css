@@ -42,7 +42,6 @@ export function axios({method, url, params, data}){
                 }
             }
         }
-
     });
 }
 

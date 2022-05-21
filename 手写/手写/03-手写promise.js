@@ -113,7 +113,6 @@ class MyPromise{
         })
 
         
-
         // 返回这个包装的Promise
         return thenPromise
 

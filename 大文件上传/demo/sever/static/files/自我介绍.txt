@@ -1,0 +1,497 @@
+
+前辈您好，我叫黄洪辉，是河南理工大学计算机科学与技术学院的一名大三学生。我将从两个方面介绍我自己，首先在学校学习上，我在大一的时候加入了我们学校的大学生网络工作室，选择了学习前端这个方向，到现在已经有将近两年的前端学习经历。前一年基本都是在学习前端的基础，还有一些vue基础和小程序基础的知识，到了大二下学期和大三上学期就开始一边学习nodejs, 数据库 ,UI框架相关的知识，一边做项目参加大学生作品比赛，和一些企业举办的青训营，前端训练营等活动。在大二暑假里参加了腾讯云犀牛鸟云开发布道师的活动，在经过两个月的云开发学习之后，开始做小程序云开发相关的项目进行评比，最终取得了第一名的成绩，还获得了一个平板。然后在生活中，我认为自己是一个自制力比较强的，积极向上的人，喜欢偶尔打打篮球，听听歌。希望能够顺利的通过面试，并且学习到知识。谢谢。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import numpy as np
+import matplotlib.pyplot as plt
+from torch.utils.data import DataLoader
+import torch.nn as nn
+import torch
+import  warnings
+warnings.filterwarnings('ignore')
+X=np.random.normal(size=(1000, 2))
+A=np.array([[1, 2], [-0.1, 0.5]])
+b=np.array([1, 2])
+data = X.dot(A)+b   # 矩阵相乘
+batch_size = 8
+data_iter = DataLoader(data,batch_size=batch_size, shuffle=True)
+class net_G(nn.Module):
+    def __init__(self):
+        super(net_G, self).__init__()
+        self.model = nn.Sequential(nn.Linear(2, 2))
+        self._initialize_weights()  # 初始化网络权重参数，以加快训练速度
+
+    def forward(self, x):
+        x = self.model(x)
+        return x
+
+    def _initialize_weights(self):
+        for m in self.modules():
+            if isinstance(m, nn.Linear):
+                m.weight.data.normal_(0, 0.02)  # 初始化全连接层上的参数，均值为0，标准差为0.02
+                m.bias.data.zero_()   # 初始化偏置值为0
+
+class net_D(nn.Module):
+    def __init__(self):
+        super(net_D, self).__init__()
+        self.model = nn.Sequential(
+            nn.Linear(2, 5),
+            nn.Tanh(),
+            nn.Linear(5, 3),
+            nn.Tanh(),
+            nn.Linear(3, 1),
+            nn.Sigmoid())
+        self._initialize_weights()
+
+    def forward(self, x):
+        x = self.model(x)
+        return x
+
+    def _initialize_weights(self):
+        for m in self.modules():
+            if isinstance(m, nn.Linear):
+                m.weight.data.normal_(0, 0.02)  #初始化全连接层上的参数，均值为0，标准差为0.02
+                m.bias.data.zero_()   #初始化偏置值为0
+
+ #定义一个函数用来更新鉴别器的参数
+
+def update_D(X, Z, net_D, net_G, loss, trainer_D):
+    batch_size = X.shape[0]  #得到图片数量
+    ones = torch.ones(batch_size).view(batch_size, 1)  #鉴别器希望真实数据对应的标签
+    zeros = torch.zeros(batch_size).view(batch_size, 1)  #鉴别器希望虚假数据对应的标签
+    real_Y = net_D(X)   #真实数据传入到鉴别器后得到的标签
+    fake_X = net_G(Z)
+    fake_Y = net_D(fake_X)
+    loss_D = (loss(real_Y, ones)+loss(fake_Y, zeros))/2
+    loss_D.backward()
+    trainer_D.step()
+    return loss_D.sum()
+
+
+# 定义一个函数用来更新生成器的参数
+def update_G(Z, net_D, net_G, loss, trainer_G):
+    batch_size = Z.shape[0]  # 得到图片数量
+    ones = torch.ones(batch_size).view(batch_size, 1)
+    fake_X = net_G(Z)
+    fake_Y = net_D(fake_X)
+    loss_G = loss(fake_Y, ones)
+    loss_G.backward()
+    trainer_G.step()
+    return loss_G.sum()
+
+
+def train(net_D, net_G, data_iter, num_epochs, lr_D, lr_G, latent_dim, data):
+    loss = nn.BCELoss()  # 二分类交叉熵损失函数
+    trainer_D = torch.optim.Adam(net_D.parameters(), lr=lr_D)  # 选定鉴别器的优化器
+    trainer_G = torch.optim.Adam(net_G.parameters(), lr=lr_G)  # 选定生成器的优化器
+
+    d_loss_point = []  # 用来存放鉴别器总的损失
+    g_loss_point = []
+    d_loss = 0  # 每一批次的损失
+    g_loss = 0
+
+    for epoch in range(1, num_epochs + 1):
+        d_loss_sum = 0
+        g_loss_sum = 0
+        batch = 0
+        for X in data_iter:
+            batch += 1
+            X = torch.tensor(X, dtype=torch.float32)
+            batch_size = X.shape[0]
+
+            Z = torch.tensor(np.random.normal(0, 1, (batch_size, latent_dim)), dtype=torch.float32)
+
+            trainer_D.zero_grad()  # 清空上一轮训练得到的梯度
+            d_loss = update_D(X, Z, net_D, net_G, loss, trainer_D)
+            d_loss_sum += d_loss.item()  # 每一个epoch的损失
+
+            trainer_G.zero_grad()  # 清空上一轮训练得到的梯度
+            g_loss = update_G(Z, net_D, net_G, loss, trainer_G)
+            g_loss_sum += g_loss.item()  # 每一个epoch的损失
+
+        d_loss_point.append(d_loss_sum / batch)
+        g_loss_point.append(g_loss_sum / batch)
+
+    plt.figure(figsize=(7, 4))
+    plt.plot(range(1, num_epochs + 1), d_loss_point,
+             color='orange', label='discriminator')
+    plt.plot(range(1, num_epochs + 1), g_loss_point,
+             color='blue', label='generator')
+    plt.legend()
+    plt.show()
+
+    print(d_loss, g_loss)
+
+    Z = torch.tensor(np.random.normal(
+        0, 1, size=(100, latent_dim)), dtype=torch.float32)
+    fake_X = net_G(Z).detach().numpy()
+    plt.figure(figsize=(5, 4))
+    plt.scatter(data[:, 0], data[:, 1], color='blue', label='real')
+    plt.scatter(fake_X[:, 0], fake_X[:, 1], color='orange', label='generated')
+    plt.legend()
+    plt.show()
+
+if __name__ == '__main__':
+    lr_D, lr_G, latent_dim, num_epochs = 0.05, 0.005, 2, 20
+    generator = net_G()
+    discriminator = net_D()
+    train(discriminator, generator, data_iter, num_epochs, lr_D, lr_G, latent_dim, data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+自我介绍改一下。
+
+
+
+
+
+
+
+import numpy as np
+from matplotlib import pyplot as plt
+from torch.utils.data import DataLoader
+from torchvision import transforms
+from torchvision.datasets import mnist  # 导入内置的 mnist 数据
+import torch
+from torch import nn
+from torch.autograd import Variable
+
+transform = transforms.Compose([
+    transforms.ToTensor(),  # 数据转为tensor
+    transforms.Normalize([0.5], [0.5])  # 正则化，均值: 0.5 方差: 0.5
+])
+
+train_set = mnist.MNIST('./data', train=True, transform=transform, download=True)
+test_set = mnist.MNIST('./data', train=False, transform=transform, download=True)
+train_data = DataLoader(train_set, batch_size=64, shuffle=True)
+test_data = DataLoader(test_set, batch_size=128, shuffle=False)
+
+
+class fnn(nn.Module):
+    def __init__(self):
+        super(fnn, self).__init__()
+
+        self.layer1 = nn.Sequential(  # 全连接层     [1, 28, 28]
+            nn.Linear(784, 400),  # 输入维度，输出维度
+            nn.BatchNorm1d(400),  # 批标准化，加快收敛，可不需要
+            nn.ReLU()  # 激活函数
+        )
+
+        self.layer2 = nn.Sequential(
+            nn.Linear(400, 200),
+            nn.BatchNorm1d(200),
+            nn.ReLU()
+        )
+
+        self.layer3 = nn.Sequential(  # 全连接层
+            nn.Linear(200, 100),
+            nn.BatchNorm1d(100),
+            nn.ReLU()
+        )
+
+        self.layer4 = nn.Sequential(  # 最后一层为实际输出，不需要激活函数，因为有 10 个数字，所以输出维度为 10，表示10 类
+            nn.Linear(100, 10),
+        )
+
+    def forward(self, x):
+        x = self.layer1(x)
+        x = self.layer2(x)
+        x = self.layer3(x)
+        output = self.layer4(x)
+
+        return output
+
+
+net = fnn()  # 导入网络
+criterion = nn.CrossEntropyLoss()  # 损失函数
+optimizer = torch.optim.Adam(net.parameters(), 1e-1)
+
+# 训练
+for epoch in range(10):
+    train_loss = 0
+    train_acc = 0
+    for im, label in train_data:
+        im = Variable(im.view(im.size(0), -1))
+        label = Variable(label)
+
+        out = net(im)  # 加载模型
+
+        loss = criterion(out, label)  # 计算误差
+
+        optimizer.zero_grad()  # 梯度归零
+        loss.backward()  # 反向传播
+        optimizer.step()  # 参数更新
+
+        train_loss += loss.data
+
+        # 计算分类的准确率
+        _, pred = out.max(1)
+        num_correct = (pred == label).sum().item()  # 预测正确数目
+        acc = num_correct / im.shape[0]  # 正确率
+        train_acc += acc
+
+    print('epoch: {}, Train Loss: {:.6f}, Train Acc: {:.6f}'.format(epoch, train_loss / len(train_data),
+                                                                    train_acc / len(train_data)))
+
+#可视化训练及测试的损失值
+plt.title('Train Loss')
+plt.plot(np.arange(len(train_loss)),train_loss)
+plt.legend(['Train Loss'],loc='upper right')
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import numpy as np
+import torch
+from torch.utils import data
+from d2l import torch as d2l
+from torch import nn
+# `nn` 是神经网络的缩写
+
+
+def synthetic_data(w, b, num_examples):
+    # 生成 y = Xw + b + 噪声。
+    X = torch.linspace(0, 100, steps=num_examples)
+    y = X*w + b
+    return X, y.reshape((-1, 1))
+
+
+true_w = 2
+true_b = 4.2
+features, labels = synthetic_data(true_w, true_b, 100)
+
+
+def load_array(data_arrays,  batch_size, is_train=True):
+    """构造一个PyTorch数据迭代器。"""
+    dataset = data.TensorDataset(*data_arrays)
+    return data.DataLoader(dataset, batch_size, shuffle=is_train)
+
+
+batch_size = 10
+data_iter = load_array((features, labels), batch_size)
+
+net = nn.Sequential(nn.Linear(1, 1))
+net[0].weight.data.normal_(0, 0.01)
+net[0].bias.data.fill_(0)
+loss = nn.MSELoss()
+trainer = torch.optim.SGD(net.parameters(), lr=0.03)
+num_epochs = 3
+for epoch in range(num_epochs):
+    for X, y in data_iter:
+        l = loss(net(X) ,y)
+        trainer.zero_grad()
+        l.backward()
+        trainer.step()
+    l = loss(net(features), labels)
+    print(f'epoch {epoch + 1}, loss {l:f}')
+
+w = net[0].weight.data
+print('w的估计误差：', true_w - w.reshape(true_w.shape))
+b = net[0].bias.data
+print('b的估计误差：', true_b - b)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+水平垂直居中。
+light-height:    text-align。
+
+align-item
+align-content            多行元素flex都居中
+
+position
+
+
+tree-shringk原理
+宏任务，微任务
+浏览器原生方法   offset, 
+
+
+浏览器，nodejs特别的
+
+任务，nodejs宏任务微任务
+
+继承
+
+object.create
+
+margin为负值什么表现，重叠。哪像哪移动，最大最小值，margin-bottom为负时，上把下拉上去；
+
+bfc.   是什么。
+
+隐藏元素
+父元素opcity为0， 子元素还能显示出来吗。
+flex三个基准值。0  1  auto。       auto默认的元素的大小。
+
+h5新特性。             什么是语义化标签。
+
+cookie可以设置默认时间。
+
+向服务端发送请求时，cookie是默认携带着的。
+
+localstorage受不受同源策略的影响。
+
+同源策略。
+
+sessionStorage用途：表单状态，购物车
+
+array对原列表造成影响的，不造成影响的。
+哪些方法会返回一个新数组。
+forEach, map。
+
+类数组。
+数组去重。map, forEach方法， map返回值是一个新数组
+
+
+webpack构建流程。
+
+loader与plugins的区别。
+
+vue  mvvm的表现在哪里。
+
+data是对象还是函数。
+
+warter        computer的场景， 用法。缓存。
+
+路由守卫。
+
+vue3的新特性。
+	根节点数量
+	组合式  api
+	filter移除了。
+	动态的数据ref。
+
+
+项目相关介绍：尽量要跟前端相关，项目背景，项目选型。跨域。
+
+git分支管理，的一些操作。不影响主分支，合并分支方法。
+
+canvas绘图。
+
+项目亮点。
+
+异步行为转换成同步行为的操作。
+基础要流畅，基础！！！
+自信！！！
+
+call, apply, bind手写
+
+
+单例。
+mapstate, mapget,     列表计数
+
+history原理。
+大树相加。
+动态规划，不用写。
+
+井字棋
+
+有没有必要还学jquery。
+
+nextTack。
+
+vuex多举例子，对应场景。
+
+vue3, 2api   举例子，各个楼层之间不同的。
+
+难表达的地方，想成例子。
+
+网络协议，想成快递收发站的流程。
+
+组件原则，低耦合，不会影响其他组件，更完美的封装组件。
+
+vue3,    proxy数组数据较大的话。流程。
+
+mutationObserve();创建微任务。
+
+f c p。页面加载指标。
+
+eslint。  
+
+
+
+vue2,3中的双向数据绑定。
+
+
+webpack相关

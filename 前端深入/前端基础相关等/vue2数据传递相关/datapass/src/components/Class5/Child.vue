@@ -17,7 +17,6 @@ export default {
     mounted(){
         console.log("1", this.grandpa.name)
     }
-    
 }
 </script>
 

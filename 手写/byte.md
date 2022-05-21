@@ -494,4 +494,102 @@
     console.log(addcurry(1)(2));
     ```
 
+76. 实现new
+
+    ```js
+    function new(fn){
+    	let obj = {};
+    	obj.__proto__ = fn.prototype;
+    	let res = obj.apply(fn);
+    	return res instanceof Object ? res : obj
+    }
+    ```
+
+77. async错误处理，try   catch          /    async-to-js     https://github.com/scopsy/await-to-js
+
+    ```js
+    import to from 'await-to-js';
+    // If you use CommonJS (i.e NodeJS environment), it should be:
+    // const to = require('await-to-js').default;
     
+    async function asyncTaskWithCb(cb) {
+         let err, user, savedTask, notification;
+    
+         [ err, user ] = await to(UserModel.findById(1));
+         if(!user) return cb('No user found');
+    
+         [ err, savedTask ] = await to(TaskModel({userId: user.id, name: 'Demo Task'}));
+         if(err) return cb('Error occurred while saving task');
+    
+        if(user.notificationsEnabled) {
+           [ err ] = await to(NotificationService.sendNotification(user.id, 'Task Created'));
+           if(err) return cb('Error while sending notification');
+        }
+    
+        if(savedTask.assignedUser.id !== user.id) {
+           [ err, notification ] = await to(NotificationService.sendNotification(savedTask.assignedUser.id, 'Task was created for you'));
+           if(err) return cb('Error while sending notification');
+        }
+    
+        cb(null, savedTask);
+    }
+    ```
+
+78. 深度优先与广度优先
+
+    对于算法来说 无非就是时间换空间 空间换时间
+
+    - 1、深度优先不需要记住所有的节点, 所以占用空间小, 而广度优先需要先记录所有的节点占用空间大
+    - 2、深度优先有回溯的操作(没有路走了需要回头)所以相对而言时间会长一点
+    - 3、深度优先采用的是堆栈的形式, 即先进后出
+    - 4、广度优先则采用的是队列的形式, 即先进先出
+
+79. ```
+    click单机鼠标左键触发，右键无效，当用户焦点在按钮并按下Enter，也会触发
+    dbclick双击鼠标左键触发，右键无效mousedown单机鼠标任意一个按键都触发
+    mouseout鼠标指针位于某个元素上且将要移出元素边界时触发
+    mouseover鼠标指针移出某个元素到另一个元素上时触发
+    mouseup鼠标指针移出某个元素到另一个元素上时触发
+    mouseover松开任意鼠标按键时触发
+    mousemove鼠标在某个元素上时持续发生
+    mouseenter鼠标进入某个元素边界时触发
+    
+    onkeydown	某个键盘按键被按下时触发
+    onkeyup	某个键盘按键被松开时触发
+    onkeypress	某个按键被按下时触发，不监听功能键，如ctrl，shift
+    
+    innerWidth	innerWidth 浏览器窗口可视区宽度（不包括浏览器控制台、菜单栏、工具栏）
+    
+    document.documentElement.clientWidth浏览器窗口可视区宽度（不包括浏览器控制台、菜单栏、工具栏、滚动条）
+    document.documentElement.clientHeight浏览器窗口可视区高度（不包括浏览器控制台、菜单栏、工具栏、滚动条）
+    document.documentElement.offsetHeight获取整个文档的高度（包含body的margin）document.body.offsetHeight获取整个文档的高度（不包含body的margin）document.documentElement.scrollTop返回文档的滚动top方向的距离（当窗口发生滚动时值改变）document.documentElement.scrollLeft返回文档的滚动left方向的距离（当窗口发生滚动时值改变）
+    ```
+
+80. 当 HTML 文档解析完成就会触发 DOMContentLoaded，而所有资源加载完成之后，load 事件才会被触发。
+
+81. common.js
+
+    ```js
+    // a.js
+    module.exports = {
+        a: 1
+    }
+    // or
+    exports.a = 1
+    
+    // b.js
+    var module = require('./a.js')
+    module.a // -> log 1
+    ```
+
+82. abstract模式
+
+    适用于所有JavaScript环境，例如服务器端使用Node.js。如果没有浏览器API，路由器将自动被强制进入此模式。
+
+    然后在
+
+    ```javascript
+    const router = new VueRouter({routes, mode:'hash|history|abstract',})
+    ```
+
+    这里进行切换。

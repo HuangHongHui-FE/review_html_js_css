@@ -192,21 +192,21 @@
         
 
         // // 链式调用
-        (async () => {
-            let obj = {};
-            obj[Symbol.asyncIterator] = async function* (){
-                console.log('1Start');
-                yield func1();
-                console.log('2Start');
-                yield func2();
-                console.log('3Start');
-                yield func3();
-            };
+        // (async () => {
+        //     let obj = {};
+        //     obj[Symbol.asyncIterator] = async function* (){
+        //         console.log('1Start');
+        //         yield func1();
+        //         console.log('2Start');
+        //         yield func2();
+        //         console.log('3Start');
+        //         yield func3();
+        //     };
 
-            for await (let x of obj){  //这个格式不能变
-                console.log(x)
-            }
-        })();
+        //     for await (let x of obj){  //这个格式不能变
+        //         console.log(x)
+        //     }
+        // })();
 
 // 下面不对
         // func1().then(res => {
@@ -237,23 +237,27 @@
         // console.log(arr instanceof Fn);  // false   // true
 
 
-        // 9. 定义类的石油属性
-        // class Login {
-        //     constructor(username, password) {
-        //         const PASSWORD = Symbol()
-        //         this.username = username
-        //         this[PASSWORD] = password
-        //     }
-        //     checkPassword(pwd) { 
-        //         return this[PASSWORD] === pwd 
-        //     }
-        // }
 
-        // const login = new Login('123456', 'hahah')
 
-        // console.log(login.PASSWORD) // 报错
-        // console.log(login[PASSWORD]) // 报错
-        // console.log(login[PASSWORD]) // 报错
+        // 9. 定义类的私有属性
+        class Login {
+            constructor(username, password) {
+                const PASSWORD = Symbol()
+                this.username = username
+                this[PASSWORD] = password
+            }
+            checkPassword(pwd) {
+                console.log(this[PASSWORD])
+                return this[PASSWORD] === pwd
+            }
+        }
+
+        const login = new Login('123456', 'hahah')
+        console.log(login.checkPassword('123456'))
+
+        console.log(login.PASSWORD) // 报错
+        console.log(login[PASSWORD]) // 报错
+        console.log(login[PASSWORD]) // 报错
 
     </script>
 </body>
