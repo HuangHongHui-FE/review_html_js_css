@@ -1,5 +1,6 @@
 <template>
-    <div class="carousel">
+    <!-- 鼠标事件 -->
+    <div class="carousel" @mouseenter="mouseEnter" @mouseleave="mouseLeave">
         <!-- 这里那么多div是为了方便到时候添样式 -->
         <div class="inner">
             <CarDot 
@@ -8,6 +9,15 @@
                 :currentIndex="currentIndex" 
                 :dotBgColor="dotBgColor" 
                 @dotClick="dotClick"
+            />
+            <!-- 左右的指示器 -->
+            <CarDirector
+                dir="prev"
+                @dirClick="dirClick"
+            />
+            <CarDirector
+                dir="next"
+                @dirClick="dirClick"
             />
             <slot></slot>
         </div>
@@ -19,6 +29,7 @@
 import {reactive, toRefs, onMounted, onBeforeUnmount, getCurrentInstance} from 'vue';
 
 import CarDot from './Dot.vue'  // 小圆点
+import CarDirector from './Director.vue'  // 小圆点
 
 export default {
     name: 'Carousel',
@@ -92,6 +103,21 @@ export default {
             state.currentIndex = index
         }
 
+
+        const mouseEnter = () => {
+            clearInterval(t);
+            t = null;
+        }
+
+        const mouseLeave = () => {
+            autoplay();
+        }
+
+        // 指示器的点击
+        const dirClick = (dir) => {
+            setIndex(dir)
+        }
+
         onMounted(() => {
             // console.log(instance)
             // console.log(instance.slots.default())  // 为了找到itemLen总共的轮播图个数
@@ -111,7 +137,10 @@ export default {
 
         return {
             ...toRefs(state),
-            dotClick
+            dotClick,
+            mouseEnter,
+            mouseLeave,
+            dirClick
         }
     }
 }
