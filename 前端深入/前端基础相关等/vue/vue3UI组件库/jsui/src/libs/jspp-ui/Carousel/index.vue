@@ -2,6 +2,13 @@
     <div class="carousel">
         <!-- 这里那么多div是为了方便到时候添样式 -->
         <div class="inner">
+            <CarDot 
+                :hasDot="hasDot" 
+                :itemLen="itemLen" 
+                :currentIndex="currentIndex" 
+                :dotBgColor="dotBgColor" 
+                @dotClick="dotClick"
+            />
             <slot></slot>
         </div>
     </div>
@@ -11,9 +18,13 @@
 
 import {reactive, toRefs, onMounted, onBeforeUnmount, getCurrentInstance} from 'vue';
 
+import CarDot from './Dot.vue'  // 小圆点
 
 export default {
     name: 'Carousel',
+    components: {
+        CarDot
+    },
     props: {
         autoplay: {
             type: Boolean,
@@ -34,7 +45,8 @@ export default {
         hasDirector: {
             type: Boolean,
             default: true
-        }
+        },
+        dotBgColor: String
     },
 
     setup(props){
@@ -75,6 +87,11 @@ export default {
             }
         }
 
+        // 圆点点击事件
+        const dotClick = (index) => {
+            state.currentIndex = index
+        }
+
         onMounted(() => {
             // console.log(instance)
             // console.log(instance.slots.default())  // 为了找到itemLen总共的轮播图个数
@@ -93,7 +110,8 @@ export default {
 
 
         return {
-            ...toRefs(state)
+            ...toRefs(state),
+            dotClick
         }
     }
 }

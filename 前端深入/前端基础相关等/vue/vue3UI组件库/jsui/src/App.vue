@@ -3,10 +3,11 @@
     <div class="container">
       <carousel
         :autoplay="true"
-        :duration="3000"
+        :duration="1000"
         :initial="0"
         :hasDot="true"
         :hasDirector="true"
+        dotBgColor="#000"
       >
 
         <car-item v-for="(item, index) of carData" :key="index">
