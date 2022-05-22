@@ -1,7 +1,9 @@
 <template>
-    <div class="car-item" v-if="selfIndex === currentIndex">
-        <slot></slot>
-    </div>
+    <transition>
+        <div class="car-item" v-if="selfIndex === currentIndex">
+            <slot></slot>
+        </div>
+    </transition>
 </template>
 
 <script>
@@ -47,5 +49,27 @@ export default {
         left: 0;
         width: 100%;
         height: 100%;
+    }
+
+
+    /* 动画 */
+    .v-enter-active, .v-leave-active {
+        transition: all .3s linear;
+    }
+
+    .v-enter-active {
+        transform: translateX(100%);
+    }
+
+    .v-enter-to{
+        transform: translateX(0);
+    }
+
+    .v-leave-active {
+        transform: translateX(0);
+    }
+
+    .v-leave-to {
+        transform: translateX(-100%);
     }
 </style>
