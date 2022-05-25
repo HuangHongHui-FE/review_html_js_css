@@ -7,9 +7,10 @@ import React, { Component } from 'react'
 import CourseField from '../components/CourseField'
 import CourseList from '../components/CourseList'
 
-// 最后用了
+// 最后用了,// 想要使用app.js包裹的store，必须
 import {connect} from 'react-redux';
-import state from '../../../../vuex相关/vuexdemo/src/store/counter1 copy/state';
+
+import { changeCourseField } from '../store/actions/courseTabList'
 
 // export default class IndexPage extends Component {
 //     // async getDatas () {
@@ -36,26 +37,33 @@ import state from '../../../../vuex相关/vuexdemo/src/store/counter1 copy/state
 
 
 // 用redux时
-export default class IndexPage extends Component {
+class IndexPage extends Component {
     render() {
-        const {curField} = this.props;
+        const {curField, changeCourseField} = this.props;  // connect已传进props这两个东西了
 
         return (
             <div className='page-wrapper'>
-                123
-                <CourseField />
-                <CourseList />
+                <CourseField curField={curField} changeCourseField={changeCourseField} />
+                <CourseList curField={curField}  />
             </div>
         );
     }
 }
 
+// 想要使用app.js包裹的store，必须
 export default connect (
+    // 遍历state到props
     function mapStateToProps(state){
         return{
             curField: state.courseTabList.curField
         }
-        
+    },
+
+    // 通过调用store里的action更改state
+    function mapDispatchToProps(dispatch){
+        return {
+            changeCourseField: (field) => dispatch(changeCourseField(field))
+        }
     }
 )(IndexPage);
 

@@ -25,16 +25,15 @@ export default class CourseField extends Component {
     }
 
     render(){
-        const {fieldData} = this.state;
+        const {fieldData} = this.state, {curField, changeCourseField} = this.props;
         return (
-            // jsx
             <div className="field-wrapper">
-
                 <FieldItem 
                     key={'-1'}
                     item={{field: '-1', fiels_name: '全部课程'}}
+                    curField={curField}
+                    changeCourseField={() => changeCourseField('-1')}
                 />
-
                 {
                     fieldData.map((item, index) => {
                         return (
@@ -42,6 +41,8 @@ export default class CourseField extends Component {
                             <FieldItem 
                                 key={index}
                                 item={item}
+                                curField={curField}
+                                changeCourseField={() => changeCourseField(item.field)}
                             />
                         );
                     })

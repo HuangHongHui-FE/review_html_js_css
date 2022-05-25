@@ -11,7 +11,6 @@ export default class CourseList extends Component {
 
     async getCourseData() {
         const courseData = await getCourseList();
-
         this.setState({
             courseData
         })
@@ -21,19 +20,25 @@ export default class CourseList extends Component {
         this.getCourseData();
     }
 
+    // 事先处理数据的
+    filterData(data, field){
+        if(field === '-1'){
+            return data;
+        }
+        return data.filter(item => item.field === field)
+    }
+
     render(){
-        const {courseData} = this.state;
+        const {courseData} = this.state, {curField} = this.props;
         return (
             
             <div className='course-wrapper'>
                 <ul className='course-list'>
                     {
-                        courseData.map((item, index) => {
+                        // courseData.map((item, index) => {
+                        this.filterData(courseData, curField).map(item => {
                             return (
-                                <CourseItem 
-                                    key={index}
-                                    item={item}
-                                />
+                                <CourseItem key={index} item={item} />
                             )
                         })
                     }

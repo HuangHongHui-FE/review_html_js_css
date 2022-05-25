@@ -5,7 +5,7 @@ export default function (state = initialState, action){
         case 'CHANGE_COURSE_FIELD':
             return {
                 // 防止还有别的参数
-                ...initialState,
+                ...state,
                 curField: action.Field
             }
         default:
