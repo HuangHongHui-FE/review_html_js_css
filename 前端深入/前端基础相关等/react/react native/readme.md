@@ -1,0 +1,1 @@
+[![Genymotion logo](https://www.genymotion.com/wp-content/themes/genymotion/images/logogenymotion.svg)](https://www.genymotion.com/)
